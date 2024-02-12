@@ -126,4 +126,4 @@ FitHub also includes:
 
 ## License
 
-FitHub is licensed under the [MIT License](LICENSE). Feel free to use and modif
+FitHub is licensed under the [MIT License](LICENSE). 
