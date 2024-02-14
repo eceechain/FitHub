@@ -54,3 +54,23 @@ class CalorieLog(db.Model, SerializerMixin):
     
     user = db.relationship('User', back_populates='calories')
 
+
+class GoalSetting(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    goal_type = db.Column(db.String(100))
+    target = db.Column(db.Float)
+    deadline = db.Column(db.Date)
+
+class ProgressTracking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.Date)
+    weight = db.Column(db.Float)
+    body_measurements = db.Column(db.String(255))
+
+class AuthToken(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    token = db.Column(db.String(255), unique=True, nullable=False)
+    expiry_date = db.Column(db.DateTime)

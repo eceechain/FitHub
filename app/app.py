@@ -1,209 +1,131 @@
-<<<<<<< HEAD
-print('here I am') 
-=======
-import datetime
 from flask import Flask, jsonify, request
-from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-from models import CalorieLog, WorkoutLog, db, User
+from models import CalorieLog, WorkoutLog, User, GoalSetting, ProgressTracking
 
 app = Flask(__name__)
 CORS(app)
 jwt = JWTManager(app)
-migrate = Migrate(app, db)
 
-# Setting up Flask JWT
 app.config['JWT_SECRET_KEY'] = 'SECRET'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db.init_app(app)
+db = SQLAlchemy(app)
 
-# Protected route requiring JWT authentication
-@app.route('/login', methods=['POST'])
-def login():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+class AuthMiddleware:
+    def __init__(self, app):
+        self.app = app
 
-    # Query the database for the user
-    user = User.query.filter_by(username=username).first()
+    def __call__(self, environ, start_response):
+        token = request.headers.get('Authorization')
+        if not token:
+            return self.unauthorized_response()
+        try:
+            data = jwt.decode(token, app.config['JWT_SECRET_KEY'])
+            current_user = User.query.get(data['user_id'])
+            environ['current_user'] = current_user
+        except Exception as e:
+            print(e)
+            return self.unauthorized_response()
 
-    # Check if the user exists and the password matches
-    if user:
-        if check_password_hash(user.password_hash, password):
-        # Create JWT token
-         access_token = create_access_token(identity=username)
-         return jsonify(access_token=access_token), 200
-    else:
-        return jsonify(message='Invalid username or password'), 401
+        return self.app(environ, start_response)
 
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
+    def unauthorized_response(self):
+        response = jsonify({'message': 'Unauthorized'})
+        response.status_code = 401
+        return response
 
-# Register route
-@app.route('/Register', methods=['POST'])
-def register():
-    data = request.get_json()
-    username = data.get('username')
-    email = data.get('email')
-    password = data.get('password')
+class UserAPI:
+    def __init__(self, app):
+        self.app = app
 
-# Check if the user already exists
-    user = User.query.filter_by(username=username).first()
-    if user:
-        return jsonify(message='User already exists'), 409
-    else:
-        user = User(username=username, email=email)
-        user.set_password(password)
-        db.session.add(user)
-        db.session.commit()
-        return jsonify(message='User created successfully'), 201
+    def __call__(self, environ, start_response):
+        if request.path.startswith('/Users'):
+            if request.method == 'GET':
+                return self.get_users(environ, start_response)
+            elif request.method == 'POST':
+                return self.create_user(environ, start_response)
 
-# Get all users
-@app.route('/Users', methods=['GET'])
-def get_users():
-    users = User.query.all()
-    users_list = []
-    for user in users:
-        user_data = {}
-        user_data['id'] = user.id
-        user_data['username'] = user.username
-        user_data['email'] = user.email
-        user_data['password_hash'] = user.password_hash
-        user_data['is_active'] = user.is_active
-        users_list.append(user_data)
-    return jsonify(users=users_list), 200
+        return self.app(environ, start_response)
 
+    def get_users(self, environ, start_response):
+        users = User.query.all()
+        users_list = [{'id': user.id, 'username': user.username, 'email': user.email} for user in users]
+        response = jsonify(users=users_list)
+        response.status_code = 200
+        return response(environ, start_response)
 
-# Get a single user
-@app.route('/Users/<int:user_id>', methods=['GET'])
-def get_user(user_id):
-    user = User.query.get(user_id)
-    if user:
-        user_data = {}
-        user_data['id'] = user.id
-        user_data['username'] = user.username
-        user_data['email'] = user.email
-        user_data['password_hash'] = user.password_hash
-        user_data['is_active'] = user.is_active
-        return jsonify(user=user_data), 200
-    else:
-        return jsonify(message='User not found'), 404
-    
-# Update a user
-@app.route('/Users/<int:user_id>', methods=['PUT'])
-def update_user(user_id):
+    def create_user(self, environ, start_response):
         data = request.get_json()
-        user = User.query.get(user_id)
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
+
+        user = User.query.filter_by(username=username).first()
         if user:
-            user.username = data.get('username')
-            user.email = data.get('email')
-            user.password_hash = data.get('password_hash')
-            user.is_active = data.get('is_active')
-            db.session.commit()
-            return jsonify(message='User updated successfully'), 200
+            response = jsonify(message='User already exists')
+            response.status_code = 409
+            return response(environ, start_response)
         else:
-            return jsonify(message='User not found'), 404
-        
-# Delete a user
-@app.route('/Users/<int:user_id>', methods=['DELETE'])
-def delete_user(user_id):
-    user = User.query.get(user_id)
-    if user:
-        db.session.delete(user)
-        db.session.commit()
-        return jsonify(message='User deleted successfully'), 200
-    else:
-        return jsonify(message='User not found'), 404
+            user = User(username=username, email=email)
+            user.set_password(password)
+            db.session.add(user)
+            db.session.commit()
+            response = jsonify(message='User created successfully')
+            response.status_code = 201
+            return response(environ, start_response)
 
-# Get all workouts for a user
-@app.route('/Users/<int:user_id>/Workouts', methods=['GET'])
-def get_user_workouts(user_id):
-    user = User.query.get(user_id)
-    if user:
-        workouts = user.workouts
-        workouts_list = []
-        for workout in workouts:
-            workout_data = {
-                'id': workout.id,
-                'user_id': workout.user_id,
-                'date': workout.date,
-                'duration': workout.duration,
-                'workout_type': workout.workout_type,
-                'calories_burned': workout.calories_burned
-            }
-            workouts_list.append(workout_data)
-        
-        # Include the user's username in the response
-        user_data = {
-            'username': user.username,
-            'workouts': workouts_list
-        }
-        
-        return jsonify(user=user_data), 200
-    else:
-        return jsonify(message='User not found'), 404
+class WorkoutAPI:
+    def __init__(self, app):
+        self.app = app
 
-# Get all calories for a user
-@app.route('/Users/<int:user_id>/Calories', methods=['GET'])
-def get_user_calories(user_id):
-    user = User.query.get(user_id)
-    if user:
-        calories = user.calories
-        calories_list = []
-        for calorie in calories:
-            calorie_data = {
-                'id': calorie.id,
-                'user_id': calorie.user_id,
-                'date': calorie.date,
-                'calories': calorie.calories,
-               'meal_type': calorie.meal_type
-            }
-            calories_list.append(calorie_data)
+    def __call__(self, environ, start_response):
+        if request.path.startswith('/Workouts'):
+            if request.method == 'GET':
+                return self.get_workouts(environ, start_response)
+            elif request.method == 'POST':
+                return self.create_workout(environ, start_response)
 
-        # Include the user's username in the response
-        user_data = {
-            'username': user.username,
-            'calories': calories_list
-        }
+        return self.app(environ, start_response)
 
-        return jsonify(user=user_data), 200
-    else:
-        return jsonify(message='User not found'), 404
-    
-# Add a workout for a user
-@app.route('/Users/<int:user_id>/Workouts', methods=['POST'])
-def add_user_workout(user_id):
-    data = request.get_json()
-    user = User.query.get(user_id)
-    if user:
-        workout = WorkoutLog(user_id=user_id, date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'))
+    def get_workouts(self, environ, start_response):
+        current_user = environ.get('current_user')
+        if not current_user:
+            response = jsonify({'message': 'Unauthorized'})
+            response.status_code = 401
+            return response(environ, start_response)
+
+        workouts = WorkoutLog.query.filter_by(user_id=current_user.id).all()
+        workouts_list = [{'id': workout.id, 'user_id': workout.user_id, 'date': workout.date,
+                          'duration': workout.duration, 'workout_type': workout.workout_type,
+                          'calories_burned': workout.calories_burned} for workout in workouts]
+
+        response = jsonify(workouts=workouts_list)
+        response.status_code = 200
+        return response(environ, start_response)
+
+    def create_workout(self, environ, start_response):
+        current_user = environ.get('current_user')
+        if not current_user:
+            response = jsonify({'message': 'Unauthorized'})
+            response.status_code = 401
+            return response(environ, start_response)
+
+        data = request.get_json()
+        workout = WorkoutLog(user_id=current_user.id, date=data.get('date'), duration=data.get('duration'),
+                             workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'))
         db.session.add(workout)
         db.session.commit()
-        return jsonify(message='Workout added successfully'), 201
-    else:
-        return jsonify(message='User not found'), 404
-    
-# Add a calorie for a user
-@app.route('/Users/<int:user_id>/Calories', methods=['POST'])
-def add_user_calorie(user_id):
-    data = request.get_json()
-    user = User.query.get(user_id)
-    if user:
-        calorie = CalorieLog(user_id=user_id, date=data.get('date'), calories=data.get('calories'), meal_type=data.get('meal_type'))
-        db.session.add(calorie)
-        db.session.commit()
-        return jsonify(message='Calorie added successfully'), 201
-    else:
-        return jsonify(message='User not found'), 404
-    
+        response = jsonify(message='Workout added successfully')
+        response.status_code = 201
+        return response(environ, start_response)
+
+app.wsgi_app = AuthMiddleware(app.wsgi_app)
+app.wsgi_app = UserAPI(app.wsgi_app)
+app.wsgi_app = WorkoutAPI(app.wsgi_app)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
->>>>>>> origin/JARED
