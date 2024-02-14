@@ -119,6 +119,87 @@ def delete_user(user_id):
     else:
         return jsonify(message='User not found'), 404
 
+# Get all workouts for a user
+@app.route('/Users/<int:user_id>/Workouts', methods=['GET'])
+def get_user_workouts(user_id):
+    user = User.query.get(user_id)
+    if user:
+        workouts = user.workouts
+        workouts_list = []
+        for workout in workouts:
+            workout_data = {
+                'id': workout.id,
+                'user_id': workout.user_id,
+                'date': workout.date,
+                'duration': workout.duration,
+                'workout_type': workout.workout_type,
+                'calories_burned': workout.calories_burned
+            }
+            workouts_list.append(workout_data)
+        
+        # Include the user's username in the response
+        user_data = {
+            'username': user.username,
+            'workouts': workouts_list
+        }
+        
+        return jsonify(user=user_data), 200
+    else:
+        return jsonify(message='User not found'), 404
+
+# Get all calories for a user
+@app.route('/Users/<int:user_id>/Calories', methods=['GET'])
+def get_user_calories(user_id):
+    user = User.query.get(user_id)
+    if user:
+        calories = user.calories
+        calories_list = []
+        for calorie in calories:
+            calorie_data = {
+                'id': calorie.id,
+                'user_id': calorie.user_id,
+                'date': calorie.date,
+                'calories': calorie.calories,
+               'meal_type': calorie.meal_type
+            }
+            calories_list.append(calorie_data)
+
+        # Include the user's username in the response
+        user_data = {
+            'username': user.username,
+            'calories': calories_list
+        }
+
+        return jsonify(user=user_data), 200
+    else:
+        return jsonify(message='User not found'), 404
+    
+# Add a workout for a user
+@app.route('/Users/<int:user_id>/Workouts', methods=['POST'])
+def add_user_workout(user_id):
+    data = request.get_json()
+    user = User.query.get(user_id)
+    if user:
+        workout = WorkoutLog(user_id=user_id, date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'))
+        db.session.add(workout)
+        db.session.commit()
+        return jsonify(message='Workout added successfully'), 201
+    else:
+        return jsonify(message='User not found'), 404
+    
+# Add a calorie for a user
+@app.route('/Users/<int:user_id>/Calories', methods=['POST'])
+def add_user_calorie(user_id):
+    data = request.get_json()
+    user = User.query.get(user_id)
+    if user:
+        calorie = CalorieLog(user_id=user_id, date=data.get('date'), calories=data.get('calories'), meal_type=data.get('meal_type'))
+        db.session.add(calorie)
+        db.session.commit()
+        return jsonify(message='Calorie added successfully'), 201
+    else:
+        return jsonify(message='User not found'), 404
+    
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5003)
+    app.run(debug=True, port=5001)
