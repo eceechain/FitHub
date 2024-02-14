@@ -1,50 +1,46 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_cors import CORS
 from models import db, User
-import jwt
-from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+CORS(app)
+jwt = JWTManager(app)
+
+# Setting up Flask JWT
+app.config['JWT_SECRET_KEY'] = 'SECRET'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'your_secret_key'
 
 db.init_app(app)
 
-# Endpoint for user registration
-@app.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    username = data.get('username')
-    email = data.get('email')
-    password = data.get('password')
 
-    if not username or not email or not password:
-        return jsonify({'error': 'Missing username, email, or password'}), 400
 
-    new_user = User(username=username, email=email)
-    new_user.set_password(password)
-
-    db.session.add(new_user)
-    db.session.commit()
-
-    return jsonify({'message': 'User successfully registered'}), 201
-
-# Endpoint for user login
+# Protected route requiring JWT authentication
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
 
-    user = User.authenticate(username, password)
+    # Query the database for the user
+    user = User.query.filter_by(username=username).first()
 
-    if not user:
-        return jsonify({'error': 'Invalid username or password'}), 401
+    # Check if the user exists and the password matches
+    if user:
+        if check_password_hash(user.password_hash, password):
+        # Create JWT token
+         access_token = create_access_token(identity=username)
+         return jsonify(access_token=access_token), 200
+    else:
+        return jsonify(message='Invalid username or password'), 401
 
-    # Generate JWT token
-    token = jwt.encode({'username': user.username, 'exp': datetime.utcnow() + timedelta(minutes=30)}, app.config['SECRET_KEY'])
-
-    return jsonify({'token': token.decode('UTF-8')}), 200
+@app.route('/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5005)
