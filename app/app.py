@@ -92,6 +92,33 @@ def get_user(user_id):
         return jsonify(user=user_data), 200
     else:
         return jsonify(message='User not found'), 404
+    
+# Update a user
+@app.route('/Users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+        data = request.get_json()
+        user = User.query.get(user_id)
+        if user:
+            user.username = data.get('username')
+            user.email = data.get('email')
+            user.password_hash = data.get('password_hash')
+            user.is_active = data.get('is_active')
+            db.session.commit()
+            return jsonify(message='User updated successfully'), 200
+        else:
+            return jsonify(message='User not found'), 404
+        
+# Delete a user
+@app.route('/Users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify(message='User deleted successfully'), 200
+    else:
+        return jsonify(message='User not found'), 404
+
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=5003)
