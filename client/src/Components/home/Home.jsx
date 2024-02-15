@@ -1,7 +1,5 @@
 // Home.jsx
-
 import React from 'react';
-
 
 const Home = () => {
   return (
@@ -18,8 +16,8 @@ const Home = () => {
           </ul>
         </nav>
         <div className="authentication">
-          <button>Log In</button>
-          <button>Sign Up</button>
+          <button className="btn">Log In</button>
+          <button className="btn btn-primary">Sign Up</button>
         </div>
       </header>
 
@@ -27,7 +25,7 @@ const Home = () => {
       <section className="hero">
         <h1>Track Your Fitness Journey</h1>
         <p>Start achieving your fitness goals today with our app!</p>
-        <button>Get Started</button>
+        <button className="btn btn-primary">Get Started</button>
       </section>
 
       {/* Features Section */}
@@ -74,7 +72,35 @@ const Home = () => {
       {/* Call-to-Action Section */}
       <section className="cta">
         <h2>Start Your Fitness Journey Today!</h2>
-        <button>Sign Up Now</button>
+        <button className="btn btn-primary">Sign Up Now</button>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="pricing">
+        <h2>Choose Your Plan</h2>
+        <div className="plan">
+          <h3>Basic Plan</h3>
+          <p>Access to basic features</p>
+          <button className="btn btn-secondary">Get Started</button>
+        </div>
+        <div className="plan">
+          <h3>Premium Plan</h3>
+          <p>Access to advanced features</p>
+          <button className="btn btn-primary">Get Started</button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div className="question">
+          <h3>How do I track my activities?</h3>
+          <p>Our app provides easy-to-use activity tracking tools.</p>
+        </div>
+        <div className="question">
+          <h3>Can I sync my data with other fitness apps?</h3>
+          <p>Yes, our app supports data synchronization with popular fitness platforms.</p>
+        </div>
       </section>
 
       {/* Footer Section */}
@@ -84,9 +110,9 @@ const Home = () => {
           <p>Phone: +254798491946</p>
         </div>
         <div className="social-media">
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <a href="#">Instagram</a>
+          <a href="#" className="icon-link"><i className="fab fa-facebook-f"></i></a>
+          <a href="#" className="icon-link"><i className="fab fa-twitter"></i></a>
+          <a href="#" className="icon-link"><i className="fab fa-instagram"></i></a>
         </div>
         <div className="legal">
           <a href="#">Privacy Policy</a>
