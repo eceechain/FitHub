@@ -1,0 +1,160 @@
+/* Home.css */
+
+/* Header Styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navigation ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  .authentication button {
+    margin-left: 10px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Hero Styles */
+  .hero {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* Features Styles */
+  .features {
+    background-color: #fff;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .features h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .feature {
+    display: inline-block;
+    margin: 0 20px;
+  }
+  
+  .feature .icon {
+    font-size: 3rem;
+  }
+  
+  /* How It Works Styles */
+  .how-it-works {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .how-it-works h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .how-it-works ol {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .how-it-works ol li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Testimonials Styles */
+  .testimonials {
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .testimonial blockquote {
+    font-size: 1.2rem;
+  }
+  
+  .testimonial cite {
+    font-style: italic;
+  }
+  
+  /* CTA Styles */
+  .cta {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .cta h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
