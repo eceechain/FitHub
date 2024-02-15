@@ -27,7 +27,7 @@ class WorkoutLog(db.Model, SerializerMixin):
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) 
     duration = db.Column(db.Integer)
     workout_type = db.Column(db.String(120))
-    workout_type_image = db.Column(db.String(255))  # Adding an image column for the workout type
+    image = db.Column(db.String(255))  # Adding an image column for the workout type
     calories_burned = db.Column(db.Integer)
     description = db.Column(db.Text)
     
