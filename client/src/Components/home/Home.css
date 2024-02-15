@@ -1,7 +1,14 @@
 /* Home.css */
 
-/* Header Styles */
-.header {
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header Styles */
+  .header {
     background-color: #333;
     color: #fff;
     padding: 20px;
@@ -10,141 +17,159 @@
     align-items: center;
   }
   
+  .logo {
+    font-size: 1.5rem;
+  }
+  
   .navigation ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
   }
   
   .navigation ul li {
-    display: inline;
-    margin-right: 10px;
+    display: inline-block;
+    margin-right: 20px;
   }
   
-  .authentication button {
-    margin-left: 10px;
-    background-color: #fff;
-    color: #333;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+  .navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
   }
   
-  /* Hero Styles */
+  .navigation ul li a:hover {
+    color: #ff4500;
+  }
+  
+  /* Hero Section Styles */
   .hero {
-    background-color: #f4f4f4;
-    padding: 50px 0;
+    background-image: url('https://via.placeholder.com/1500x500');
+    background-size: cover;
     text-align: center;
+    padding: 100px 20px;
+    color: #fff;
   }
   
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    margin-bottom: 20px;
   }
   
   .hero p {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   .hero button {
-    background-color: #333;
+    background-color: #ff4500;
     color: #fff;
     border: none;
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  /* Features Styles */
+  .hero button:hover {
+    background-color: #e63900;
+  }
+  
+  /* Features Section Styles */
   .features {
-    background-color: #fff;
-    padding: 50px 0;
+    background-color: #f9f9f9;
+    padding: 50px 20px;
     text-align: center;
   }
   
   .features h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 30px;
   }
   
   .feature {
-    display: inline-block;
-    margin: 0 20px;
+    margin-bottom: 30px;
   }
   
   .feature .icon {
     font-size: 3rem;
   }
   
-  /* How It Works Styles */
+  /* How It Works Section Styles */
   .how-it-works {
-    background-color: #f4f4f4;
-    padding: 50px 0;
+    padding: 50px 20px;
     text-align: center;
   }
   
   .how-it-works h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 30px;
   }
   
   .how-it-works ol {
     text-align: left;
-    max-width: 500px;
-    margin: 0 auto;
   }
   
   .how-it-works ol li {
     font-size: 1.2rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
-  /* Testimonials Styles */
+  /* Testimonials Section Styles */
   .testimonials {
-    padding: 50px 0;
+    background-color: #333;
+    color: #fff;
+    padding: 50px 20px;
     text-align: center;
   }
   
   .testimonials h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 30px;
   }
   
   .testimonial blockquote {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
   
   .testimonial cite {
-    font-style: italic;
+    font-size: 1.2rem;
   }
   
-  /* CTA Styles */
+  /* Call-to-Action Section Styles */
   .cta {
-    background-color: #333;
+    background-color: #ff4500;
     color: #fff;
-    padding: 50px 0;
+    padding: 50px 20px;
     text-align: center;
   }
   
   .cta h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 30px;
   }
   
   .cta button {
     background-color: #fff;
-    color: #333;
+    color: #ff4500;
     border: none;
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  /* Footer Styles */
+  .cta button:hover {
+    background-color: #e63900;
+    color: #fff;
+  }
+  
+  /* Footer Section Styles */
   .footer {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding: 50px 20px;
     text-align: center;
   }
   
@@ -156,5 +181,25 @@
   
   .footer a:hover {
     text-decoration: underline;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .navigation ul {
+      margin-top: 20px;
+    }
+  
+    .hero {
+      padding: 100px 20px;
+    }
+  
+    .features, .how-it-works, .testimonials, .cta, .footer {
+      padding: 30px 20px;
+    }
   }
   

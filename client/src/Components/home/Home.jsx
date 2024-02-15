@@ -1,3 +1,5 @@
+// Home.jsx
+
 import React from 'react';
 
 
@@ -6,7 +8,7 @@ const Home = () => {
     <div className="home">
       {/* Header Section */}
       <header className="header">
-        <div className="logo">Fitness Tracker</div>
+        <div className="logo">FitHub</div>
         <nav className="navigation">
           <ul>
             <li><a href="#">Home</a></li>
@@ -64,8 +66,8 @@ const Home = () => {
       <section className="testimonials">
         <h2>Testimonials</h2>
         <div className="testimonial">
-          <blockquote>"I've never felt better since I started using Fitness Tracker. Highly recommend!"</blockquote>
-          <cite>- John Doe</cite>
+          <blockquote>"I've never felt better since I started using FitHub. Highly recommend!"</blockquote>
+          <cite>- Abdullahi Abass</cite>
         </div>
       </section>
 
@@ -78,8 +80,8 @@ const Home = () => {
       {/* Footer Section */}
       <footer className="footer">
         <div className="contact-info">
-          <p>Contact Us: example@example.com</p>
-          <p>Phone: 123-456-7890</p>
+          <p>Contact Us: abass@gmail.com</p>
+          <p>Phone: +254798491946</p>
         </div>
         <div className="social-media">
           <a href="#">Facebook</a>
