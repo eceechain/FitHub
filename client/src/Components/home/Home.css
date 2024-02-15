@@ -3,66 +3,66 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
-    color: #333;
-  }
-  
-  /* Header Styles */
-  .header {
-    background-color: #1a1a1a;
+    background-color: #0b0d0f; /* Updated background color */
+    color: #fff;
+}
+
+/* Header Styles */
+.header {
+    background-color: #1b1e22; /* Updated header background color */
     color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo {
+}
+
+.logo {
     font-size: 2rem;
-  }
-  
-  .navigation ul {
+}
+
+.navigation ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .navigation ul li {
+}
+
+.navigation ul li {
     display: inline-block;
     margin-right: 20px;
-  }
-  
-  .navigation ul li a {
+}
+
+.navigation ul li a {
     text-decoration: none;
     color: #fff;
     transition: color 0.3s ease;
-  }
-  
-  .navigation ul li a:hover {
-    color: #ff6f61;
-  }
-  
-  /* Hero Section Styles */
-  .hero {
+}
+
+.navigation ul li a:hover {
+    color: #ff6f61; /* Updated navigation link hover color */
+}
+
+/* Hero Section Styles */
+.hero {
     background-image: url('http://tinyurl.com/2ucryzf4');
     background-size: cover;
     text-align: center;
     padding: 200px 40px;
     color: #fff;
-  }
-  
-  .hero h1 {
+}
+
+.hero h1 {
     font-size: 4rem;
     margin-bottom: 20px;
-  }
-  
-  .hero p {
+}
+
+.hero p {
     font-size: 1.5rem;
     margin-bottom: 30px;
-  }
-  
-  .hero button {
+}
+
+.hero button {
     background-color: #ff6f61;
     color: #fff;
     border: none;
@@ -71,212 +71,163 @@ body {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-  }
-  
-  .hero button:hover {
+}
+
+.hero button:hover {
     background-color: #e63900;
-  }
-  
-  /* Features Section Styles */
-  .features {
-    background-color: #fff;
+}
+
+/* Features Section Styles */
+.features {
+    background-color: #2c3e50; /* Updated features background color */
     padding: 50px 20px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .features h2 {
+    border-bottom: 1px solid #34495e;
+}
+
+.features h2 {
     font-size: 3rem;
     margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .feature {
+}
+
+.feature {
     margin-bottom: 30px;
-  }
-  
-  .feature .icon {
+}
+
+.feature .icon {
     font-size: 3rem;
     color: #ff6f61;
-  }
-  
-  .feature .icon:hover {
+}
+
+.feature .icon:hover {
     transform: scale(1.2);
     transition: transform 0.3s ease;
-  }
-  
-  /* How It Works Section Styles */
-  .how-it-works {
+}
+
+/* How It Works Section Styles */
+.how-it-works {
     padding: 50px 20px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .how-it-works h2 {
+    border-bottom: 1px solid #34495e;
+}
+
+.how-it-works h2 {
     font-size: 3rem;
     margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .how-it-works ol {
+}
+
+.how-it-works ol {
     text-align: left;
-  }
-  
-  .how-it-works ol li {
+}
+
+.how-it-works ol li {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    color: #555;
-  }
-  
-  /* Testimonials Section Styles */
-  .testimonials {
-    background-color: #1a1a1a;
+}
+
+/* Testimonials Section Styles */
+.testimonials {
+    background-color: #34495e; /* Updated testimonials background color */
     color: #fff;
     padding: 50px 20px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .testimonials h2 {
+    border-bottom: 1px solid #2c3e50;
+}
+
+.testimonials h2 {
     font-size: 3rem;
     margin-bottom: 30px;
-  }
-  
-  .testimonial blockquote {
+}
+
+.testimonial blockquote {
     font-size: 1.8rem;
     margin-bottom: 20px;
-  }
-  
-  .testimonial cite {
+}
+
+.testimonial cite {
     font-size: 1.5rem;
     color: #ff6f61;
-  }
-  
-  /* Call-to-Action Section Styles */
-  .cta {
-    background-color: #ff6f61;
+}
+
+/* Call-to-Action Section Styles */
+.cta {
+    background-color: #0e0706;
     color: #fff;
     padding: 50px 20px;
     text-align: center;
-  }
-  
-  .cta h2 {
+}
+
+.cta h2 {
     font-size: 3rem;
     margin-bottom: 30px;
-  }
-  
-  .cta button {
+}
+
+.cta button {
     background-color: #fff;
-    color: #ff6f61;
+    color: #1b7f91;
     border: none;
     padding: 15px 30px;
     font-size: 1.5rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .cta button:hover {
-    background-color: #e63900;
+}
+
+.cta button:hover {
+    background-color: #010811;
     color: #fff;
-  }
-  
-  /* Pricing Section Styles */
-  .pricing {
-    background-color: #f7f7f7;
+}
+
+/* Pricing Section Styles */
+.pricing {
+    background-color: #0e0e14;
     padding: 50px 20px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .pricing h2 {
+    border-bottom: 1px solid #2a8b9c;
+}
+
+.pricing h2 {
     font-size: 3rem;
     margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .plan {
+}
+
+.plan {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin-bottom: 30px;
-  }
-  
-  .plan h3 {
+}
+
+.plan h3 {
     font-size: 2rem;
     margin-bottom: 15px;
-  }
-  
-  .plan p {
+}
+
+.plan p {
     font-size: 1.2rem;
-    color: #555;
+    color: #a59a9a9d;
     margin-bottom: 20px;
-  }
-  
-  /* FAQ Section Styles */
-  .faq {
-    background-color: #fff;
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
-  .faq h2 {
-    font-size: 3rem;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .question {
-    margin-bottom: 30px;
-  }
-  
-  .question h3 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-  }
-  
-  .question p {
+}
+
+.plan .btn {
+    background-color: #f1e6e4;
+    color: #0f0c0c;
+    border: none;
+    padding: 15px 30px;
     font-size: 1.2rem;
-    color: #555;
-  }
-  
-  /* Footer Section Styles */
-  .footer {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
-  .footer a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1.5rem;
-  }
-  
-  .footer a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.plan .btn:hover {
+    background-color: #26663b;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .plan {
+        flex-direction: column;
+        align-items: center;
     }
-  
-    .navigation ul {
-      margin-top: 20px;
-    }
-  
-    .hero {
-      padding: 150px 20px;
-    }
-  
-    .features,
-    .how-it-works,
-    .testimonials,
-    .cta,
-    .footer {
-      padding: 30px 20px;
-    }
-  }
-  
+}
