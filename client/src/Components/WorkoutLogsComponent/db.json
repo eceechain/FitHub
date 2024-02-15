@@ -1,12 +1,12 @@
 {
     "workouts": [
-      { "date": "2024-02-15", "exercise": "Bench Press", "sets": 3, "reps": 8, "weight": "150 lbs", "duration": "45 mins" },
-      { "date": "2024-02-14", "exercise": "Deadlifts", "sets": 4, "reps": 6, "weight": "200 lbs", "duration": "60 mins" },
-      { "date": "2024-02-13", "exercise": "Squats", "sets": 3, "reps": 10, "weight": "180 lbs", "duration": "50 mins" }
+      { "date": "2024-02-15", "exercise": "Bench Press", "sets": 3, "reps": 8, "weight": "150 lbs", "duration": "45 mins", "notes": "Increased weight from last session." },
+      { "date": "2024-02-14", "exercise": "Deadlifts", "sets": 4, "reps": 6, "weight": "200 lbs", "duration": "60 mins", "notes": "Felt a bit fatigued, but pushed through." },
+      { "date": "2024-02-13", "exercise": "Squats", "sets": 3, "reps": 10, "weight": "180 lbs", "duration": "50 mins", "notes": "Focused on depth and form." }
     ],
-    "notes": [
-      { "date": "2024-02-15", "note": "Focused on form and increased weight by 5 lbs." },
-      { "date": "2024-02-14", "note": "Incorporated more stretching exercises for better flexibility." }
+    "nutritionLogs": [
+      { "date": "2024-02-15", "food": "Grilled chicken breast with quinoa and steamed vegetables.", "calories": 500 },
+      { "date": "2024-02-14", "food": "Salmon fillet with brown rice and roasted broccoli.", "calories": 550 }
     ]
   }
   

@@ -1,7 +1,7 @@
 {
     "basicStats": {
-      "totalWorkoutsCompleted": 72,
-      "totalCaloriesBurned": 25000,
+      "totalWorkoutsCompleted": 85,
+      "totalCaloriesBurned": 30000,
       "weightChanges": [
         { "date": "2024-02-15", "weight": 158 },
         { "date": "2024-02-14", "weight": 159 },
@@ -23,12 +23,20 @@
     "goals": {
       "weightLossGoal": {
         "startWeight": 165,
-        "goalWeight": 150
+        "goalWeight": 150,
+        "targetDate": "2024-03-31"
       },
       "muscleGainGoal": {
         "startWeight": 160,
-        "goalWeight": 170
+        "goalWeight": 170,
+        "targetDate": "2024-04-30"
       }
+    },
+    "nutrition": {
+      "dailyCaloricIntake": 2500,
+      "proteinIntakeGoal": 150,
+      "carbsIntakeGoal": 200,
+      "fatIntakeGoal": 70
     }
   }
   

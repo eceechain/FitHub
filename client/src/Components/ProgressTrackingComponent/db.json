@@ -7,6 +7,9 @@
     "achievements": [
       { "date": "2024-02-15", "achievement": "Completed a new personal best in bench press." },
       { "date": "2024-02-14", "achievement": "Completed a 5k run without stopping." }
+    ],
+    "milestones": [
+      { "date": "2024-02-15", "milestone": "Reached 3 months of consistent training." }
     ]
   }
   
