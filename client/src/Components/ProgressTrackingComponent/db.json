@@ -1,8 +1,8 @@
 {
     "progressData": [
-      { "date": "2024-02-15", "progress": 65 },
-      { "date": "2024-02-14", "progress": 60 },
-      { "date": "2024-02-13", "progress": 62 }
+      { "date": "2024-02-15", "progress": 65, "description": "Made significant strength gains this week." },
+      { "date": "2024-02-14", "progress": 60, "description": "Feeling more energetic and motivated." },
+      { "date": "2024-02-13", "progress": 62, "description": "Overcame a plateau. Keep pushing forward!" }
     ],
     "achievements": [
       { "date": "2024-02-15", "achievement": "Completed a new personal best in bench press." },

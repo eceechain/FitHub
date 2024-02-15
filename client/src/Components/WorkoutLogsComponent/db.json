@@ -1,12 +1,46 @@
 {
     "workouts": [
-      { "date": "2024-02-15", "exercise": "Bench Press", "sets": 3, "reps": 8, "weight": "150 lbs", "duration": "45 mins", "notes": "Increased weight from last session." },
-      { "date": "2024-02-14", "exercise": "Deadlifts", "sets": 4, "reps": 6, "weight": "200 lbs", "duration": "60 mins", "notes": "Felt a bit fatigued, but pushed through." },
-      { "date": "2024-02-13", "exercise": "Squats", "sets": 3, "reps": 10, "weight": "180 lbs", "duration": "50 mins", "notes": "Focused on depth and form." }
+      { 
+        "date": "2024-02-15", 
+        "exercise": "Bench Press", 
+        "sets": 3, 
+        "reps": 8, 
+        "weight": "150 lbs", 
+        "duration": "45 mins", 
+        "notes": "Increased weight from last session. Focused on form and controlled movements." 
+      },
+      { 
+        "date": "2024-02-14", 
+        "exercise": "Deadlifts", 
+        "sets": 4, 
+        "reps": 6, 
+        "weight": "200 lbs", 
+        "duration": "60 mins", 
+        "notes": "Felt a bit fatigued, but managed to complete all sets. Focused on breathing and proper technique." 
+      },
+      { 
+        "date": "2024-02-13", 
+        "exercise": "Squats", 
+        "sets": 3, 
+        "reps": 10, 
+        "weight": "180 lbs", 
+        "duration": "50 mins", 
+        "notes": "Focused on depth and form. Implemented slow eccentric phase for better muscle activation." 
+      }
     ],
     "nutritionLogs": [
-      { "date": "2024-02-15", "food": "Grilled chicken breast with quinoa and steamed vegetables.", "calories": 500 },
-      { "date": "2024-02-14", "food": "Salmon fillet with brown rice and roasted broccoli.", "calories": 550 }
+      { 
+        "date": "2024-02-15", 
+        "food": "Grilled chicken breast with quinoa and steamed vegetables.", 
+        "calories": 500, 
+        "description": "Healthy and balanced post-workout meal. High in protein and complex carbs." 
+      },
+      { 
+        "date": "2024-02-14", 
+        "food": "Salmon fillet with brown rice and roasted broccoli.", 
+        "calories": 550, 
+        "description": "Rich in omega-3 fatty acids and antioxidants. Supports muscle recovery and overall health." 
+      }
     ]
   }
   
