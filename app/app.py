@@ -127,7 +127,7 @@ def get_user_workouts(user_id):
         workouts = user.workouts
         workouts_list = []
         for workout in workouts:
-            workout_data = {
+            workout_data = { 
                 'id': workout.id,
                 'user_id': workout.user_id,
                 'date': workout.date,
