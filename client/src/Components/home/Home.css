@@ -296,7 +296,8 @@ body {
 
 /* FAQ Section Styles */
 .faq {
-    background-color: #111;
+    background-image: url('http://tinyurl.com/yc5w92kt');
+    background-size: cover;
     padding: 50px 20px;
     text-align: center;
     border-bottom: 1px solid #444;
@@ -324,18 +325,19 @@ body {
 
 /* Footer Section Styles */
 .footer {
-    background-color: #111;
-    color: #fff;
-    padding: 50px 20px;
+    background-image: url('http://tinyurl.com/4hrp4hph');
+    background-size: cover;
+    color: #d4dfd8;
+    padding: 70px 30px;
     text-align: center;
 }
 
 .contact-info {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .contact-info p {
-    font-size: 1.5rem;
+    font-size: 3.5rem;
     margin-bottom: 10px;
 }
 
@@ -346,24 +348,24 @@ body {
 .icon-link {
     margin: 0 10px;
     font-size: 2rem;
-    color: #fff;
+    color: #117a81;
     transition: color 0.3s ease;
 }
 
 .icon-link:hover {
-    color: #50a2c2;
+    color: #15181a;
 }
 
 .legal a {
-    color: #fff;
+    color: #f9fdf8;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     transition: color 0.3s ease;
 }
 
 .legal a:hover {
-    color: #50a2c2;
+    color: #051014;
 }
 
 /* Login and Signup Section Styles */
@@ -374,7 +376,7 @@ body {
 
 .authentication .btn {
     background-color: transparent;
-    color: #fff;
+    color: #246350;
     border: 2px solid #fff;
     padding: 12px 24px;
     font-size: 1.2rem;
@@ -386,13 +388,13 @@ body {
 }
 
 .authentication .btn-primary {
-    background-color: #10d1a1;
+    background-color: #f8fffd;
     border-color: #10d1a1;
 }
 
 .authentication .btn:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: #f7f7f8;
+    color: #1d1515;
 }
 
 .authentication .btn-primary:hover {
