@@ -106,7 +106,7 @@ const Home = () => {
       {/* Footer Section */}
       <footer className="footer">
         <div className="contact-info">
-          <p>Contact Us: abass@gmail.com</p>
+          <p>Contact Us: FitHub.ke@gmail.com</p>
           <p>Phone: +254798491946</p>
         </div>
         <div className="social-media">
