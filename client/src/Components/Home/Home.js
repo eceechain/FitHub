@@ -46,6 +46,11 @@ function Home() {
           <li>Get expert advice from certified trainers</li>
           <li>Participate in challenges and competitions</li>
           <li>Sync with wearable devices for seamless tracking</li>
+          <li>Generate workout plans tailored to your goals</li>
+          <li>View detailed analytics and insights</li>
+          <li>Attend live workout sessions and classes</li>
+          <li>Track your water intake and sleep patterns</li>
+          <li>Set reminders and notifications for workouts</li>
           {/* Add more features */}
         </ul>
       </section>
