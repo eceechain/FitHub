@@ -1,5 +1,6 @@
 from app import app, db, User, WorkoutLog, CalorieLog
 from datetime import datetime, timedelta
+import random
 
 with app.app_context():
     db.drop_all()
@@ -56,26 +57,24 @@ with app.app_context():
         {'type': 'Chest Press', 'duration': 35, 'calories_burned': 200, 'description': 'Chest press for chest and arm strength.', 'image': 'https://cdni.iconscout.com/illustration/premium/thumb/incline-chest-press-5422312-4552283.png?f=webp'}
     ]
 
-    workout_logs = []
-
     for user_data in users:
-     user = User.query.filter_by(email=user_data['email']).first()
-     for workout in workouts:
-        workout_log = WorkoutLog(
-            user=user,
-            date=datetime.utcnow(),
-            duration=workout['duration'],
-            workout_type=workout['type'],
-            calories_burned=workout['calories_burned'],
-            description=workout['description'],
-            image=workout['image']
-        )
-        db.session.add(workout_log)  # Add the workout log to the session
-        user.workouts.append(workout_log)  # Link the workout log to the user's workouts
+        user = User.query.filter_by(email=user_data['email']).first()
+        num_workouts = random.randint(4, 5)  # Randomly select between 4 and 5 workouts for each user
+        user_workouts = random.sample(workouts, num_workouts)  # Select random workouts for the user
+        for workout in user_workouts:
+            workout_log = WorkoutLog(
+                user=user,
+                date=datetime.utcnow(),
+                duration=workout['duration'],
+                workout_type=workout['type'],
+                calories_burned=workout['calories_burned'],
+                description=workout['description'],
+                image=workout['image']
+            )
+            db.session.add(workout_log)  # Add the workout log to the session
 
-# Commit changes
+    # Commit workout log changes
     db.session.commit()
-
 
     # Create sample calorie logs
     calorie_logs = [
@@ -114,4 +113,4 @@ with app.app_context():
     # Commit changes
     db.session.commit()
 
-    print("data added to database.")
+    print("data added to database Successfully .")
