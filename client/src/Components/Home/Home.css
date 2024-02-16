@@ -5,8 +5,11 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Light gray background */
+    background-image: url('http://tinyurl.com/489assa9');
+    align-items: center;
+    background-size: cover;
   }
+  
   
   /* Container styles */
   .home-container {
@@ -20,14 +23,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #20665a;
     padding-bottom: 20px;
   }
   
   .logo h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #f3efef;
   }
   
   .navigation ul {
@@ -43,13 +46,13 @@ body {
   
   .navigation ul li a {
     text-decoration: none;
-    color: #333;
+    color: #f5eeee;
     font-size: 18px;
     transition: color 0.3s ease;
   }
   
   .navigation ul li a:hover {
-    color: #007bff;
+    color: #0d62a8;
   }
   
   /* Search bar styles */
@@ -68,7 +71,8 @@ body {
   
   .search-bar button {
     padding: 10px 20px;
-    background-color: #007bff;
+    font-size: 18px;
+    background-color: #24384e;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -77,17 +81,18 @@ body {
   }
   
   .search-bar button:hover {
-    background-color: #0056b3;
+    background-color: #186e52;
   }
   
   /* Hero section styles */
   .hero-section {
     text-align: center;
-    padding: 40px 0;
-    background-image: url('https://via.placeholder.com/1500x600');
+    padding: 200px 400px;
+    background-image: url('http://tinyurl.com/uewujcp4');
     background-size: cover;
     background-position: center;
     color: #fff;
+    
   }
   
   .hero-section h2 {
@@ -110,22 +115,26 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.5s ease;
   }
   
   .hero-section button:hover {
     background-color: #0056b3;
+    box-shadow: 0 0 20px 5px #007bff;
   }
   
   /* Features section styles */
   .features-section {
-    padding: 40px 0;
+    padding: 100px 20;
+    background-image: url('http://tinyurl.com/27jn2c2r');
+    background-position: center;
+    background-size: cover;
   }
   
   .features-section h2 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #fcf8f8;
     margin-bottom: 20px;
   }
   
@@ -136,7 +145,7 @@ body {
   
   .features-section ul li {
     font-size: 20px;
-    color: #666;
+    color: #fcfafa;
     margin-bottom: 10px;
   }
   
@@ -221,11 +230,12 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.5s ease;
   }
   
   .call-to-action-section button:hover {
     background-color: #0056b3;
+    box-shadow: 0 0 20px 5px #007bff;
   }
   
   /* Footer section styles */
