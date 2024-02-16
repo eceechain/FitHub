@@ -1,5 +1,3 @@
-// Home.js
-
 import React from 'react';
 import './Home.css';
 
@@ -16,6 +14,7 @@ function Home() {
             <li><a href="#dashboard">Dashboard</a></li>
             <li><a href="#activities">Activities</a></li>
             <li><a href="#profile">Profile</a></li>
+            <li><a href="#blog">Blog</a></li>
             {/* Add more links as needed */}
           </ul>
         </nav>
@@ -32,7 +31,7 @@ function Home() {
 
       <section className="hero-section">
         <h2>Welcome to FitHub</h2>
-        <p>Start your fitness journey today!</p>
+        <p>Your ultimate fitness companion</p>
         {/* Add a button to navigate to the signup page */}
         <button>Get Started</button>
       </section>
@@ -40,11 +39,13 @@ function Home() {
       <section className="features-section">
         <h2>Key Features</h2>
         <ul>
-          <li>Track workouts and nutrition</li>
+          <li>Track workouts, nutrition, and progress</li>
           <li>Set personalized fitness goals</li>
-          <li>Access a library of exercises and recipes</li>
+          <li>Access a vast library of exercises and recipes</li>
           <li>Connect with a supportive fitness community</li>
           <li>Get expert advice from certified trainers</li>
+          <li>Participate in challenges and competitions</li>
+          <li>Sync with wearable devices for seamless tracking</li>
           {/* Add more features */}
         </ul>
       </section>
@@ -52,9 +53,9 @@ function Home() {
       <section className="how-it-works-section">
         <h2>How It Works</h2>
         <ol>
-          <li>Sign up for an account</li>
+          <li>Sign up for a free account</li>
           <li>Set your fitness goals</li>
-          <li>Track your workouts and nutrition</li>
+          <li>Start tracking your activities and nutrition</li>
           <li>Join challenges and earn rewards</li>
           <li>Engage with the FitHub community</li>
           {/* Add more steps */}
@@ -82,6 +83,7 @@ function Home() {
         <ul>
           <li>Basic Plan - $9.99/month</li>
           <li>Premium Plan - $19.99/month</li>
+          <li>Corporate Plan - Contact us for pricing</li>
           {/* Add more plan options */}
         </ul>
       </section>
@@ -104,12 +106,16 @@ function Home() {
           <a href="#">Facebook</a>
           <a href="#">Twitter</a>
           <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+          {/* Add more social media links */}
         </div>
         {/* Add legal links */}
         <div className="legal-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
           <a href="#">Cookie Policy</a>
+          <a href="#">Accessibility</a>
+          {/* Add more legal links */}
         </div>
       </footer>
     </div>
