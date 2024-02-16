@@ -16,20 +16,41 @@ const Home = () => {
                   <h3>Overview</h3>
                   <a href="#">Analytics</a>
                   <a href="#">Performance</a>
+                  <a href="#">Progress</a> {/* New addition */}
                 </div>
                 <div className="column">
                   <h3>Settings</h3>
                   <a href="#">Profile Settings</a>
                   <a href="#">Account Settings</a>
+                  <a href="#">Notification</a> {/* New addition */}
                 </div>
               </div>
             </li>
-            <li><a href="#">Activities</a></li>
+            <li className="dropdown">
+              <a href="#">Activities <i className="fas fa-chevron-down"></i></a>
+              <div className="dropdown-content">
+                <div className="column">
+                  <h3>Body Building</h3>
+                  <a href="#">Cardio</a>
+                  <a href="#">Boxing</a>
+                  <a href="#">Equipment Bodybuilding</a>
+                  <a href="#">Calisthenics</a>
+                </div>
+                <div className="column">
+                  <h3>Yoga</h3> {/* New addition */}
+                  <a href="#">Hatha Yoga</a>
+                  <a href="#">Vinyasa Yoga</a>
+                  <a href="#">Ashtanga Yoga</a>
+                  <a href="#">Bikram Yoga</a>
+                </div>
+              </div>
+            </li>
             <li className="dropdown">
               <a href="#">Profile <i className="fas fa-chevron-down"></i></a>
               <div className="dropdown-content">
                 <a href="#">View Profile</a>
                 <a href="#">Edit Profile</a>
+                <a href="#">Change Password</a> {/* New addition */}
               </div>
             </li>
           </ul>
@@ -125,6 +146,14 @@ const Home = () => {
           <h3>Can I sync my data with other fitness apps?</h3>
           <p>Yes, our app supports data synchronization with popular fitness platforms.</p>
         </div>
+        <div className="question">
+          <h3>Is there a mobile app available?</h3> {/* New addition */}
+          <p>Yes, you can download our mobile app from the App Store or Google Play Store.</p> {/* New addition */}
+        </div>
+        <div className="question">
+          <h3>How can I contact customer support?</h3> {/* New addition */}
+          <p>You can contact our customer support team via email or phone.</p> {/* New addition */}
+        </div>
       </section>
 
       {/* Footer Section */}
@@ -141,6 +170,7 @@ const Home = () => {
         <div className="legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a> {/* New addition */}
         </div>
       </footer>
     </div>
