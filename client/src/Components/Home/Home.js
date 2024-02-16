@@ -40,10 +40,11 @@ function Home() {
       <section className="features-section">
         <h2>Key Features</h2>
         <ul>
-          <li>Activity tracking</li>
-          <li>Goal setting</li>
-          <li>Personalized plans</li>
-          <li>Community support</li>
+          <li>Track workouts and nutrition</li>
+          <li>Set personalized fitness goals</li>
+          <li>Access a library of exercises and recipes</li>
+          <li>Connect with a supportive fitness community</li>
+          <li>Get expert advice from certified trainers</li>
           {/* Add more features */}
         </ul>
       </section>
@@ -53,15 +54,18 @@ function Home() {
         <ol>
           <li>Sign up for an account</li>
           <li>Set your fitness goals</li>
-          <li>Track your activities</li>
-          <li>Get personalized recommendations</li>
+          <li>Track your workouts and nutrition</li>
+          <li>Join challenges and earn rewards</li>
+          <li>Engage with the FitHub community</li>
           {/* Add more steps */}
         </ol>
       </section>
 
       <section className="testimonials-section">
         <h2>Testimonials</h2>
-        <p>"FitHub helped me stay motivated and achieve my fitness goals!" - John Doe</p>
+        <blockquote>
+          "FitHub has transformed my fitness journey. I've never felt more motivated and supported."
+        </blockquote>
         {/* Add more testimonials */}
       </section>
 
@@ -75,13 +79,19 @@ function Home() {
       <section className="pricing-section">
         <h2>Pricing</h2>
         <p>Choose from our affordable plans with basic and premium features.</p>
-        {/* Add pricing details */}
+        <ul>
+          <li>Basic Plan - $9.99/month</li>
+          <li>Premium Plan - $19.99/month</li>
+          {/* Add more plan options */}
+        </ul>
       </section>
 
       <section className="faq-section">
         <h2>FAQ</h2>
         <h3>How can I track my activities?</h3>
         <p>You can track your activities using our intuitive activity tracker.</p>
+        <h3>Is there a mobile app available?</h3>
+        <p>Yes, FitHub is available on iOS and Android platforms.</p>
         {/* Add more FAQ entries */}
       </section>
 
