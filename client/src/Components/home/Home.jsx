@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -8,49 +9,49 @@ const Home = () => {
         <div className="logo">FitHub</div>
         <nav className="navigation">
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><Link to="/">Home</Link></li>
             <li className="dropdown">
-              <a href="#">Dashboard <i className="fas fa-chevron-down"></i></a>
+              <span>Dashboard <i className="fas fa-chevron-down"></i></span>
               <div className="dropdown-content">
                 <div className="column">
                   <h3>Overview</h3>
-                  <a href="#">Analytics</a>
-                  <a href="#">Performance</a>
-                  <a href="#">Progress</a> {/* New addition */}
+                  <Link to="#">Analytics</Link>
+                  <Link to="#">Performance</Link>
+                  <Link to="#">Progress</Link>
                 </div>
                 <div className="column">
                   <h3>Settings</h3>
-                  <a href="#">Profile Settings</a>
-                  <a href="#">Account Settings</a>
-                  <a href="#">Notification</a> {/* New addition */}
+                  <Link to="#">Profile Settings</Link>
+                  <Link to="#">Account Settings</Link>
+                  <Link to="#">Notification</Link>
                 </div>
               </div>
             </li>
             <li className="dropdown">
-              <a href="#">Activities <i className="fas fa-chevron-down"></i></a>
+              <span>Activities <i className="fas fa-chevron-down"></i></span>
               <div className="dropdown-content">
                 <div className="column">
                   <h3>Body Building</h3>
-                  <a href="#">Cardio</a>
-                  <a href="#">Boxing</a>
-                  <a href="#">Equipment Bodybuilding</a>
-                  <a href="#">Calisthenics</a>
+                  <Link to="#">Cardio</Link>
+                  <Link to="#">Boxing</Link>
+                  <Link to="#">Equipment Bodybuilding</Link>
+                  <Link to="#">Calisthenics</Link>
                 </div>
                 <div className="column">
-                  <h3>Yoga</h3> {/* New addition */}
-                  <a href="#">Hatha Yoga</a>
-                  <a href="#">Vinyasa Yoga</a>
-                  <a href="#">Ashtanga Yoga</a>
-                  <a href="#">Bikram Yoga</a>
+                  <h3>Yoga</h3>
+                  <Link to="#">Hatha Yoga</Link>
+                  <Link to="#">Vinyasa Yoga</Link>
+                  <Link to="#">Ashtanga Yoga</Link>
+                  <Link to="#">Bikram Yoga</Link>
                 </div>
               </div>
             </li>
             <li className="dropdown">
-              <a href="#">Profile <i className="fas fa-chevron-down"></i></a>
+              <span>Profile <i className="fas fa-chevron-down"></i></span>
               <div className="dropdown-content">
-                <a href="#">View Profile</a>
-                <a href="#">Edit Profile</a>
-                <a href="#">Change Password</a> {/* New addition */}
+                <Link to="#">View Profile</Link>
+                <Link to="#">Edit Profile</Link>
+                <Link to="#">Change Password</Link>
               </div>
             </li>
           </ul>

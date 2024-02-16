@@ -1,11 +1,11 @@
 import datetime
 import requests
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, redirect,  url_for, request
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-from models import CalorieLog, WorkoutLog, db, User
+from models import CalorieLog, SharedWorkout, WorkoutLog, db, User
 
 app = Flask(__name__)
 CORS(app)
@@ -317,6 +317,21 @@ def get_nutrition_info():
         return jsonify(data), 200
     except requests.exceptions.RequestException as e:
         return jsonify(message='Error fetching nutrition information'), 500
+    
+@app.route('/workout/<int:workout_id>/share')
+def share_workout(workout_id):
+    workout = WorkoutLog.query.get_or_404(workout_id)
+    # Generate the share URL
+    share_url = generate_share_url(workout)
+    # Save the share URL
+    shared_workout = SharedWorkout(workout_id=workout_id, share_url=share_url)
+    db.session.add(shared_workout)
+    db.session.commit()
+    return redirect(url_for('view_workout', workout_id=workout_id))
+
+# Define a function to generate the share URL
+def generate_share_url(workout):
+    return f'https://example.com/share/{workout.id}'    
     
 
 if __name__ == '__main__':
