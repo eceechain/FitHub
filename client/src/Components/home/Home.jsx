@@ -1,4 +1,3 @@
-// Home.jsx
 import React from 'react';
 
 const Home = () => {
@@ -10,11 +9,22 @@ const Home = () => {
         <nav className="navigation">
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Dashboard</a></li>
+            <li className="dropdown">
+              <a href="#">Dashboard</a>
+              <div className="dropdown-content">
+                <a href="#">Overview</a>
+                <a href="#">Analytics</a>
+                <a href="#">Settings</a>
+              </div>
+            </li>
             <li><a href="#">Activities</a></li>
             <li><a href="#">Profile</a></li>
           </ul>
         </nav>
+        <div className="search-bar">
+          <input type="text" placeholder="Search..." />
+          <button type="submit"><i className="fas fa-search"></i></button>
+        </div>
         <div className="authentication">
           <button className="btn">Log In</button>
           <button className="btn btn-primary">Sign Up</button>
