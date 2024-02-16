@@ -365,3 +365,37 @@ body {
 .legal a:hover {
     color: #50a2c2;
 }
+
+/* Login and Signup Section Styles */
+.authentication {
+    display: flex;
+    align-items: center;
+}
+
+.authentication .btn {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 20px;
+    outline: none; /* Remove button outline */
+}
+
+.authentication .btn-primary {
+    background-color: #10d1a1;
+    border-color: #10d1a1;
+}
+
+.authentication .btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.authentication .btn-primary:hover {
+    background-color: #0b9e7b;
+    border-color: #0b9e7b;
+}
