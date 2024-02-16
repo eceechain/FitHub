@@ -3,13 +3,17 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from sqlalchemy_serializer import SerializerMixin
-from flask import Flask, request, jsonify
-import jwt
-from functools import wraps
+# from flask import Flask, request, jsonify
+# import jwt
+# from functools import wraps
 
 db = SQLAlchemy()
 
+# the tables present in the database
 class User(db.Model, SerializerMixin):
+    __tablename__ = 'users'
+    
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -34,10 +38,17 @@ class User(db.Model, SerializerMixin):
     
     workouts = db.relationship('WorkoutLog', back_populates='user')
     calories = db.relationship('CalorieLog', back_populates='user')
+    goals = db.relationship('GoalSetting', back_populates='user')
+    progress = db.relationship('ProgressTracking', back_populates='user')
+    auth_tokens = db.relationship('AuthToken', back_populates='users')
+
 
 class WorkoutLog(db.Model, SerializerMixin):
+    __tablename__ = 'workout_logs'
+
+
     id = db.Column(db.Integer, primary_key=True) 
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) 
     duration = db.Column(db.Integer)
     workout_type = db.Column(db.String(120))
@@ -46,8 +57,11 @@ class WorkoutLog(db.Model, SerializerMixin):
     user = db.relationship('User', back_populates='workouts')
     
 class CalorieLog(db.Model, SerializerMixin):
+    __tablename__ = 'calories_log'
+
+
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     calories = db.Column(db.Integer)
     meal_type = db.Column(db.String(120))
@@ -56,21 +70,40 @@ class CalorieLog(db.Model, SerializerMixin):
 
 
 class GoalSetting(db.Model):
+    __tablename__ = 'goal_setting'
+
+
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     goal_type = db.Column(db.String(100))
     target = db.Column(db.Float)
     deadline = db.Column(db.Date)
 
+
+    #relationship to the User
+    user = db.relationship('User', back_populates='goals')
+
 class ProgressTracking(db.Model):
+    __tablename__ = 'progress_tracking'
+
+
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.Date)
     weight = db.Column(db.Float)
     body_measurements = db.Column(db.String(255))
 
+    #relationship to User
+    user = db.relationship('User', back_populates='progress')
+
 class AuthToken(db.Model):
+    __tablename__ = 'auth_token'
+
+    
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     token = db.Column(db.String(255), unique=True, nullable=False)
     expiry_date = db.Column(db.DateTime)
+
+    #relationship to user
+    user = db.relationship('User', back_populates='auth_tokens')
