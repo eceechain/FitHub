@@ -10,23 +10,37 @@ const Home = () => {
           <ul>
             <li><a href="#">Home</a></li>
             <li className="dropdown">
-              <a href="#">Dashboard</a>
+              <a href="#">Dashboard <i className="fas fa-chevron-down"></i></a>
               <div className="dropdown-content">
-                <a href="#">Overview</a>
-                <a href="#">Analytics</a>
-                <a href="#">Settings</a>
+                <div className="column">
+                  <h3>Overview</h3>
+                  <a href="#">Analytics</a>
+                  <a href="#">Performance</a>
+                </div>
+                <div className="column">
+                  <h3>Settings</h3>
+                  <a href="#">Profile Settings</a>
+                  <a href="#">Account Settings</a>
+                </div>
               </div>
             </li>
             <li><a href="#">Activities</a></li>
-            <li><a href="#">Profile</a></li>
+            <li className="dropdown">
+              <a href="#">Profile <i className="fas fa-chevron-down"></i></a>
+              <div className="dropdown-content">
+                <a href="#">View Profile</a>
+                <a href="#">Edit Profile</a>
+              </div>
+            </li>
           </ul>
         </nav>
         <div className="search-bar">
           <input type="text" placeholder="Search..." />
           <button type="submit"><i className="fas fa-search"></i></button>
         </div>
-        <div className="user-profile">
-          <a href="#"><i className="fas fa-user"></i></a>
+        <div className="authentication">
+          <button className="btn">Log In</button>
+          <button className="btn btn-primary">Sign Up</button>
         </div>
       </header>
 
