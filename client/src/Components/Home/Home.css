@@ -5,6 +5,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
   }
   
   /* Container styles */
@@ -83,18 +84,20 @@ body {
   .hero-section {
     text-align: center;
     padding: 40px 0;
+    background-image: url('https://via.placeholder.com/1500x600');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
   }
   
   .hero-section h2 {
     font-size: 48px;
     font-weight: bold;
-    color: #333;
     margin-bottom: 20px;
   }
   
   .hero-section p {
     font-size: 18px;
-    color: #666;
     margin-bottom: 20px;
   }
   
