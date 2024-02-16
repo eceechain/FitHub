@@ -25,11 +25,11 @@ const Home = () => {
           <input type="text" placeholder="Search..." />
           <button type="submit"><i className="fas fa-search"></i></button>
         </div>
-        <div className="authentication">
-          <button className="btn">Log In</button>
-          <button className="btn btn-primary">Sign Up</button>
+        <div className="user-profile">
+          <a href="#"><i className="fas fa-user"></i></a>
         </div>
       </header>
+
 
       {/* Hero Section */}
       <section className="hero">
