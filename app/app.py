@@ -291,6 +291,7 @@ def get_nutrition_info():
 
     url = f'https://api.api-ninjas.com/v1/nutrition?query={food_query}&X-Api-Key={api_key}'
 
+    
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -313,6 +314,7 @@ def get_nutrition_info():
         }]
         
         return jsonify(formatted_data), 200
+        return jsonify(data), 200
     except requests.exceptions.RequestException as e:
         return jsonify(message='Error fetching nutrition information'), 500
     
