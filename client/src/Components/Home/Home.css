@@ -2,28 +2,29 @@
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
   }
   
+  /* Container styles */
   .home-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
   }
   
-  /* Header section */
+  /* Header section styles */
   .header-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid #ccc;
     padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
   }
   
   .logo h1 {
-    font-size: 28px;
+    font-size: 36px;
     font-weight: bold;
     color: #333;
   }
@@ -42,7 +43,7 @@ body {
   .navigation ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 16px;
+    font-size: 18px;
     transition: color 0.3s ease;
   }
   
@@ -50,13 +51,75 @@ body {
     color: #007bff;
   }
   
-  /* Features section */
+  /* Search bar styles */
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input[type="text"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 200px;
+  }
+  
+  .search-bar button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Hero section styles */
+  .hero-section {
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  .hero-section h2 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Features section styles */
   .features-section {
-    padding: 20px 0;
+    padding: 40px 0;
   }
   
   .features-section h2 {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
@@ -68,6 +131,8 @@ body {
   }
   
   .features-section ul li {
+    font-size: 20px;
+    color: #666;
     margin-bottom: 10px;
   }
   
@@ -80,13 +145,13 @@ body {
     margin-left: -1em;
   }
   
-  /* How it works section */
+  /* How it works section styles */
   .how-it-works-section {
-    padding: 20px 0;
+    padding: 40px 0;
   }
   
   .how-it-works-section h2 {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
@@ -97,44 +162,51 @@ body {
   }
   
   .how-it-works-section ol li {
+    font-size: 20px;
+    color: #666;
     margin-bottom: 10px;
-    font-size: 16px;
-    color: #333;
   }
   
-  /* Testimonials section */
+  /* Testimonials section styles */
   .testimonials-section {
-    padding: 20px 0;
+    padding: 40px 0;
   }
   
   .testimonials-section h2 {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
   }
   
   .testimonials-section blockquote {
+    font-size: 20px;
     font-style: italic;
     color: #666;
   }
   
-  /* Call-to-action section */
+  /* Call-to-action section styles */
   .call-to-action-section {
-    padding: 20px 0;
     text-align: center;
+    padding: 40px 0;
   }
   
   .call-to-action-section h2 {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
   }
   
+  .call-to-action-section p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
   .call-to-action-section button {
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 15px 30px;
+    font-size: 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -147,26 +219,46 @@ body {
     background-color: #0056b3;
   }
   
-  /* Footer section */
+  /* Footer section styles */
   .footer-section {
-    padding: 20px 0;
     text-align: center;
-    background-color: #f8f9fa;
+    padding: 40px 0;
+  }
+  
+  .footer-section h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
   }
   
   .footer-section p {
-    margin: 0;
-    font-size: 14px;
-    color: #333;
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 10px;
   }
   
-  .footer-section a {
+  .social-media a {
     text-decoration: none;
     color: #007bff;
+    font-size: 20px;
+    margin: 0 10px;
     transition: color 0.3s ease;
   }
   
-  .footer-section a:hover {
+  .social-media a:hover {
     color: #0056b3;
+  }
+  
+  .legal-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .legal-links a:hover {
+    color: #007bff;
   }
   
