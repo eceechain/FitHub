@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
+import Dashboard from './Dashboard';
 
 function Home() {
+  const [showDashboard, setShowDashboard] = useState(false);
+
+  const handleDashboardClick = (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    setShowDashboard(true);
+    scrollToDashboard(); // Scroll to the Dashboard section
+  };
+
+  const scrollToDashboard = () => {
+    const dashboardSection = document.getElementById('dashboard-section');
+    if (dashboardSection) {
+      dashboardSection.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the Dashboard section
+    }
+  };
+
   return (
     <div className="home-container">
       <header className="header-section">
-        <div className="logo">
-          <h1>FitHub</h1>
-        </div>
         <nav className="navigation">
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#dashboard" onClick={handleDashboardClick}>Dashboard</a></li>
             <li><a href="#activities">Activities</a></li>
             <li><a href="#profile">Profile</a></li>
             <li><a href="#blog">Blog</a></li>
@@ -19,7 +32,6 @@ function Home() {
           </ul>
         </nav>
         <div className="search-bar">
-          {/* Add your search bar component */}
           <input type="text" placeholder="Search..." />
           <button>Search</button>
         </div>
@@ -32,7 +44,6 @@ function Home() {
       <section className="hero-section">
         <h2>Welcome to FitHub</h2>
         <p>Your ultimate fitness companion</p>
-        {/* Add a button to navigate to the signup page */}
         <button>Get Started</button>
       </section>
 
@@ -78,7 +89,6 @@ function Home() {
       <section className="call-to-action-section">
         <h2>Join FitHub Today!</h2>
         <p>Start your fitness journey now by signing up for an account.</p>
-        {/* Add a button to navigate to the signup page */}
         <button>Sign Up</button>
       </section>
 
@@ -93,34 +103,25 @@ function Home() {
         </ul>
       </section>
 
-      <section className="faq-section">
-        <h2>FAQ</h2>
-        <h3>How can I track my activities?</h3>
-        <p>You can track your activities using our intuitive activity tracker.</p>
-        <h3>Is there a mobile app available?</h3>
-        <p>Yes, FitHub is available on iOS and Android platforms.</p>
-        {/* Add more FAQ entries */}
+      <section id="dashboard-section" className="dashboard-section">
+        {showDashboard && <Dashboard />}
       </section>
 
       <footer className="footer-section">
         <h3>Contact Us</h3>
         <p>Email: info@fithub.com</p>
         <p>Phone: 123-456-7890</p>
-        {/* Add links to social media profiles */}
         <div className="social-media">
           <a href="#">Facebook</a>
           <a href="#">Twitter</a>
           <a href="#">Instagram</a>
           <a href="#">LinkedIn</a>
-          {/* Add more social media links */}
         </div>
-        {/* Add legal links */}
         <div className="legal-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
           <a href="#">Cookie Policy</a>
           <a href="#">Accessibility</a>
-          {/* Add more legal links */}
         </div>
       </footer>
     </div>
