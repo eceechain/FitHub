@@ -4,7 +4,7 @@
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9; /* Fallback background color */
-    background-image: url('http://tinyurl.com/5fjvdhs7'); /* Set your background image URL here */
+    background-image: -webkit-linear-gradient(black,rgb(43, 9, 43));
     background-size: cover;
     background-position: center;
   }
