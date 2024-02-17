@@ -1,3 +1,5 @@
+/* Base styles */
+
 .dashboard-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -11,23 +13,23 @@
     margin-bottom: 20px;
   }
   
-  /* Styles for sections */
+  /* Section-specific styles */
   
-  .dashboard-container section {
+  section {
     margin-bottom: 40px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .dashboard-container h2 {
+  h2 {
     font-size: 24px;
     font-weight: bold;
     color: #007bff;
     margin-bottom: 10px;
   }
   
-  .dashboard-container p {
+  p {
     font-size: 18px;
     color: #333;
     margin-bottom: 10px;
@@ -35,24 +37,24 @@
   
   /* Form styles */
   
-  .dashboard-container form {
+  form {
     display: grid;
     grid-gap: 10px;
     margin-top: 10px;
   }
   
-  .dashboard-container form label {
+  label {
     font-weight: bold;
   }
   
-  .dashboard-container form input[type="text"],
-  .dashboard-container form input[type="number"] {
+  input[type="text"],
+  input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  .dashboard-container form button {
+  button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -62,29 +64,25 @@
     transition: background-color 0.3s ease;
   }
   
-  .dashboard-container form button:hover {
+  button:hover {
     background-color: #0056b3;
   }
   
   /* Placeholder styles */
   
-  .dashboard-container form input::placeholder {
+  input::placeholder {
     color: #aaa;
   }
   
-  /* Section-specific styles */
-  
-  .workout-logs-section,
-  .calories-tracking-section,
-  .goal-setting-section {
-    background-color: #f9f9f9;
-  }
+  /* Section-specific hover styles */
   
   .workout-logs-section:hover,
   .calories-tracking-section:hover,
   .goal-setting-section:hover {
     background-color: #f0f0f0;
   }
+  
+  /* Additional styles for specific sections */
   
   .workout-logs-section {
     border: 1px solid #ccc;
