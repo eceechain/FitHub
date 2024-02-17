@@ -3,21 +3,25 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f9f9f9; /* Fallback background color */
+    background-image: url('http://tinyurl.com/5fjvdhs7'); /* Set your background image URL here */
+    background-size: cover;
+    background-position: center;
   }
   
   .blog-container h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #fffdfd;
     margin-bottom: 30px;
   }
   
   .blog-post {
-    background-color: #f9f9f9;
+     /* Transparent white background */
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(41, 151, 136, 0.897);
   }
   
   .blog-post h2 {
@@ -29,8 +33,15 @@
   
   .blog-post p {
     font-size: 16px;
-    color: #333;
+    color: #f8f4f4;
     line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .blog-post img {
+    width: 100%; /* Ensure the image takes up full width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px;
     margin-bottom: 20px;
   }
   
