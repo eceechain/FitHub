@@ -1,85 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css';
 
 function Dashboard() {
-  const handleSubmitWorkoutLog = (event) => {
-    event.preventDefault();
-    // Handle submission of workout log form
-    console.log('Workout log submitted!');
+  const [workoutLogs, setWorkoutLogs] = useState([]);
+  const [calories, setCalories] = useState('');
+  const [fitnessGoal, setFitnessGoal] = useState('');
+
+  const handleWorkoutLogSubmit = (e) => {
+    e.preventDefault();
+    const newWorkoutLog = {
+      exercise: e.target.exercise.value,
+      duration: e.target.duration.value,
+      // Add more fields as needed
+    };
+    setWorkoutLogs([...workoutLogs, newWorkoutLog]);
+    e.target.reset();
   };
 
-  const handleSubmitCaloriesTracking = (event) => {
-    event.preventDefault();
-    // Handle submission of calories tracking form
-    console.log('Calories tracking submitted!');
+  const handleCaloriesTrackingSubmit = (e) => {
+    e.preventDefault();
+    setCalories(e.target.calories.value);
+    e.target.reset();
   };
 
-  const handleSubmitGoalSetting = (event) => {
-    event.preventDefault();
-    // Handle submission of goal setting form
-    console.log('Goal setting submitted!');
+  const handleGoalSettingSubmit = (e) => {
+    e.preventDefault();
+    setFitnessGoal(e.target.goal.value);
+    e.target.reset();
   };
 
-  const handleSubmitPersonalizedRecommendations = (event) => {
-    event.preventDefault();
-    // Handle submission of personalized recommendations form
-    console.log('Personalized recommendations submitted!');
+  const getWorkoutLogsList = () => {
+    return (
+      <ul>
+        {workoutLogs.map((log, index) => (
+          <li key={index}>
+            {log.exercise} - {log.duration} mins
+          </li>
+        ))}
+      </ul>
+    );
   };
 
   return (
     <div className="dashboard-container">
       <h1>Welcome to the Dashboard!</h1>
 
-      {/* Workout Logs Section */}
+      <section className="overview-section">
+        <h2>Dashboard Overview</h2>
+        <p>Total workouts completed: {workoutLogs.length}</p>
+        <p>Total calories burned: {calories}</p>
+        <p>Fitness goal: {fitnessGoal}</p>
+      </section>
+
       <section className="workout-logs-section">
         <h2>Workout Logs</h2>
-        <form onSubmit={handleSubmitWorkoutLog}>
+        <form onSubmit={handleWorkoutLogSubmit}>
           <label htmlFor="exercise">Exercise:</label>
           <input type="text" id="exercise" name="exercise" placeholder="Enter exercise" required />
-
-          <label htmlFor="duration">Duration (minutes):</label>
+          <label htmlFor="duration">Duration (mins):</label>
           <input type="number" id="duration" name="duration" placeholder="Enter duration" required />
-
-          <label htmlFor="sets">Sets:</label>
-          <input type="number" id="sets" name="sets" placeholder="Enter sets" required />
-
-          <label htmlFor="reps">Reps:</label>
-          <input type="number" id="reps" name="reps" placeholder="Enter reps" required />
-
-          <button type="submit">Submit Workout Log</button>
+          <button type="submit">Log Workout</button>
         </form>
+        {workoutLogs.length > 0 && getWorkoutLogsList()}
       </section>
 
-      {/* Calories Tracking Section */}
       <section className="calories-tracking-section">
         <h2>Calories Tracking</h2>
-        <form onSubmit={handleSubmitCaloriesTracking}>
-          <label htmlFor="calories">Calories consumed:</label>
-          <input type="number" id="calories" name="calories" placeholder="Enter calories consumed" required />
-
-          <button type="submit">Submit Calories Tracking</button>
+        <form onSubmit={handleCaloriesTrackingSubmit}>
+          <label htmlFor="calories">Calories intake:</label>
+          <input type="number" id="calories" name="calories" placeholder="Enter calories intake" required />
+          <button type="submit">Track Calories</button>
         </form>
       </section>
 
-      {/* Goal Setting Section */}
       <section className="goal-setting-section">
         <h2>Goal Setting</h2>
-        <form onSubmit={handleSubmitGoalSetting}>
-          <label htmlFor="goal">Enter your fitness goal:</label>
+        <form onSubmit={handleGoalSettingSubmit}>
+          <label htmlFor="goal">Set your fitness goal:</label>
           <input type="text" id="goal" name="goal" placeholder="Enter your fitness goal" required />
-
           <button type="submit">Set Goal</button>
-        </form>
-      </section>
-
-      {/* Personalized Recommendations Section */}
-      <section className="personalized-recommendations-section">
-        <h2>Personalized Recommendations</h2>
-        <form onSubmit={handleSubmitPersonalizedRecommendations}>
-          <label htmlFor="recommendation">Personalized Recommendation:</label>
-          <input type="text" id="recommendation" name="recommendation" placeholder="Enter personalized recommendation" required />
-
-          <button type="submit">Submit Recommendation</button>
         </form>
       </section>
     </div>
