@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Home.css';
 import Dashboard from './Dashboard';
+import Blog from './Blog';
 
 function Home() {
   const [showDashboard, setShowDashboard] = useState(false);
+  const [showBlog, setShowBlog] = useState(false);
 
   const handleDashboardClick = (event) => {
     event.preventDefault(); // Prevent default link behavior
@@ -11,10 +13,23 @@ function Home() {
     scrollToDashboard(); // Scroll to the Dashboard section
   };
 
+  const handleBlogClick = (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    setShowBlog(true);
+    scrollToBlog(); // Scroll to the Blog section
+  };
+
   const scrollToDashboard = () => {
     const dashboardSection = document.getElementById('dashboard-section');
     if (dashboardSection) {
       dashboardSection.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the Dashboard section
+    }
+  };
+
+  const scrollToBlog = () => {
+    const blogSection = document.getElementById('blog-section');
+    if (blogSection) {
+      blogSection.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the Blog section
     }
   };
 
@@ -27,7 +42,7 @@ function Home() {
             <li><a href="#dashboard" onClick={handleDashboardClick}>Dashboard</a></li>
             <li><a href="#activities">Activities</a></li>
             <li><a href="#profile">Profile</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="#blog" onClick={handleBlogClick}>Blog</a></li>
             {/* Add more links as needed */}
           </ul>
         </nav>
@@ -105,6 +120,10 @@ function Home() {
 
       <section id="dashboard-section" className="dashboard-section">
         {showDashboard && <Dashboard />}
+      </section>
+
+      <section id="blog-section" className="blog-section">
+        {showBlog && <Blog />}
       </section>
 
       <footer className="footer-section">
