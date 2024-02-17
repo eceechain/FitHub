@@ -5,10 +5,13 @@ function Dashboard() {
   const [workoutLogs, setWorkoutLogs] = useState([]);
   const [calories, setCalories] = useState('');
   const [fitnessGoal, setFitnessGoal] = useState('');
+  const [progressData, setProgressData] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
 
   const handleWorkoutLogSubmit = (e) => {
     e.preventDefault();
     const newWorkoutLog = {
+      id: Date.now(),
       exercise: e.target.exercise.value,
       duration: e.target.duration.value,
     };
@@ -28,13 +31,52 @@ function Dashboard() {
     e.target.reset();
   };
 
+  const handleProgressDataSubmit = (e) => {
+    e.preventDefault();
+    // Simulate progress data generation
+    const newProgressData = [
+      { date: '2022-01-01', weight: 150 },
+      { date: '2022-01-02', weight: 149.5 },
+      // Add more data points as needed
+    ];
+    setProgressData(newProgressData);
+    e.target.reset();
+  };
+
+  const handleRecommendationsSubmit = (e) => {
+    e.preventDefault();
+    // Simulate personalized recommendations generation
+    const newRecommendations = ['Try a new workout routine', 'Increase protein intake', 'Drink more water'];
+    setRecommendations(newRecommendations);
+    e.target.reset();
+  };
+
   const getWorkoutLogsList = () => {
     return (
       <ul>
-        {workoutLogs.map((log, index) => (
-          <li key={index}>
+        {workoutLogs.map((log) => (
+          <li key={log.id}>
             {log.exercise} - {log.duration} mins
           </li>
+        ))}
+      </ul>
+    );
+  };
+
+  const getProgressChart = () => {
+    // Create a chart using progress data
+    return (
+      <div className="progress-chart">
+        {/* Display progress chart here */}
+      </div>
+    );
+  };
+
+  const getRecommendationsList = () => {
+    return (
+      <ul>
+        {recommendations.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ul>
     );
@@ -79,6 +121,22 @@ function Dashboard() {
           <input type="text" id="goal" name="goal" placeholder="Enter your fitness goal" required />
           <button type="submit">Set Goal</button>
         </form>
+      </section>
+
+      <section className="progress-tracking-section">
+        <h2>Progress Tracking</h2>
+        <form onSubmit={handleProgressDataSubmit}>
+          <button type="submit">Generate Progress Data</button>
+        </form>
+        {progressData.length > 0 && getProgressChart()}
+      </section>
+
+      <section className="personalized-recommendations-section">
+        <h2>Personalized Recommendations</h2>
+        <form onSubmit={handleRecommendationsSubmit}>
+          <button type="submit">Get Recommendations</button>
+        </form>
+        {recommendations.length > 0 && getRecommendationsList()}
       </section>
     </div>
   );

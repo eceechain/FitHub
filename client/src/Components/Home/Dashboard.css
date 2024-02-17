@@ -1,5 +1,4 @@
 /* Base styles */
-
 .dashboard-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -14,12 +13,12 @@
   }
   
   /* Section-specific styles */
-  
   section {
     margin-bottom: 40px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Added background color */
   }
   
   h2 {
@@ -36,7 +35,6 @@
   }
   
   /* Form styles */
-  
   form {
     display: grid;
     grid-gap: 10px;
@@ -48,6 +46,17 @@
   }
   
   input[type="text"],
+  input[type="number"],
+  input[type="submit"], /* Added for consistency */
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Added color transition */
+  }
+  
+  input[type="text"],
   input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
@@ -55,13 +64,8 @@
   }
   
   button {
-    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   button:hover {
@@ -69,30 +73,27 @@
   }
   
   /* Placeholder styles */
-  
   input::placeholder {
     color: #aaa;
   }
   
   /* Section-specific hover styles */
-  
   .workout-logs-section:hover,
   .calories-tracking-section:hover,
   .goal-setting-section:hover {
     background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow */
   }
   
   /* Additional styles for specific sections */
-  
-  .workout-logs-section {
-    border: 1px solid #ccc;
-  }
-  
-  .calories-tracking-section {
-    border: 1px solid #ccc;
-  }
-  
+  .workout-logs-section,
+  .calories-tracking-section,
   .goal-setting-section {
     border: 1px solid #ccc;
+  }
+  
+  /* Additional hover styles for buttons */
+  button:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added box shadow */
   }
   
