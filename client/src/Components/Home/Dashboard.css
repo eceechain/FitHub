@@ -18,7 +18,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgb(10, 129, 129);
-    background-image: -webkit-linear-gradient(grey,rgb(29, 25, 65),rgb(7, 49, 61));
+    background: linear-gradient(to bottom, grey, rgb(29, 25, 65), rgb(7, 49, 61));
   }
   
   h2 {
@@ -47,7 +47,7 @@
   
   input[type="text"],
   input[type="number"],
-  input[type="submit"], /* Added for consistency */
+  input[type="submit"],
   button {
     padding: 10px 20px;
     border: none;
@@ -60,7 +60,6 @@
   input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
   }
   
   button {
@@ -70,6 +69,7 @@
   
   button:hover {
     background-color: #119b6d;
+    box-shadow: 0 2px 4px rgb(9, 136, 153); /* Added box shadow */
   }
   
   /* Placeholder styles */
@@ -90,10 +90,5 @@
   .calories-tracking-section,
   .goal-setting-section {
     border: 1px solid #ccc;
-  }
-  
-  /* Additional hover styles for buttons */
-  button:hover {
-    box-shadow: 0 2px 4px rgb(9, 136, 153); /* Added box shadow */
   }
   
