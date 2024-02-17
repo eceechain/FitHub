@@ -30,46 +30,54 @@
     margin-bottom: 10px;
   }
   
-  /* Button styles with hover effects */
-  .dashboard-container button {
+  /* Form styles */
+  
+  .dashboard-container form {
+    display: grid;
+    grid-gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .dashboard-container form label {
+    font-weight: bold;
+  }
+  
+  .dashboard-container form input[type="text"],
+  .dashboard-container form input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .dashboard-container form button {
     padding: 10px 20px;
-    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
   }
   
-  .dashboard-container button:hover {
-    background-color: #007bff;
-    color: #fff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  .dashboard-container form button:hover {
+    background-color: #0056b3;
   }
   
-  /* Link styles with hover effects */
-  .dashboard-container a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  /* Placeholder styles */
+  
+  .dashboard-container form input::placeholder {
+    color: #aaa;
   }
   
-  .dashboard-container a:hover {
-    color: #0056b3;
-  }
+  /* Section-specific styles */
   
-  /* Input field styles */
-  .dashboard-container input[type="text"] {
-    padding: 10px;
-    border: 2px solid #ccc;
+  .workout-logs-section,
+  .calories-tracking-section,
+  .goal-setting-section,
+  .personalized-recommendations-section {
+    border: 1px solid #ccc;
+    padding: 20px;
     border-radius: 5px;
-    width: 100%;
-    transition: border-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
-  .dashboard-container input[type="text"]:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  
   
