@@ -1,23 +1,27 @@
+/* Container styles */
 .activities-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
   }
   
+  /* Activity card styles */
   .activity {
     display: flex;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Improved shadow */
+    overflow: hidden;
     background-color: #fff;
-    overflow: hidden; /* Ensure the glow effect doesn't bleed out */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
   
   .activity:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Bigger shadow on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
   
+  /* Activity image styles */
   .activity-image {
     width: 300px;
     height: 200px;
@@ -26,13 +30,14 @@
     border-bottom-left-radius: 10px;
   }
   
+  /* Activity details styles */
   .activity-details {
     flex: 1;
     padding: 20px;
   }
   
   .activity-details h2 {
-    font-size: 22px; /* Slightly larger font size */
+    font-size: 22px;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
@@ -45,26 +50,41 @@
   }
   
   .activity-details a {
-    text-decoration: none;
-    color: #007bff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
     font-weight: bold;
-    transition: color 0.3s ease; /* Smooth color transition */
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
   .activity-details a:hover {
-    text-decoration: underline;
-    color: #0056b3; /* Darker color on hover */
+    background-color: #0056b3;
+    transform: translateY(-3px);
   }
   
   /* Glowing effect */
   .activity:hover::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 80%); /* Adjust opacity and color */
-    transition: opacity 0.3s ease; /* Smooth transition */
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 80%);
+    animation: pulse-glow 1.5s infinite alternate;
+  }
+  
+  @keyframes pulse-glow {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.1);
+      opacity: 0;
+    }
   }
   
