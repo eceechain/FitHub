@@ -11,7 +11,6 @@ function Dashboard() {
     const newWorkoutLog = {
       exercise: e.target.exercise.value,
       duration: e.target.duration.value,
-      // Add more fields as needed
     };
     setWorkoutLogs([...workoutLogs, newWorkoutLog]);
     e.target.reset();
