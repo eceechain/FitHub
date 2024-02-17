@@ -94,7 +94,7 @@ body {
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+    text-shadow: 2px 2px 4px rgba(15, 137, 146, 0.918); /* Text shadow for better readability */
 }
 
 .hero-section p {
@@ -165,7 +165,7 @@ body {
 .how-it-works-section h2 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #faf6f6;
     margin-bottom: 20px;
 }
 
@@ -175,7 +175,7 @@ body {
 
 .how-it-works-section ol li {
     font-size: 20px;
-    color: #666;
+    color: #fcfafa;
     margin-bottom: 10px;
 }
 
@@ -187,14 +187,14 @@ body {
 .testimonials-section h2 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #f8f6f6;
     margin-bottom: 20px;
 }
 
 .testimonials-section blockquote {
     font-size: 20px;
     font-style: italic;
-    color: #666;
+    color: #faf8f8;
 }
 
 /* Call-to-action section styles */
@@ -206,13 +206,13 @@ body {
 .call-to-action-section h2 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #faf7f7;
     margin-bottom: 20px;
 }
 
 .call-to-action-section p {
     font-size: 20px;
-    color: #666;
+    color: #faf6f6;
     margin-bottom: 20px;
 }
 
@@ -241,13 +241,13 @@ body {
 .footer-section h3 {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #fcfafa;
     margin-bottom: 20px;
 }
 
 .footer-section p {
     font-size: 20px;
-    color: #666;
+    color: #fdfbfb;
     margin-bottom: 10px;
 }
 
@@ -265,7 +265,7 @@ body {
 
 .legal-links a {
     text-decoration: none;
-    color: #333;
+    color: #fcf8f8;
     font-size: 20px;
     margin: 0 10px;
     transition: color 0.3s ease;
