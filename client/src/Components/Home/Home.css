@@ -121,13 +121,13 @@ body {
 /* Features section styles */
 .features-section {
     padding: 100px 0;
-    background-image: url('http://tinyurl.com/27jn2c2r');
+    background-image: url('http://tinyurl.com/2v9bxc5m');
     background-position: center;
     background-size: cover;
 }
 
 .features-section h2 {
-    font-size: 36px;
+    font-size: 46px;
     font-weight: bold;
     color: #fcf8f8;
     margin-bottom: 20px;
@@ -139,7 +139,7 @@ body {
 }
 
 .features-section ul li {
-    font-size: 20px;
+    font-size: 30px;
     color: #fcfafa;
     margin-bottom: 10px;
 }
