@@ -22,7 +22,7 @@ function Activities() {
         </div>
       </div>
       <div className="activity">
-        <img src="https://via.placeholder.com/300" alt="Cardio" className="activity-image" />
+        <img src="http://tinyurl.com/3npsn5j2" alt="Running" className="activity-image" />
         <div className="activity-details">
           <h2>Cardio</h2>
           <p>Description of Running: Conquer the roads and challenge yourself with this thrilling pace.</p>
