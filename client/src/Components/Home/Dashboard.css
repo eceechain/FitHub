@@ -30,3 +30,46 @@
     margin-bottom: 10px;
   }
   
+  /* Button styles with hover effects */
+  .dashboard-container button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .dashboard-container button:hover {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Link styles with hover effects */
+  .dashboard-container a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .dashboard-container a:hover {
+    color: #0056b3;
+  }
+  
+  /* Input field styles */
+  .dashboard-container input[type="text"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+  }
+  
+  .dashboard-container input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  
+  
