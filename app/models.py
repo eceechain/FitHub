@@ -68,13 +68,19 @@ class CalorieLog(db.Model, SerializerMixin):
     
     user = db.relationship('User', back_populates='calories')
 
-
+#methods needed for this model
+    #GET method to get the goals for a user
+    #POST method to add goals for a user
+    #PATCH method to adjust goals
+    #DELETE method to remove a goal
+    #Should be able to track progress towards the goals
 class GoalSetting(db.Model):
     __tablename__ = 'goal_setting'
 
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    #goal type eg weight loss, endurance, 
     goal_type = db.Column(db.String(100))
     target = db.Column(db.Float)
     deadline = db.Column(db.Date)
@@ -83,6 +89,9 @@ class GoalSetting(db.Model):
     #relationship to the User
     user = db.relationship('User', back_populates='goals')
 
+#What should this table be used for
+    #1.An API endpoint to calculate and retrieve data for the user over time 
+    #Progress can be quantified eg bodyweight change, endurance(number of laps), fitness(lap time), weights lifted(inc or dec) 
 class ProgressTracking(db.Model):
     __tablename__ = 'progress_tracking'
 
@@ -92,6 +101,8 @@ class ProgressTracking(db.Model):
     date = db.Column(db.Date)
     weight = db.Column(db.Float)
     body_measurements = db.Column(db.String(255))
+    #Remember to add more columns wrt the exercise eg for running/swimming-lap time   to facilitate the visualization of improvement
+
 
     #relationship to User
     user = db.relationship('User', back_populates='progress')

@@ -137,7 +137,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-from models import User, WorkoutLog, CalorieLog, GoalSetting, ProgressTracking, AuthToken
+from models import User, WorkoutLog, CalorieLog, GoalSetting, ProgressTracking, AuthToken, db
 
 
 app = Flask(__name__)
@@ -187,18 +187,17 @@ def login():
     password = data.get('password')
 
     # Find the user by email and username
-    user = User.query.filter_by(email=email).filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
 
     # Check if the user exists and the password is correct
     if user and user.check_password(password):
         # Create an authentication token for the user
-        auth_token = AuthToken(user_id=user.id)
-        db.session.add(auth_token)
-        db.session.commit()
-
-        return jsonify({'auth_token': auth_token.token}), 200
+        access_token = create_access_token(identity=user.id)
+        return jsonify({'auth_token': access_token}), 200
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
+   
+
 
 # Route to add a workout log
 #Allows the addition of work out logs for users
@@ -238,8 +237,19 @@ def add_calorie_log():
 
     return jsonify({'message': 'Calorie log added successfully'}), 201
 
-# Route to set a goal
-@app.route('/goal', methods=['POST'])
+#4.code for the goal setting table
+#
+# Route to get all a users goals
+# GET method to get the goals for a user
+@app.route('/goals/,int:user_id>', methods=['GET'])
+def get_goals(user_id):
+    goals = GoalSetting.query.filter_by(user_id=user_id).all()
+    return jsonify([goal.__dict__ for goal in goals]), 200
+
+
+
+# POST method to add goals for a user
+@app.route('/goals', methods=['POST'])
 def set_goal():
     data = request.json
     user_id = data.get('user_id')
@@ -254,6 +264,35 @@ def set_goal():
     db.session.commit()
 
     return jsonify({'message': 'Goal set successfully'}), 201
+
+# PATCH method to adjust goals
+@app.route('/goals/<int:goal_id>', methods=['PATCH'])
+def adjust_goal(goal_id):
+    goal = GoalSetting.query.get(goal_id)
+    if not goal:
+        return jsonify({'error': 'Goal not found'}), 404
+    data = request.json
+    if 'goal_type' in data:
+        goal.goal_type = data['goal_type']
+    if 'target' in data:
+        goal.target = data['target']
+    if 'deadline' in data:
+        goal.deadline = data['deadline']
+    db.session.commit()
+    return jsonify({'message': 'Goal adjusted successfully'}), 200
+
+
+# DELETE method to remove a goal
+@app.route('/goals/<int:goal_id>', methods=['DELETE'])
+def delete_goal(goal_id):
+    goal = GoalSetting.query.get(goal_id)
+    if not goal:
+        return jsonify({'error': 'Goal not found'}), 404
+    db.session.delete(goal)
+    db.session.commit()
+    return jsonify({'message': 'Goal deleted successfully'}), 200
+
+
 
 # Route to track progress
 #Enables users to track their progress
