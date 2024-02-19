@@ -1,7 +1,9 @@
-from app import app, db, User, WorkoutLog, CalorieLog
+from app import app, db, User, WorkoutLog, CalorieLog, GoalSetting, ProgressTracking
 from datetime import datetime, timedelta
 
 with app.app_context():
+
+# from models import User, WorkoutLog, CalorieLog, GoalSetting, ProgressTracking, db
 
     # Create sample users
     user1 = User(username='john', email='john@example.com')
@@ -31,8 +33,17 @@ with app.app_context():
 
     calorie4 = CalorieLog(user=user2, date=datetime.utcnow() - timedelta(days=1), calories=300, meal_type='Snack')
 
+    # Create sample goal settings
+    goal1 = GoalSetting(user=user1, goal_type='Weight Loss', target=10, deadline=datetime.now())
+    goal2 = GoalSetting(user=user2, goal_type='Muscle Gain', target=5, deadline=datetime.now())
+
+    # Create sample progress tracking
+    progress1 = ProgressTracking(user=user1, date=datetime.now(), weight=70, body_measurements='Fit')
+    progress2 = ProgressTracking(user=user2, date=datetime.now(), weight=80, body_measurements='Healthy')
+
+
     # Add data to database
-    db.session.add_all([user1, user2, user3, workout1, workout2, workout3, workout4, calorie1, calorie2, calorie3, calorie4])
+    db.session.add_all([user1, user2, user3, workout1, workout2, workout3, workout4, calorie1, calorie2, calorie3, calorie4, goal1, goal2, progress1, progress2])
 
     # Commit changes
     db.session.commit()

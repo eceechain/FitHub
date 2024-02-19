@@ -40,7 +40,7 @@ class User(db.Model, SerializerMixin):
     calories = db.relationship('CalorieLog', back_populates='user')
     goals = db.relationship('GoalSetting', back_populates='user')
     progress = db.relationship('ProgressTracking', back_populates='user')
-    auth_tokens = db.relationship('AuthToken', back_populates='users')
+    auth_tokens = db.relationship('AuthToken', back_populates='user')
 
 
 class WorkoutLog(db.Model, SerializerMixin):
