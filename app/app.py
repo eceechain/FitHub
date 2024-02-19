@@ -138,6 +138,7 @@ from flask_jwt_extended import JWTManager, jwt_required, create_access_token, ge
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
 from models import User, WorkoutLog, CalorieLog, GoalSetting, ProgressTracking, AuthToken, db
+from sqlalchemy.orm import class_mapper
 
 
 app = Flask(__name__)
@@ -237,16 +238,25 @@ def add_calorie_log():
 
     return jsonify({'message': 'Calorie log added successfully'}), 201
 
+
+
 #4.code for the goal setting table
 #
 # Route to get all a users goals
 # GET method to get the goals for a user
-@app.route('/goals/,int:user_id>', methods=['GET'])
+@app.route('/goals/<int:user_id>', methods=['GET'])
 def get_goals(user_id):
     goals = GoalSetting.query.filter_by(user_id=user_id).all()
-    return jsonify([goal.__dict__ for goal in goals]), 200
-
-
+    
+     # Serialize the SQLAlchemy objects into dictionaries
+    serialized_goals = []
+    for goal in goals:
+        serialized_goal = {}
+        for column in class_mapper(GoalSetting).columns:
+            serialized_goal[column.key] = getattr(goal, column.key)
+        serialized_goals.append(serialized_goal)
+    
+    return jsonify(serialized_goals), 200
 
 # POST method to add goals for a user
 @app.route('/goals', methods=['POST'])
@@ -311,6 +321,47 @@ def track_progress():
     db.session.commit()
 
     return jsonify({'message': 'Progress tracked successfully'}), 201
+
+# Retrieve all progress tracking records
+@app.route('/progress', methods=['GET'])
+def get_all_progress():
+    progress = ProgressTracking.query.all()
+    result = []
+    for p in progress:
+        progress_data = {
+            'id': p.id,
+            'user_id': p.user_id,
+            'date': p.date,
+            'weight': p.weight,
+            'body_measurements': p.body_measurements
+        }
+        result.append(progress_data)
+    return jsonify(result), 200
+
+# Update an existing progress tracking record
+@app.route('/progress/<int:id>', methods=['PATCH'])
+def update_progress(id):
+    progress = ProgressTracking.query.get(id)
+    if progress:
+        data = request.json
+        progress.date = data.get('date', progress.date)
+        progress.weight = data.get('weight', progress.weight)
+        progress.body_measurements = data.get('body_measurements', progress.body_measurements)
+        db.session.commit()
+        return jsonify({'message': 'Progress updated successfully'}), 200
+    else:
+        return jsonify({'error': 'Progress not found'}), 404
+
+# Delete an existing progress tracking record
+@app.route('/progress/<int:id>', methods=['DELETE'])
+def delete_progress(id):
+    progress = ProgressTracking.query.get(id)
+    if progress:
+        db.session.delete(progress)
+        db.session.commit()
+        return jsonify({'message': 'Progress deleted successfully'}), 200
+    else:
+        return jsonify({'error': 'Progress not found'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
