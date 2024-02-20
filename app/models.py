@@ -20,6 +20,8 @@ class User(db.Model, SerializerMixin):
     
     workouts = db.relationship('WorkoutLog', back_populates='user')
     calories = db.relationship('CalorieLog', back_populates='user')
+    goal_setting = db.relationship('GoalSetting', back_populates='user')
+    progress_tracking = db.relationship('ProgressTracking', back_populates='user')
 
 class WorkoutLog(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True) 
@@ -41,3 +43,23 @@ class CalorieLog(db.Model, SerializerMixin):
     meal_type = db.Column(db.String(120))
     
     user = db.relationship('User', back_populates='calories')
+
+class GoalSetting(db.Model, SerializerMixin):
+    __tablename__ = 'goal_setting'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    goal_type = db.Column(db.String(100))
+    target = db.Column(db.Float)
+    deadline = db.Column(db.Date)
+
+    user = db.relationship('User', back_populates='goal_setting')
+
+class ProgressTracking(db.Model, SerializerMixin):
+    __tablename__ = 'progress_tracking'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.Date)
+    weight = db.Column(db.Float)
+    body_fat_percentage = db.Column(db.Float)  # Add this line
+
+    user = db.relationship('User', back_populates='progress_tracking')

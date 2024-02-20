@@ -1,4 +1,4 @@
-from app import app, db, User, WorkoutLog, CalorieLog
+from app import app, db, User, WorkoutLog, CalorieLog, GoalSetting, ProgressTracking
 from datetime import datetime, timedelta
 import random
 
@@ -34,6 +34,9 @@ with app.app_context():
         user = User(username=user_data['username'], email=user_data['email'])
         user.set_password(user_data['password'])
         db.session.add(user)
+
+    # Commit user changes
+    db.session.commit()
 
     # Create sample workout logs
     workouts = [
@@ -94,23 +97,98 @@ with app.app_context():
         {'user': 'alexander', 'date': datetime.utcnow() - timedelta(days=3), 'calories': 650, 'meal_type':'Lunch'},
         {'user': 'emily', 'date': datetime.utcnow() - timedelta(days=3), 'calories': 420, 'meal_type': 'Dinner'},
         {'user': 'matthew', 'date': datetime.utcnow() - timedelta(days=3), 'calories': 320, 'meal_type': 'Snack'},
-        {'user': 'abigail', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 490, 'meal_type': 'Breakfast'},
-        {'user': 'lucas', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 630, 'meal_type': 'Lunch'},
-        {'user': 'amelia', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 400, 'meal_type': 'Dinner'},
-        {'user': 'ethan', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 300, 'meal_type': 'Snack'},
+        {'user': 'abigail', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 540, 'meal_type': 'Breakfast'},
+        {'user': 'lucas', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 680, 'meal_type': 'Lunch'},
+        {'user': 'amelia', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 430, 'meal_type': 'Dinner'},
+        {'user': 'ethan', 'date': datetime.utcnow() - timedelta(days=4), 'calories': 350, 'meal_type': 'Snack'},
     ]
 
-    for log_data in calorie_logs:
-        user = User.query.filter_by(username=log_data['user']).first()
+    for log in calorie_logs:
+        user = User.query.filter_by(username=log['user']).first()
         calorie_log = CalorieLog(
             user=user,
-            date=log_data['date'],
-            calories=log_data['calories'],
-            meal_type=log_data['meal_type']
+            date=log['date'],
+            calories=log['calories'],
+            meal_type=log['meal_type']
         )
         db.session.add(calorie_log)
 
-    # Commit changes
+    # Commit calorie log changes
     db.session.commit()
 
-    print("data added to database Successfully .")
+    # Create sample goal settings
+    goals = [
+        {'user': 'john', 'goal_type': 'Weight Loss', 'target': 10, 'deadline': datetime.utcnow() + timedelta(days=30)},
+        {'user': 'jane', 'goal_type': 'Muscle Gain', 'target': 5, 'deadline': datetime.utcnow() + timedelta(days=45)},
+        {'user': 'alice', 'goal_type': 'Maintenance', 'target': 0, 'deadline': datetime.utcnow() + timedelta(days=60)},
+        {'user': 'bob', 'goal_type': 'Weight Loss', 'target': 8, 'deadline': datetime.utcnow() + timedelta(days=60)},
+        {'user': 'emma', 'goal_type': 'Muscle Gain', 'target': 4, 'deadline': datetime.utcnow() + timedelta(days=75)},
+        {'user': 'michael', 'goal_type': 'Maintenance', 'target': 0, 'deadline': datetime.utcnow() + timedelta(days=90)},
+        {'user': 'sophia', 'goal_type': 'Weight Loss', 'target': 6, 'deadline': datetime.utcnow() + timedelta(days=45)},
+        {'user': 'william', 'goal_type': 'Muscle Gain', 'target': 3, 'deadline': datetime.utcnow() + timedelta(days=60)},
+        {'user': 'olivia', 'goal_type': 'Maintenance', 'target': 0, 'deadline': datetime.utcnow() + timedelta(days=30)},
+        {'user': 'james', 'goal_type': 'Weight Loss', 'target': 9, 'deadline': datetime.utcnow() + timedelta(days=75)},
+        {'user': 'charlotte', 'goal_type': 'Muscle Gain', 'target': 5, 'deadline': datetime.utcnow() + timedelta(days=90)},
+        {'user': 'david', 'goal_type': 'Maintenance', 'target': 0, 'deadline': datetime.utcnow() + timedelta(days=45)},
+        {'user': 'ava', 'goal_type': 'Weight Loss', 'target': 7, 'deadline': datetime.utcnow() + timedelta(days=60)},
+        {'user': 'alexander', 'goal_type': 'Muscle Gain', 'target': 4, 'deadline': datetime.utcnow() + timedelta(days=75)},
+        {'user': 'emily', 'goal_type': 'Maintenance', 'target': 0, 'deadline': datetime.utcnow() + timedelta(days=90)},
+        {'user': 'matthew', 'goal_type': 'Weight Loss', 'target': 10, 'deadline': datetime.utcnow() + timedelta(days=45)},
+        {'user': 'abigail', 'goal_type': 'Muscle Gain', 'target': 6, 'deadline': datetime.utcnow() + timedelta(days=60)},
+        {'user': 'lucas', 'goal_type': 'Maintenance', 'target': 0, 'deadline': datetime.utcnow() + timedelta(days=75)},
+        {'user': 'amelia', 'goal_type': 'Weight Loss', 'target': 8, 'deadline': datetime.utcnow() + timedelta(days=90)},
+        {'user': 'ethan', 'goal_type': 'Muscle Gain', 'target': 4, 'deadline': datetime.utcnow() + timedelta(days=45)},
+    ]
+
+    for goal_data in goals:
+        user = User.query.filter_by(username=goal_data['user']).first()
+        if user:
+            goal_setting = GoalSetting(
+                user=user,
+                goal_type=goal_data['goal_type'],
+                target=goal_data['target'],
+                deadline=goal_data['deadline']
+            )
+            db.session.add(goal_setting)
+
+    # Commit goal setting changes
+    db.session.commit()
+
+    # Create sample progress tracking data
+    progress_data = [
+        {'user': 'john', 'weight': 80, 'body_fat_percentage': 20},
+        {'user': 'jane', 'weight': 65, 'body_fat_percentage': 25},
+        {'user': 'alice', 'weight': 70, 'body_fat_percentage': 22},
+        {'user': 'bob', 'weight': 90, 'body_fat_percentage': 18},
+        {'user': 'emma', 'weight': 60, 'body_fat_percentage': 27},
+        {'user': 'michael', 'weight': 75, 'body_fat_percentage': 21},
+        {'user': 'sophia', 'weight': 85, 'body_fat_percentage': 19},
+        {'user': 'william', 'weight': 72, 'body_fat_percentage': 23},
+        {'user': 'olivia', 'weight': 68, 'body_fat_percentage': 24},
+        {'user': 'james', 'weight': 88, 'body_fat_percentage': 17},
+        {'user': 'charlotte', 'weight': 62, 'body_fat_percentage': 26},
+        {'user': 'david', 'weight': 78, 'body_fat_percentage': 20},
+        {'user': 'ava', 'weight': 84, 'body_fat_percentage': 18},
+        {'user': 'alexander', 'weight': 67, 'body_fat_percentage': 25},
+        {'user': 'emily', 'weight': 73, 'body_fat_percentage': 22},
+        {'user': 'matthew', 'weight': 82, 'body_fat_percentage': 19},
+        {'user': 'abigail', 'weight': 63, 'body_fat_percentage': 24},
+        {'user': 'lucas', 'weight': 79, 'body_fat_percentage': 21},
+        {'user': 'amelia', 'weight': 71, 'body_fat_percentage': 23},
+        {'user': 'ethan', 'weight': 86, 'body_fat_percentage': 16},
+    ]
+
+    for data in progress_data:
+        user = User.query.filter_by(username=data['user']).first()
+        progress = ProgressTracking(
+            user=user,
+            date=datetime.utcnow() - timedelta(days=30),  # Progress data from 30 days ago
+            weight=data['weight'],
+            body_fat_percentage=data['body_fat_percentage']
+        )
+        db.session.add(progress)
+
+    # Commit progress tracking changes
+    db.session.commit()
+
+    print("Database seeded successfully.")
