@@ -34,7 +34,7 @@ class WorkoutLog(db.Model, SerializerMixin):
     description = db.Column(db.Text)
     
     user = db.relationship('User', back_populates='workouts')
-    
+
 class CalorieLog(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
