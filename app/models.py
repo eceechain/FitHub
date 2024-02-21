@@ -19,16 +19,6 @@ class User(db.Model, SerializerMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(180), nullable=False)
     is_active = db.Column(db.Boolean, default=True)
-    first_name = db.Column(db.String(100))
-    last_name = db.Column(db.String(100))
-    date_of_birth = db.Column(db.Date)
-    gender = db.Column(db.Enum('Male', 'Female', 'Other'))
-    profile_picture = db.Column(db.String(255))
-    registration_date = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
-    last_login = db.Column(db.TIMESTAMP)
-    account_status = db.Column(db.Enum('Active', 'Suspended', 'Deleted'), default='Active')
-    role = db.Column(db.String(50))
-    verification_status = db.Column(db.Enum('Pending', 'Verified'), default='Pending')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
