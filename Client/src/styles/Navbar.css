@@ -1,0 +1,67 @@
+/* Navbar.css */
+
+nav {
+    background: linear-gradient(to right, #000000, #434343); /* Black gradient colors */
+    padding: 30px; /* Adjusted padding */
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 100px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px; /* Increased margin for better spacing */
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  nav a:hover {
+    color: #fdcb58; /* Yellow hover color */
+    border-bottom: 2px solid #fdcb58; /* Yellow border on hover */
+  }
+  
+  .nav-link {
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: inline-block;
+    margin: 0 20px; /* Increased margin for better spacing */
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000000; /* Updated dropdown background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    min-width: 160px; /* Adjusted minimum width */
+  }
+  
+  .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #fff;
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+  }
+  
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #434343; /* Darker background color on hover */
+    color: #fdcb58; /* Yellow hover color */
+  }
+  
