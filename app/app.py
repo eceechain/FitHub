@@ -1,16 +1,24 @@
 import datetime
 import requests
+import tweepy
+from tweepy import TweepError
 from flask import Flask, jsonify, redirect,  url_for, request
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-from models import CalorieLog, SharedWorkout, WorkoutLog, db, User
+from models import CalorieLog, WorkoutLog, db, User
 
 app = Flask(__name__)
 CORS(app)
 jwt = JWTManager(app)
 migrate = Migrate(app, db)
+
+# Twitter API keys
+consumer_key = 'Ybh2edeoVCGgDzz8J6CsMvBBf'
+consumer_secret = '7P5iFnQJUGrfNL5zBJHGSaftiGU2vZSOQ32E6yCzVkKQOOw0mk'
+access_token = '1608973500143869956-jB4olbq9lMudzc6ykuPMjwW3bIsstr'
+access_token_secret = '0pHtPY1HS0xprjzBbKD0uOaHAW4LXgqCTUPa6v9jgYeAk'
 
 # Setting up Flask JWT
 app.config['JWT_SECRET_KEY'] = 'SECRET'
@@ -18,6 +26,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
+
+# Authenticate with Twitter
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 
 # Protected route requiring JWT authentication
 @app.route('/login', methods=['POST'])
@@ -318,21 +331,28 @@ def get_nutrition_info():
     except requests.exceptions.RequestException as e:
         return jsonify(message='Error fetching nutrition information'), 500
     
-@app.route('/workout/<int:workout_id>/share')
-def share_workout(workout_id):
-    workout = WorkoutLog.query.get_or_404(workout_id)
-    # Generate the share URL
-    share_url = generate_share_url(workout)
-    # Save the share URL
-    shared_workout = SharedWorkout(workout_id=workout_id, share_url=share_url)
-    db.session.add(shared_workout)
-    db.session.commit()
-    return redirect(url_for('view_workout', workout_id=workout_id))
 
-# Define a function to generate the share URL
-def generate_share_url(workout):
-    return f'https://example.com/share/{workout.id}'    
-    
+@app.route('/share-workout/<int:workout_id>', methods=['POST'])
+def share_workout(workout_id):
+    workout = WorkoutLog.query.get(workout_id)
+    if workout:
+        user = User.query.get(workout.user_id)
+        if user:
+            # Construct workout message template
+            workout_template = f"🏋️‍♂️ {user.username} completed a {workout.workout_type} workout for {workout.duration} minutes and burned {workout.calories_burned} calories! #Fitness"
+
+            try:
+                # Post workout on Twitter with template
+                api.update_status(workout_template)
+                return jsonify(message='Workout shared successfully on Twitter'), 200
+            except TweepError as e:
+                return jsonify(message='Error sharing workout on Twitter. Please try again later.'), 500
+        else:
+            return jsonify(message='User not found'), 404
+    else:
+        return jsonify(message='Workout not found'), 404
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

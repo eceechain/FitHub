@@ -31,8 +31,7 @@ class WorkoutLog(db.Model, SerializerMixin):
     calories_burned = db.Column(db.Integer)
     description = db.Column(db.Text)
     
-    # New fields for sharing
-    shared_Workout = db.relationship('SharedWorkout', uselist=False, back_populates='workout_log')
+    
 
     user = db.relationship('User', back_populates='workouts')
 
@@ -45,9 +44,4 @@ class CalorieLog(db.Model, SerializerMixin):
     
     user = db.relationship('User', back_populates='calories')
 
-class SharedWorkout(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    workout_id = db.Column(db.Integer, db.ForeignKey('workout_log.id'), nullable=False)
-    share_url = db.Column(db.String(255), nullable=False)
-    
-    workout = db.relationship('WorkoutLog', backref='shared_workouts')
+
