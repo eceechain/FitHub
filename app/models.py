@@ -30,7 +30,7 @@ class User(db.Model, SerializerMixin):
     calories = db.relationship('CalorieLog', back_populates='user')
     goals = db.relationship('GoalSetting', back_populates='user')
     progress = db.relationship('ProgressTracking', back_populates='user')
-    auth_tokens = db.relationship('AuthToken', back_populates='user')
+    # auth_tokens = db.relationship('AuthToken', back_populates='user')
 
 
 class WorkoutLog(db.Model, SerializerMixin):
@@ -97,14 +97,3 @@ class ProgressTracking(db.Model):
     #relationship to User
     user = db.relationship('User', back_populates='progress')
 
-class AuthToken(db.Model):
-    __tablename__ = 'auth_token'
-
-    
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    token = db.Column(db.String(255), unique=True, nullable=False)
-    expiry_date = db.Column(db.DateTime)
-
-    #relationship to user
-    user = db.relationship('User', back_populates='auth_tokens')
