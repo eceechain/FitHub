@@ -215,6 +215,7 @@ def get_workouts():
             'duration': workout.duration,
             'workout_type': workout.workout_type,
             'calories_burned': workout.calories_burned,
+            'reps': workout.reps,
             'description': workout.description,
             'image': workout.image
         }
@@ -236,6 +237,7 @@ def get_workout(workout_id):
             'workout_type': workout.workout_type,
             'calories_burned': workout.calories_burned,
             'description': workout.description,
+            'reps': workout.reps,
             'image': workout.image
         }
         return jsonify(workout=workout_data), 200
@@ -253,6 +255,7 @@ def update_workout(workout_id):
         workout.workout_type = data.get('workout_type')
         workout.calories_burned = data.get('calories_burned')
         workout.description = data.get('description')
+        workout.reps = data.get('reps')
         workout.image = data.get('image')
         db.session.commit()
         return jsonify(message='Workout updated successfully'), 200
@@ -263,7 +266,7 @@ def update_workout(workout_id):
 @app.route('/Workouts', methods=['POST'])
 def post_workout():
     data = request.get_json()
-    workout = WorkoutLog(user_id=data.get('user_id'), date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'), description=data.get('description'), image=data.get('image'))
+    workout = WorkoutLog(user_id=data.get('user_id'), date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'), description=data.get('description'),reps=data.get('reps'),image=data.get('image'))
     db.session.add(workout)
     db.session.commit()
     return jsonify(message='Workout added successfully'), 201
