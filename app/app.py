@@ -280,4 +280,4 @@ def delete_workout(workout_id):
         return jsonify(message='Workout not found'), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5004)
+    app.run(debug=True, port=5000)
