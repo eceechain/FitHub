@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-from models import CalorieLog, WorkoutLog, db, User
+from models import CalorieLog, WorkoutLog, db, User, GoalSetting, ProgressTracking
 
 app = Flask(__name__)
 CORS(app)
@@ -355,4 +355,4 @@ def share_workout(workout_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5004)
