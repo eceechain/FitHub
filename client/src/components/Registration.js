@@ -15,6 +15,7 @@ const Register = (props) => {
             <h2>Register</h2>
         <form className="register-form" onSubmit={handleSubmit}></form>
             <label htmlFor="name">Full name</label>
+            <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="full Name" />
 
 
         </div>
