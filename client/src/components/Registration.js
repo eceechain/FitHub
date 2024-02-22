@@ -6,6 +6,7 @@ const Register = (props) => {
     const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
-        
+        e.preventDefault();
+        console.log(email);
     }
 }
