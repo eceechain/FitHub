@@ -68,12 +68,15 @@ const Home = () => {
             {/* About FitHub Section */}
             <section className="about">
                 <h2>About FitHub</h2>
-                <p>FitHub is a Kenyan fitness tracking app located in Nairobi at Ngong Lane Plaza. We are dedicated to helping individuals achieve their fitness goals with personalized workout plans, nutritional guidance, and expert coaching.</p>
+                <p>FitHub is your go-to fitness tracking app located in Nairobi, Kenya. We provide a comprehensive platform for tracking your fitness progress, accessing personalized workout plans, and connecting with expert trainers.</p>
+                <p>Visit us at Ngong Lane Plaza and start your fitness journey today!</p>
             </section>
 
             {/* Location Section */}
             <section className="location">
                 <h2>Location</h2>
+                <p>Visit us at:</p>
+                <p>Ngong Lane Plaza, Nairobi, Kenya</p>
                 <div className="map-container">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7905037758346!2d36.782159474045685!3d-1.3005534356399324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f109dcb26a413%3A0xca1c503989df391d!2sNgong%20Lane%20Plaza!5e0!3m2!1sen!2ske!4v1708572130851!5m2!1sen!2ske" width="600" height="450" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>

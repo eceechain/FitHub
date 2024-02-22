@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Encode%20Sans%20SC:400');
+
+/* Global Styles */
+body {
+    font-family: 'Encode Sans SC';
+    font-weight: 400;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 4.210rem; /* 67.36px */
+}
+
+h2 {
+    font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+    font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+    font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+    font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+    font-size: 0.750rem; /* 12px */
+}
+
+/* Custom Colors */
+:root {
+    --text: #eae9fc;
+    --background: #000000;
+    --primary: #150e62;
+    --secondary: #0e3449;
+    --accent: #2722bf;
+}
+
+/* Section Styling */
+.section {
+    padding: 40px 0;
+}
+
+.section h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--secondary);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Container for Images */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Additional Styling for Specific Sections */
+.basic-workouts, .services, .featured-workouts {
+    background-color: var(--background);
+    color: var(--text);
+    padding: 40px 20px;
+}
+
+.subscription-plans, .testimonials, .contact {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 40px 20px;
+}
