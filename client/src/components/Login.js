@@ -15,6 +15,7 @@ return (
         <form className="login-form" onSubmit={handleSubmit}>
             <label htmlFor="email">email</label>
             <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+            <label htmlFor="password">password</label>
 
         </form>
 
