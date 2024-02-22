@@ -13,6 +13,8 @@ const Register = (props) => {
     return (
         <div className="auth-form-container">
             <h2>Register</h2>
+        <form className="register-form" onSubmit={handleSubmit}></form>
+        
 
         </div>
     )
