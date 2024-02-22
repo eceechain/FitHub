@@ -13,6 +13,7 @@ return (
     <div className="auth-form-container">
         <h2>Login</h2>
         <form className="login-form" onSubmit={handleSubmit}>
+            <label htmlFor="email">email</label>
 
         </form>
 
