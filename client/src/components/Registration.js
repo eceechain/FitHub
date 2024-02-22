@@ -9,4 +9,10 @@ const Register = (props) => {
         e.preventDefault();
         console.log(email);
     }
+
+    return (
+        <div className="auth-form-container">
+
+        </div>
+    )
 }
