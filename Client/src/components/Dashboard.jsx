@@ -13,6 +13,7 @@ import ProgressTracking from './ProgressTracking'
 import GoalSetting from './GoalSetting'
 import Blog from './Blog'
 import Navbar from './Navbar'
+import Nutrition from './Nutrition'
 
 
 function Dashboard() {
@@ -32,6 +33,7 @@ function Dashboard() {
             <Route path='/progress' element={<ProgressTracking />} />
             <Route path='/goalsetting' element={<GoalSetting />} />
             <Route path='/blog' element={<Blog />} />
+            <Route path='/nutrition' element={<Nutrition/>} />
         </Routes>
     </Router>
   )
