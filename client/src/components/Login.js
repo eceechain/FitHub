@@ -11,7 +11,11 @@ const handleSubmit = (e) => {
 
 return (
     <div className="auth-form-container">
-         <h2>Login</h2>
+        <h2>Login</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+
+        </form>
+
     </div>
 )
   
