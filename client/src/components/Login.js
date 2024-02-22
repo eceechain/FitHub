@@ -8,4 +8,13 @@ const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
 }
+
+return (
+    <div className="auth-form-container">
+
+    </div>
+)
+  
+
+
  
