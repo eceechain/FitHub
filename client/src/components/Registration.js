@@ -5,5 +5,7 @@ const Register = (props) => {
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
 
-    
+    const handleSubmit = (e) => {
+        
+    }
 }
