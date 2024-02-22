@@ -59,6 +59,13 @@ def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
 
+#Logout route
+@app.route('/logout', methods=['GET'])
+@jwt_required()
+def logout():
+    return jsonify(message='Successfully logged out'), 200
+
+
 # Register route
 @app.route('/Register', methods=['POST'])
 def register():
@@ -134,8 +141,59 @@ def delete_user(user_id):
         return jsonify(message='User deleted successfully'), 200
     else:
         return jsonify(message='User not found'), 404
+#Get all progresstracking for a user
+@app.route('/Users/<int:user_id>/ProgressTracking', methods=['GET'])
+def get_user_progress_tracking(user_id):
+    user = User.query.get(user_id)
+    if user:
+        progress_tracking = user.progress_tracking
+        progress_tracking_list = []
+        for progress_tracking in progress_tracking:
+            progress_tracking_data = {
+                'id': progress_tracking.id,
+                'user_id': progress_tracking.user_id,
+                'date': progress_tracking.date,
+                'weight': progress_tracking.weight,
+                'body_fat_percentage': progress_tracking.body_fat_percentage,
+            }
+            progress_tracking_list.append(progress_tracking_data)
 
+            # Include the user's username in the response
+            user_data = {
+                'username': user.username,
+                'progress_tracking': progress_tracking_list
+            }
+            return jsonify(user=user_data), 200
+        else:
+            return jsonify(message='User not found'), 404
+        
+#Get all Goalsetting for a user
+@app.route('/Users/<int:user_id>/GoalSetting', methods=['GET'])
+def get_user_goal_setting(user_id):
+    user = User.query.get(user_id)
+    if user:
+        goal_setting = user.goal_setting
+        goal_setting_list = []
+        for goal_setting in goal_setting:
+            goal_setting_data = {
+                'id': goal_setting.id,
+                'user_id': goal_setting.user_id,
+                'goal_type': goal_setting.goal_type,
+                'target': goal_setting.target,
+                'deadline': goal_setting.deadline,
+            }
+            goal_setting_list.append(goal_setting_data)
 
+            # Include the user's username in the response
+            user_data = {
+                'username': user.username,
+                'goal_setting': goal_setting_list
+            }
+
+            return jsonify(user=user_data), 200
+        else:
+            return jsonify(message='User not found'), 404
+        
 # Get all workouts for a user
 @app.route('/Users/<int:user_id>/Workouts', methods=['GET'])
 def get_user_workouts(user_id):

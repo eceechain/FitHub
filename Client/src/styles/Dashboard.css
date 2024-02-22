@@ -1,0 +1,15 @@
+.dashboard {
+    display: flex;
+  }
+  
+  .dashboard-content {
+    flex: 1; /* This will make the content area fill the remaining space */
+    padding: 20px; /* Adjust padding as needed */
+  }
+  
+  .content-display {
+    width: 300px; /* Adjust width of the content display area */
+    padding: 20px; /* Adjust padding as needed */
+  }
+  
+
