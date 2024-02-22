@@ -42,24 +42,24 @@ with app.app_context():
 
     # Create sample workout logs
     workouts = [
-        {'type': 'Treadmill', 'duration': 30, 'calories_burned': 250, 'description': 'Running on the treadmill for cardio.', 'image': 'https://i.vimeocdn.com/video/1165892863-3914c1bea88cc80e5218d0dadddbf1065c20d144e20caceaf2370fd742e03370-d_640x360.jpg', 'reps': 3},
-        {'type': 'Yoga', 'duration': 60, 'calories_burned': 250, 'description': 'Yoga session for flexibility and relaxation.', 'image': 'https://cdn.pixabay.com/photo/2020/11/03/13/04/yoga-5709767_1280.png', 'reps': 4},
-        {'type': 'HIIT', 'duration': 40, 'calories_burned': 350, 'description': 'High-Intensity Interval Training for cardio and strength.', 'image': 'https://thumbs.dreamstime.com/b/woman-burpee-exercise-doing-circuit-cardio-workout-instruction-cartoon-vector-illustration-198652151.jpg', 'reps': 2},
-        {'type': 'Weightlifting', 'duration': 50, 'calories_burned': 200, 'description': 'Strength training focusing on major muscle groups.', 'image': 'https://cdn.pixabay.com/photo/2020/06/01/14/52/weightlifter-5246940_640.jpg', 'reps': 3},
-        {'type': 'Pilates', 'duration': 55, 'calories_burned': 180, 'description': 'Pilates session focusing on core strength and flexibility.', 'image': 'https://cdn.pixabay.com/photo/2020/03/12/13/33/press-up-4925111_640.jpg', 'reps': 4},
-        {'type': 'Jump Rope', 'duration': 20, 'calories_burned': 150, 'description': 'Jumping rope for cardio and coordination.', 'image': 'https://i.pinimg.com/736x/4b/2e/13/4b2e130e63264e93931565ea19063312.jpg', 'reps': 3},
-        {'type': 'Squats', 'duration': 25, 'calories_burned': 180, 'description': 'Squatting exercise for lower body strength.', 'image': 'https://cdn.pixabay.com/photo/2022/06/02/02/59/squats-7236948_960_720.png', 'reps': 4},
-        {'type': 'Push-ups', 'duration': 15, 'calories_burned': 100, 'description': 'Push-ups for upper body strength.', 'image': 'https://cdn.pixabay.com/photo/2020/03/12/13/33/press-up-4925111_1280.jpg', 'reps': 2},
-        {'type': 'Sit-ups', 'duration': 20, 'calories_burned': 120, 'description': 'Sit-ups for core strength.', 'image': 'https://thumbs.dreamstime.com/b/man-doing-sit-ups-exercise-abdominals-exercise-flat-vector-illustration-man-doing-sit-ups-exercise-abdominals-exercise-flat-vector-201076158.jpg', 'reps': 3},
-        {'type': 'Burpees', 'duration': 30, 'calories_burned': 250, 'description': 'Full-body exercise combining squats, push-ups, and jumps.', 'image': 'https://t4.ftcdn.net/jpg/04/29/02/59/360_F_429025937_nNFfycLc9tY4SBYj5dyxhPVk7QxNwpra.jpg', 'reps': 4},
-        {'type': 'Plank', 'duration': 60, 'calories_burned': 150, 'description': 'Plank exercise for core stability.', 'image': 'https://i.pinimg.com/originals/bb/93/89/bb9389b7be696161406c9ffe36ca2762.jpg', 'reps': 2},
-        {'type': 'Lunges', 'duration': 30, 'calories_burned': 180, 'description': 'Lunges for lower body strength and balance.', 'image': 'https://thumbs.dreamstime.com/b/man-doing-dumbbell-walking-lunges-exercise-man-doing-dumbbell-walking-lunges-exercise-flat-vector-illustration-isolated-white-230812187.jpg', 'reps': 3},
-        {'type': 'Bicycles', 'duration': 25, 'calories_burned': 150, 'description': 'Bicycle crunches for core strength and obliques.', 'image': 'https://cdn.pixabay.com/photo/2020/10/24/19/15/man-5682389_1280.png', 'reps': 4},
-        {'type': 'Dumbbell Rows', 'duration': 35, 'calories_burned': 200, 'description': 'Dumbbell rows for back and arm strength.', 'image': 'https://cdn.pixabay.com/photo/2012/04/13/15/02/gym-32740_640.png', 'reps': 2},
-        {'type': 'Deadlifts', 'duration': 40, 'calories_burned': 250, 'description': 'Deadlifts for full-body strength.', 'image': 'https://www.shutterstock.com/image-vector/man-doing-sumo-barbell-deadlifts-600nw-2034318965.jpg', 'reps': 3},
-        {'type': 'Tricep Dips', 'duration': 20, 'calories_burned': 120, 'description': 'Tricep dips for arm strength.', 'image': 'https://www.shutterstock.com/image-vector/man-doing-bench-tricep-dips-600nw-1951111822.jpg', 'reps': 4},
-        {'type': 'Leg Press', 'duration': 30, 'calories_burned': 180, 'description': 'Leg press for leg strength and toning.', 'image': 'https://thumbs.dreamstime.com/b/man-doing-leg-press-exercise-machine-flat-vector-illustration-isolated-man-doing-leg-press-exercise-machine-flat-vector-253463013.jpg', 'reps': 2},
-        {'type': 'Chest Press', 'duration': 35, 'calories_burned': 200, 'description': 'Chest press for chest and arm strength.', 'image': 'https://cdni.iconscout.com/illustration/premium/thumb/incline-chest-press-5422312-4552283.png?f=webp', 'reps': 3}
+        {'type': 'Treadmill', 'duration': 30, 'calories_burned': 250, 'description': 'Running on the treadmill for cardio.', 'image': 'https://i.vimeocdn.com/video/1165892863-3914c1bea88cc80e5218d0dadddbf1065c20d144e20caceaf2370fd742e03370-d_640x360.jpg', 'reps': 3, 'sets': 4},
+        {'type': 'Yoga', 'duration': 60, 'calories_burned': 250, 'description': 'Yoga session for flexibility and relaxation.', 'image': 'https://cdn.pixabay.com/photo/2020/11/03/13/04/yoga-5709767_1280.png', 'reps': 4, 'sets': 2},
+        {'type': 'HIIT', 'duration': 40, 'calories_burned': 350, 'description': 'High-Intensity Interval Training for cardio and strength.', 'image': 'https://thumbs.dreamstime.com/b/woman-burpee-exercise-doing-circuit-cardio-workout-instruction-cartoon-vector-illustration-198652151.jpg', 'reps': 2, 'sets': 3},
+        {'type': 'Weightlifting', 'duration': 50, 'calories_burned': 200, 'description': 'Strength training focusing on major muscle groups.', 'image': 'https://cdn.pixabay.com/photo/2020/06/01/14/52/weightlifter-5246940_640.jpg', 'reps': 3, 'sets': 2},
+        {'type': 'Pilates', 'duration': 55, 'calories_burned': 180, 'description': 'Pilates session focusing on core strength and flexibility.', 'image': 'https://cdn.pixabay.com/photo/2020/03/12/13/33/press-up-4925111_640.jpg', 'reps': 4, 'sets': 2},
+        {'type': 'Jump Rope', 'duration': 20, 'calories_burned': 150, 'description': 'Jumping rope for cardio and coordination.', 'image': 'https://i.pinimg.com/736x/4b/2e/13/4b2e130e63264e93931565ea19063312.jpg', 'reps': 3, 'sets': 3},
+        {'type': 'Squats', 'duration': 25, 'calories_burned': 180, 'description': 'Squatting exercise for lower body strength.', 'image': 'https://cdn.pixabay.com/photo/2022/06/02/02/59/squats-7236948_960_720.png', 'reps': 4, 'sets': 4},
+        {'type': 'Push-ups', 'duration': 15, 'calories_burned': 100, 'description': 'Push-ups for upper body strength.', 'image': 'https://cdn.pixabay.com/photo/2020/03/12/13/33/press-up-4925111_1280.jpg', 'reps': 2, 'sets': 0},
+        {'type': 'Sit-ups', 'duration': 20, 'calories_burned': 120, 'description': 'Sit-ups for core strength.', 'image': 'https://thumbs.dreamstime.com/b/man-doing-sit-ups-exercise-abdominals-exercise-flat-vector-illustration-man-doing-sit-ups-exercise-abdominals-exercise-flat-vector-201076158.jpg', 'reps': 3, 'sets': 2},
+        {'type': 'Burpees', 'duration': 30, 'calories_burned': 250, 'description': 'Full-body exercise combining squats, push-ups, and jumps.', 'image': 'https://t4.ftcdn.net/jpg/04/29/02/59/360_F_429025937_nNFfycLc9tY4SBYj5dyxhPVk7QxNwpra.jpg', 'reps': 4, 'sets': 1},
+        {'type': 'Plank', 'duration': 60, 'calories_burned': 150, 'description': 'Plank exercise for core stability.', 'image': 'https://i.pinimg.com/originals/bb/93/89/bb9389b7be696161406c9ffe36ca2762.jpg', 'reps': 2, 'sets': 3},
+        {'type': 'Lunges', 'duration': 30, 'calories_burned': 180, 'description': 'Lunges for lower body strength and balance.', 'image': 'https://thumbs.dreamstime.com/b/man-doing-dumbbell-walking-lunges-exercise-man-doing-dumbbell-walking-lunges-exercise-flat-vector-illustration-isolated-white-230812187.jpg', 'reps': 3, 'sets': 2},
+        {'type': 'Bicycles', 'duration': 25, 'calories_burned': 150, 'description': 'Bicycle crunches for core strength and obliques.', 'image': 'https://cdn.pixabay.com/photo/2020/10/24/19/15/man-5682389_1280.png', 'reps': 4, 'sets': 1},
+        {'type': 'Dumbbell Rows', 'duration': 35, 'calories_burned': 200, 'description': 'Dumbbell rows for back and arm strength.', 'image': 'https://cdn.pixabay.com/photo/2012/04/13/15/02/gym-32740_640.png', 'reps': 2, 'sets': 3},
+        {'type': 'Deadlifts', 'duration': 40, 'calories_burned': 250, 'description': 'Deadlifts for full-body strength.', 'image': 'https://www.shutterstock.com/image-vector/man-doing-sumo-barbell-deadlifts-600nw-2034318965.jpg', 'reps': 3, 'sets': 2},
+        {'type': 'Tricep Dips', 'duration': 20, 'calories_burned': 120, 'description': 'Tricep dips for arm strength.', 'image': 'https://www.shutterstock.com/image-vector/man-doing-bench-tricep-dips-600nw-1951111822.jpg', 'reps': 4, 'sets': 1},
+        {'type': 'Leg Press', 'duration': 30, 'calories_burned': 180, 'description': 'Leg press for leg strength and toning.', 'image': 'https://thumbs.dreamstime.com/b/man-doing-leg-press-exercise-machine-flat-vector-illustration-isolated-man-doing-leg-press-exercise-machine-flat-vector-253463013.jpg', 'reps': 2, 'sets': 3},
+        {'type': 'Chest Press', 'duration': 35, 'calories_burned': 200, 'description': 'Chest press for chest and arm strength.', 'image': 'https://cdni.iconscout.com/illustration/premium/thumb/incline-chest-press-5422312-4552283.png?f=webp', 'reps': 3, 'sets': 2},
     ]
 
     for user_data in users:
@@ -74,13 +74,15 @@ with app.app_context():
                 workout_type=workout['type'],
                 calories_burned=workout['calories_burned'],
                 description=workout['description'],
-                reps = workout['reps'],
+                reps=workout['reps'],
+                sets=workout['sets'],
                 image=workout['image']
             )
             db.session.add(workout_log)  # Add the workout log to the session
 
     # Commit workout log changes
-    db.session.commit()
+        db.session.commit()
+
 
     # Create sample calorie logs
     calorie_logs = [
