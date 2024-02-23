@@ -19,10 +19,10 @@ const Register = (props) => {
             <label htmlFor="email">email</label>
             <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">password</label>
-       
-
-
+            <button type="submit">Log In</button>
 
         </div>
     )
 }
+
+export default Registration 
