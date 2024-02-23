@@ -1,35 +1,60 @@
+/* Navbar Container */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: -webkit-linear-gradient(grey,white);
-  padding: 1rem; /* Add padding */
+  background: linear-gradient(to right, #333, #555); /* Gradient background */
+  padding: 0.025rem; /* Add padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+  position: fixed; /* Fix navbar to the top */
+  top: 0; /* Position at the top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure navbar is above other elements */
 }
 
+/* Navigation Links Container */
 .nav-links {
   display: flex;
   gap: 1rem; /* Add gap between nav items */
 }
 
+/* Navigation and Authentication Links */
 .nav-links a,
 .auth-links a {
   text-decoration: none;
-  color: #333333; /* Set text color */
-  font-size: 1rem; /* Set font size */
-  padding: 0.5rem 1rem; /* Add padding */
-  border-radius: 5px; /* Add border radius */
-  transition: background-color 0.3s ease; /* Add transition effect */
+  color: #fff; /* Text color */
+  font-size: 1.1rem; /* Font size */
+  padding: 0.75rem 1.5rem; /* Padding */
+  border-radius: 0.5rem; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
+/* Hover Effect for Navigation and Authentication Links */
 .nav-links a:hover,
 .auth-links a:hover {
-  background-image: -webkit-linear-gradient(rgb(17, 101, 150),rgb(10, 160, 102));
+  background: #e84855; /* Change background on hover */
 }
 
+/* Authentication Links */
 .auth-links a {
   margin-left: 1rem; /* Add margin between auth links */
 }
 
+/* Remove margin from last auth link */
 .auth-links a:last-child {
-  margin-right: 0; /* Remove margin from last auth link */
+  margin-right: 0;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
