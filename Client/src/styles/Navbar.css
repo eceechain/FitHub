@@ -1,40 +1,35 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 200px; /* Adjust width as needed */
-    background-color: #333;
-    transition: transform 0.3s ease;
-  }
-  
-  .nav-links, .auth-links {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-  }
-  
-  .nav-links a, .auth-links a {
-    text-decoration: none;
-    color: #fff;
-    margin: 5px 0;
-  }
-  
-  .nav-links a:hover, .auth-links a:hover {
-    opacity: 0.8;
-  }
-  
-  .auth-links {
-    margin-top: 20px;
-  }
-  
-  .open {
-    transform: translateX(-100%);
-  }
-  
-  .content-container {
-    margin-left: 240px; /* Adjust margin as needed */
-    padding: 20px;
-    transition: margin-left 0.3s ease; /* Add transition for smooth animation */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Set background color */
+  padding: 1rem; /* Add padding */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem; /* Add gap between nav items */
+}
+
+.nav-links a,
+.auth-links a {
+  text-decoration: none;
+  color: #333333; /* Set text color */
+  font-size: 1rem; /* Set font size */
+  padding: 0.5rem 1rem; /* Add padding */
+  border-radius: 5px; /* Add border radius */
+  transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.nav-links a:hover,
+.auth-links a:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.auth-links a {
+  margin-left: 1rem; /* Add margin between auth links */
+}
+
+.auth-links a:last-child {
+  margin-right: 0; /* Remove margin from last auth link */
+}
