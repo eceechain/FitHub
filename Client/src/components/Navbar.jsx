@@ -12,8 +12,6 @@ function Navbar() {
         <NavLink to="/calories">Calories Tracking</NavLink>
         <NavLink to="/recommendations">Personalized Recommendations</NavLink>
         <NavLink to="/goalsetting">Goal Setting</NavLink>
-        <NavLink to="/about">About Us</NavLink>
-        <NavLink to="/contact">Contact us</NavLink>
         <NavLink to="/blog">Blog</NavLink>
       </div>
       <div className="auth-links">

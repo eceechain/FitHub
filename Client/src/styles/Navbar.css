@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff; /* Set background color */
+  background-image: -webkit-linear-gradient(grey,white);
   padding: 1rem; /* Add padding */
 }
 
@@ -23,7 +23,7 @@
 
 .nav-links a:hover,
 .auth-links a:hover {
-  background-color: #f0f0f0; /* Change background color on hover */
+  background-image: -webkit-linear-gradient(rgb(17, 101, 150),rgb(10, 160, 102));
 }
 
 .auth-links a {
