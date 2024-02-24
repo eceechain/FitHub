@@ -1,11 +1,22 @@
-import React from 'react'
+import React, {createContext, useContext} from 'react'
+import { useState } from 'react';
 import Dashboard from './Dashboard'
 
+const AuthContext = createContext({
+  isAuthenticated: false,
+});
+
+export const useAuthContext = () => useContext(AuthContext);
+
 function App() {
+  const  [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
-    <div>
+    <AuthContext.Provider value={{
+      isAuthenticated,
+      setIsAuthenticated,
+    }}>
       <Dashboard />
-    </div>
+    </AuthContext.Provider>
   )
 }
 
