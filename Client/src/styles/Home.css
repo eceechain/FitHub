@@ -1,6 +1,6 @@
 /* Home Styles */
 body {
-  background-image: -webkit-linear-gradient(rgb(9, 2, 46),black);
+  background-image: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0));
   
 }
 
@@ -22,7 +22,7 @@ body {
 
 /* Logo Text */
 .logo h1 {
-  font-size: 48px;
+  font-size: 58px;
   font-weight: 700;
   letter-spacing: 5px;
   position: relative;
@@ -31,26 +31,26 @@ body {
 
 /* Logo Span */
 .logo span {
-  color: #e84855;
-  transition: transform 0.3s ease;
+  color: blue;
+  transition: transform 0.1s ease;
 }
 
 /* Hover Effect */
 .logo h1:hover span {
   transform: translateY(-5px) rotateY(180deg) scale(1.2);
-  color: #ffcc00; /* Change color on hover */
+  color: #077d8d; /* Change color on hover */
 }
 
 /* Animation */
 @keyframes movingLetters {
-  0% {
-    transform: translateX(0);
+  5% {
+    transform: translateX(5);
   }
   50% {
     transform: translateX(-10px) rotateY(360deg);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(8);
   }
 }
 
@@ -70,14 +70,14 @@ body {
 .intro-heading {
   font-size: 4rem;
   margin-bottom: 2rem;
-  color: #1b0764;
-  text-shadow: 2px 2px 4px rgb(227, 252, 5);
+  color: #fcfbfd;
+  text-shadow: 2px 2px 4px rgb(5, 252, 211);
   animation: slideInDown 1s ease-in-out;
 }
 
 /* Intro Text */
 .intro-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #fff8f8;
   margin-bottom: 2.5rem;
@@ -88,18 +88,18 @@ body {
 .get-started-button {
   display: inline-block;
   padding: 1.2rem 2.5rem;
-  background-color: #e84855;
+  background-color: blue;
   color: #fff;
   border-radius: 0.5rem;
   text-decoration: none;
   font-size: 1.2rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(3, 253, 199);
 }
 
 /* Button Hover Effect */
 .get-started-button:hover {
-  background-color: #100250;
+  background-color: #020008;
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 8px 12px rgba(1, 199, 248, 0.5);
 }
@@ -112,7 +112,7 @@ body {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(5);
   }
 }
 
@@ -152,7 +152,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(rgba(1, 0, 14, 0.466), rgba(1, 0, 14, 0.418));
   z-index: -1;
 }
 
@@ -186,13 +186,13 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(3, 226, 255);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .instructor:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgb(4, 209, 245);
+  box-shadow: 0 6px 10px rgb(4, 245, 124);
 }
 
 .instructor img {
@@ -262,13 +262,14 @@ body {
   margin-bottom: 40px;
   background-color: #052335;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(3, 252, 231, 0.1);
+  box-shadow: 0 2px 4px rgb(251, 253, 253);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .workout:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgb(2, 200, 250);
+  background-color: rgb(0, 0, 0);
 }
 
 .workout img {
@@ -304,7 +305,7 @@ body {
 .cta-button {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #e84855;
+  background-color: blue;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -314,7 +315,7 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #d62c33;
+  background-color: #000108;
 }
 
 
@@ -341,7 +342,7 @@ body {
 }
 
 .package {
-  background-image: -webkit-radial-gradient(rgb(2, 2, 78),rgb(70, 3, 70));
+  background-image: -webkit-radial-gradient(rgb(2, 2, 26),rgb(10, 3, 70));
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
@@ -353,7 +354,7 @@ body {
 
 .package:hover {
   transform: translateY(-5px) rotate(-2deg);
-  box-shadow: 0 8px 16px rgb(137, 240, 4);
+  box-shadow: 0 8px 16px rgb(4, 212, 240);
 }
 
 .package-name {
@@ -374,13 +375,13 @@ body {
 
 .package-price {
   font-size: 1.5rem;
-  color: #e84855;
+  color: #3b3b49;
   font-weight: bold;
   display: block;
 }
 
 .package-button {
-  background-color: #e84855;
+  background-color: blue;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -391,7 +392,7 @@ body {
 }
 
 .package-button:hover {
-  background-color: #c72434;
+  background-color: #06031f;
 }
 
 .package::before {
@@ -401,7 +402,7 @@ body {
   left: -10px;
   width: calc(100% + 20px);
   height: calc(100% + 20px);
-  background: linear-gradient(45deg, #e84855, #333, #2a2a2a, #4a4a4a);
+  background: linear-gradient(45deg, #48bbe8, #1c2652, #1b1935, #0e0950);
   z-index: -1;
   animation: gradientAnimation 5s linear infinite;
 }
@@ -435,7 +436,7 @@ body {
   font-size: 24px;
   margin-bottom: 20px;
   color: #fffdfd; /* Text color for the heading */
-  text-shadow: 2px 2px 4px rgb(199, 253, 4); /* Add a subtle text shadow */
+  text-shadow: 2px 2px 4px rgb(4, 245, 253); /* Add a subtle text shadow */
 }
 
 .contact-section ul {
@@ -451,25 +452,25 @@ body {
 }
 
 .contact-section ul li:hover {
-  color: #e84855; /* Change text color on hover */
+  color: #03000c; /* Change text color on hover */
 }
 
 .cta-button {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #e84855;
+  background-color: blue;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
   font-size: 18px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgb(186, 253, 2); /* Add a subtle box shadow */
+  box-shadow: 0 4px 6px rgb(13, 14, 14); /* Add a subtle box shadow */
 }
 
 .cta-button:hover {
-  background-color: #0b2a6d;
+  background-color: #030631;
   transform: translateY(-3px);
-  box-shadow: 0 8px 12px rgb(101, 248, 2); /* Increase the shadow on hover */
+  box-shadow: 0 8px 12px rgb(2, 211, 248); /* Increase the shadow on hover */
 }
 
 /* Add animation to the button */
@@ -509,11 +510,11 @@ body {
   margin: 0 auto;
   overflow: hidden; /* Hide overflowing content */
   border-radius: 12px; /* Increased border radius for a softer look */
-  box-shadow: 0 0 20px rgb(253, 249, 2);
+  box-shadow: 0 0 20px rgb(2, 203, 253);
 }
 
 .map-container iframe {
-  border: 4px solid #e84855;
+  border: 4px solid #0d09d1;
   border-radius: 12px; /* Match container's border radius */
   transition: transform 0.3s ease;
 }
@@ -535,7 +536,7 @@ body {
   background-color: #333;
   color: #fff;
   padding: 60px 0 20px;
-  border-top: 4px solid #e84855; /* Add top border */
+  border-top: 4px solid #3311ca; /* Add top border */
 }
 
 .footer .container {
@@ -563,7 +564,7 @@ body {
 }
 
 .footer a:hover {
-  color: #e84855; /* Change color on hover */
+  color: #3b23be; /* Change color on hover */
 }
 
 .footer ul {
