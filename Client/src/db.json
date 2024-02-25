@@ -1,55 +1,54 @@
 {
-    "workoutLogs": [
+    "progress": [
       {
         "id": 1,
-        "exercise": "Push-ups",
-        "duration": "15 minutes",
-        "sets": 3,
-        "reps": 15,
-        "date": "2024-02-24",
-        "image": "http://tinyurl.com/bdaunv68"
+        "date": "2024-02-01",
+        "weight": 160,
+        "bodyFatPercentage": 20,
+        "muscleMass": 65,
+        "caloriesBurned": 2500,
+        "workoutsCompleted": 4,
+        "waterIntake": 8
       },
       {
         "id": 2,
-        "exercise": "Running",
-        "duration": "30 minutes",
-        "distance": "5 km",
-        "date": "2024-02-23",
-        "image": "http://tinyurl.com/mr2vedkc"
+        "date": "2024-02-02",
+        "weight": 159,
+        "bodyFatPercentage": 19.5,
+        "muscleMass": 65.5,
+        "caloriesBurned": 2600,
+        "workoutsCompleted": 5,
+        "waterIntake": 9
       },
       {
         "id": 3,
-        "exercise": "Squats",
-        "duration": "20 minutes",
-        "sets": 4,
-        "reps": 12,
-        "date": "2024-02-22",
-        "image": "http://tinyurl.com/5butt3yf"
+        "date": "2024-02-03",
+        "weight": 158,
+        "bodyFatPercentage": 19,
+        "muscleMass": 66,
+        "caloriesBurned": 2700,
+        "workoutsCompleted": 5,
+        "waterIntake": 10
       },
       {
         "id": 4,
-        "exercise": "Bodybuilding - Bench Press",
-        "duration": "45 minutes",
-        "sets": 5,
-        "reps": 10,
-        "date": "2024-02-23",
-        "image": "http://tinyurl.com/24eftddh"
+        "date": "2024-02-04",
+        "weight": 157,
+        "bodyFatPercentage": 18.5,
+        "muscleMass": 66.5,
+        "caloriesBurned": 2800,
+        "workoutsCompleted": 6,
+        "waterIntake": 10
       },
       {
         "id": 5,
-        "exercise": "Yoga - Sun Salutation",
-        "duration": "20 minutes",
-        "date": "2024-02-22",
-        "image": "http://tinyurl.com/bdd84c3a"
-      },
-      {
-        "id": 6,
-        "exercise": "Calisthenics - Pull-ups",
-        "duration": "25 minutes",
-        "sets": 4,
-        "reps": 8,
-        "date": "2024-02-21",
-        "image": "http://tinyurl.com/v9jzfx2b"
+        "date": "2024-02-05",
+        "weight": 156,
+        "bodyFatPercentage": 18,
+        "muscleMass": 67,
+        "caloriesBurned": 2900,
+        "workoutsCompleted": 6,
+        "waterIntake": 10
       }
     ]
   }
