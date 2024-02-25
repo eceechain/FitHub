@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/ProgressTracking.css'
 
 function ProgressTracking() {
   const [progressData, setProgressData] = useState([]);
