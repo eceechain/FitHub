@@ -6,14 +6,16 @@
         "duration": "15 minutes",
         "sets": 3,
         "reps": 15,
-        "date": "2024-02-24"
+        "date": "2024-02-24",
+        "image": "http://tinyurl.com/bdaunv68"
       },
       {
         "id": 2,
         "exercise": "Running",
         "duration": "30 minutes",
         "distance": "5 km",
-        "date": "2024-02-23"
+        "date": "2024-02-23",
+        "image": "http://tinyurl.com/mr2vedkc"
       },
       {
         "id": 3,
@@ -21,7 +23,8 @@
         "duration": "20 minutes",
         "sets": 4,
         "reps": 12,
-        "date": "2024-02-22"
+        "date": "2024-02-22",
+        "image": "http://tinyurl.com/5butt3yf"
       },
       {
         "id": 4,
@@ -29,13 +32,15 @@
         "duration": "45 minutes",
         "sets": 5,
         "reps": 10,
-        "date": "2024-02-23"
+        "date": "2024-02-23",
+        "image": "http://tinyurl.com/24eftddh"
       },
       {
         "id": 5,
         "exercise": "Yoga - Sun Salutation",
         "duration": "20 minutes",
-        "date": "2024-02-22"
+        "date": "2024-02-22",
+        "image": "http://tinyurl.com/bdd84c3a"
       },
       {
         "id": 6,
@@ -43,7 +48,8 @@
         "duration": "25 minutes",
         "sets": 4,
         "reps": 8,
-        "date": "2024-02-21"
+        "date": "2024-02-21",
+        "image": "http://tinyurl.com/v9jzfx2b"
       }
     ]
   }
