@@ -1,0 +1,50 @@
+{
+    "workoutLogs": [
+      {
+        "id": 1,
+        "exercise": "Push-ups",
+        "duration": "15 minutes",
+        "sets": 3,
+        "reps": 15,
+        "date": "2024-02-24"
+      },
+      {
+        "id": 2,
+        "exercise": "Running",
+        "duration": "30 minutes",
+        "distance": "5 km",
+        "date": "2024-02-23"
+      },
+      {
+        "id": 3,
+        "exercise": "Squats",
+        "duration": "20 minutes",
+        "sets": 4,
+        "reps": 12,
+        "date": "2024-02-22"
+      },
+      {
+        "id": 4,
+        "exercise": "Bodybuilding - Bench Press",
+        "duration": "45 minutes",
+        "sets": 5,
+        "reps": 10,
+        "date": "2024-02-23"
+      },
+      {
+        "id": 5,
+        "exercise": "Yoga - Sun Salutation",
+        "duration": "20 minutes",
+        "date": "2024-02-22"
+      },
+      {
+        "id": 6,
+        "exercise": "Calisthenics - Pull-ups",
+        "duration": "25 minutes",
+        "sets": 4,
+        "reps": 8,
+        "date": "2024-02-21"
+      }
+    ]
+  }
+  

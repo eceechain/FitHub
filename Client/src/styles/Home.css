@@ -1,6 +1,6 @@
 /* Home Styles */
 body {
-  background-image: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0));
   
 }
 
@@ -587,4 +587,36 @@ body {
   margin: 0;
   font-style: italic; /* Italicize text */
   color: #888; /* Dimmed color */
+}
+
+/* Common styles */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Adjust max-width as needed */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styles for screens smaller than 768px (e.g., mobile phones) */
+@media (max-width: 767px) {
+  .container {
+      padding: 10px;
+  }
+  /* Add specific styles for smaller screens if needed */
+}
+
+/* Styles for screens between 768px and 991px (e.g., tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+      padding: 15px;
+  }
+  /* Add specific styles for medium screens if needed */
+}
+
+/* Styles for screens larger than 992px (e.g., desktops) */
+@media (min-width: 992px) {
+  .container {
+      padding: 20px;
+  }
+  /* Add specific styles for larger screens if needed */
 }
