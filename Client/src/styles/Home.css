@@ -6,9 +6,53 @@ body {
 
 /* Dark mode styles */
 .dark-mode {
-  background-image: -webkit-repeating-linear-gradient(rgb(2, 34, 49),rgb(12, 8, 48));
-  color: #f9f9fc;
+  background-color: #04195f75;
+  color: #fff;
 }
+
+/* Dark mode toggle button styles */
+.dark-mode-toggle {
+  background: linear-gradient(to right, #01235e70, #0b5fb9);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s; /* Added transitions for color, background, box-shadow, and transform */
+  outline: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode-toggle:hover {
+  background: linear-gradient(to right, #0643b8, #007bff);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05) rotate(3deg); /* Scale and rotate effect on hover */
+}
+
+.dark-mode-toggle:focus {
+  outline: none;
+}
+
+/* Animation for button hover effect */
+@keyframes buttonHover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.dark-mode-toggle:hover {
+  animation: buttonHover 0.3s ease;
+}
+
+
+
 
 .home-content {
   max-width: 1200px;
