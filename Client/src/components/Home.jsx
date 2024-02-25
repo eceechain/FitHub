@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
-import '../styles/App.css'
+import '../styles/App.css';
 
 function Home() {
+  // State for managing dark mode
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="home-content">
+    <div className={`home-content ${darkMode ? 'dark-mode' : ''}`}>
       <div className="content">
+        {/* Dark mode toggle */}
+        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
+
         {/* Logo */}
         <div className="logo">
           <h1><span>Fit</span>Hub</h1>
@@ -17,7 +30,7 @@ function Home() {
   <h2 className="intro-heading">Your All-in-One Fitness Tracking App</h2>
   <p className="intro-text">Take control of your fitness journey with FitHub. Whether you're aiming to lose weight, build muscle, or simply stay active, FitHub provides you with the tools and support you need to achieve your goals.</p>
   <p className="intro-text">Track your workouts, monitor your calorie intake, set personalized goals, and get expert recommendations tailored to your fitness level and objectives. With FitHub, you can access a vast library of exercises, healthy recipes, and connect with a supportive fitness community.</p>
-  <Link to="/register" className="get-started-button">Get Started</Link>
+  <Link to="/WorkoutLogs" className="get-started-button">Get Started</Link>
 </div>
 
 
