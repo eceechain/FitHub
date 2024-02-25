@@ -53,7 +53,7 @@ function Blog() {
       <section className="blog-section">
         <h3>Fitness Tips</h3>
         <div className="blog-post">
-          <img src="fitness-tip1.jpg" alt="Fitness Tip 1" />
+          <img src="http://tinyurl.com/mr2wstun" alt="Fitness Tip 1" />
           <div className="post-content">
             <h4>Stay Hydrated: The Key to Peak Performance</h4>
             <p>Discover the importance of hydration in maintaining energy levels, optimizing performance, and promoting overall health during workouts.</p>
@@ -61,7 +61,7 @@ function Blog() {
           </div>
         </div>
         <div className="blog-post">
-          <img src="fitness-tip2.jpg" alt="Fitness Tip 2" />
+          <img src="http://tinyurl.com/4eezfk5e" alt="Fitness Tip 2" />
           <div className="post-content">
             <h4>Set Realistic Goals: A Guide to Sustainable Progress</h4>
             <p>Learn how to set SMART (Specific, Measurable, Achievable, Relevant, Time-bound) fitness goals to ensure long-term success and motivation.</p>
