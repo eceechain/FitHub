@@ -4,7 +4,7 @@ import '../styles/Navbar.css';
 import { useAuthContext } from './App';
 
 function Navbar() {
-  const {isAuthenticated, setIsAuthenticated} = useAuthContext();
+  const {isAuthenticated, removeAcessToken} = useAuthContext();
   console.log(isAuthenticated);
   return (
     <nav className="navbar">
@@ -20,7 +20,7 @@ function Navbar() {
         <NavLink to="/blog">Blog</NavLink>
       </div>
       <div className="auth-links">
-        {isAuthenticated ? <button onClick={() => setIsAuthenticated(false)}>logout</button> : <>
+        {isAuthenticated ? <button onClick={() => removeAcessToken()}>logout</button> : <>
         <NavLink to="/socialsharing">Social Sharing</NavLink>
         <NavLink to="/account/login">Login</NavLink>
         <NavLink to="/account/register">Register</NavLink>
