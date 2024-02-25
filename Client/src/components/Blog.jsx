@@ -4,23 +4,70 @@ function Blog() {
   return (
     <div className="blog-container">
       <h2>Welcome to the FitHub Blog!</h2>
-      <p>FitHub is based in Nairobi, Kenya, and located at Ngong Lane Plaza. It was founded and created by Abdullahi Abass, Jared Amima, Ali Nur, Leroy Kariuki, Isaac Mutiga, and Craig Otieno, who are graduates from Moringa School, a leading tech bootcamp.</p>
-      <h3>Latest Posts</h3>
-      <div className="blog-post">
-        <h4>Post Title 1</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut est velit. Suspendisse potenti. Nam vehicula faucibus diam, in fringilla ligula porta et.</p>
-        <img src="post1.jpg" alt="Post 1" />
-      </div>
-      <div className="blog-post">
-        <h4>Post Title 2</h4>
-        <p>Integer et convallis eros, non ultricies ligula. Nulla facilisi. Suspendisse eget est orci. Fusce vestibulum ultrices sapien, non fringilla libero.</p>
-        <img src="post2.jpg" alt="Post 2" />
-      </div>
-      <div className="blog-post">
-        <h4>Post Title 3</h4>
-        <p>Vestibulum nec aliquet ligula, id rutrum urna. Nulla facilisi. Morbi rhoncus urna id risus vehicula, ut lacinia ligula posuere.</p>
-        <img src="post3.jpg" alt="Post 3" />
-      </div>
+      <p>Discover inspiring success stories, insightful articles, and helpful tips to enhance your fitness journey.</p>
+
+      {/* Success Stories */}
+      <section className="blog-section">
+        <h3>Success Stories</h3>
+        <div className="blog-post">
+          <img src="success-story1.jpg" alt="Success Story 1" />
+          <div className="post-content">
+            <h4>From Couch Potato to Marathon Finisher: How John Transformed His Life</h4>
+            <p>Read how John went from leading a sedentary lifestyle to completing his first marathon with the help of FitHub.</p>
+            <a href="/success-stories/john" className="read-more">Read More</a>
+          </div>
+        </div>
+        <div className="blog-post">
+          <img src="success-story2.jpg" alt="Success Story 2" />
+          <div className="post-content">
+            <h4>Overcoming Obstacles: Sarah's Journey to Weight Loss and Self-Confidence</h4>
+            <p>Learn how Sarah conquered her weight loss goals and gained self-confidence through consistent workouts and healthy habits.</p>
+            <a href="/success-stories/sarah" className="read-more">Read More</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Fitness Articles */}
+      <section className="blog-section">
+        <h3>Fitness Articles</h3>
+        <div className="blog-post">
+          <img src="fitness-article1.jpg" alt="Fitness Article 1" />
+          <div className="post-content">
+            <h4>5 Essential Exercises for Building Muscle Mass</h4>
+            <p>Discover the top five exercises recommended by fitness experts for maximizing muscle growth and strength.</p>
+            <a href="/articles/building-muscle" className="read-more">Read More</a>
+          </div>
+        </div>
+        <div className="blog-post">
+          <img src="fitness-article2.jpg" alt="Fitness Article 2" />
+          <div className="post-content">
+            <h4>The Importance of Nutrition in Achieving Your Fitness Goals</h4>
+            <p>Learn how proper nutrition plays a crucial role in fueling your workouts, enhancing recovery, and achieving optimal fitness results.</p>
+            <a href="/articles/nutrition-importance" className="read-more">Read More</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Fitness Tips */}
+      <section className="blog-section">
+        <h3>Fitness Tips</h3>
+        <div className="blog-post">
+          <img src="fitness-tip1.jpg" alt="Fitness Tip 1" />
+          <div className="post-content">
+            <h4>Stay Hydrated: The Key to Peak Performance</h4>
+            <p>Discover the importance of hydration in maintaining energy levels, optimizing performance, and promoting overall health during workouts.</p>
+            <a href="/tips/stay-hydrated" className="read-more">Read More</a>
+          </div>
+        </div>
+        <div className="blog-post">
+          <img src="fitness-tip2.jpg" alt="Fitness Tip 2" />
+          <div className="post-content">
+            <h4>Set Realistic Goals: A Guide to Sustainable Progress</h4>
+            <p>Learn how to set SMART (Specific, Measurable, Achievable, Relevant, Time-bound) fitness goals to ensure long-term success and motivation.</p>
+            <a href="/tips/realistic-goals" className="read-more">Read More</a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
