@@ -8,7 +8,13 @@
         "muscleMass": 65,
         "caloriesBurned": 2500,
         "workoutsCompleted": 4,
-        "waterIntake": 8
+        "waterIntake": 8,
+        "sleepHours": 7,
+        "stepsTaken": 8000,
+        "proteinIntake": 100,
+        "carbohydrateIntake": 150,
+        "fatIntake": 60,
+        "hoursActive": 3
       },
       {
         "id": 2,
@@ -18,7 +24,13 @@
         "muscleMass": 65.5,
         "caloriesBurned": 2600,
         "workoutsCompleted": 5,
-        "waterIntake": 9
+        "waterIntake": 9,
+        "sleepHours": 8,
+        "stepsTaken": 9000,
+        "proteinIntake": 110,
+        "carbohydrateIntake": 160,
+        "fatIntake": 65,
+        "hoursActive": 4
       },
       {
         "id": 3,
@@ -28,7 +40,13 @@
         "muscleMass": 66,
         "caloriesBurned": 2700,
         "workoutsCompleted": 5,
-        "waterIntake": 10
+        "waterIntake": 10,
+        "sleepHours": 7.5,
+        "stepsTaken": 10000,
+        "proteinIntake": 120,
+        "carbohydrateIntake": 170,
+        "fatIntake": 70,
+        "hoursActive": 4.5
       },
       {
         "id": 4,
@@ -38,7 +56,13 @@
         "muscleMass": 66.5,
         "caloriesBurned": 2800,
         "workoutsCompleted": 6,
-        "waterIntake": 10
+        "waterIntake": 10,
+        "sleepHours": 8,
+        "stepsTaken": 11000,
+        "proteinIntake": 130,
+        "carbohydrateIntake": 180,
+        "fatIntake": 75,
+        "hoursActive": 5
       },
       {
         "id": 5,
@@ -48,7 +72,13 @@
         "muscleMass": 67,
         "caloriesBurned": 2900,
         "workoutsCompleted": 6,
-        "waterIntake": 10
+        "waterIntake": 10,
+        "sleepHours": 8.5,
+        "stepsTaken": 12000,
+        "proteinIntake": 140,
+        "carbohydrateIntake": 190,
+        "fatIntake": 80,
+        "hoursActive": 5.5
       }
     ]
   }
