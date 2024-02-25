@@ -1,33 +1,27 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from './App';
 
 
 export default function Login() {
   const navigate = useNavigate();
-  const {isAuthenticated, setIsAuthenticated} = useAuthContext();
-  const [email, setEmail] = useState("");
+  const {saveAcessToken} = useAuthContext();
+  const [name, setname] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  console.log(isAuthenticated);
-
-  const preventRefresh = (e) => {
-    e.preventDefault();
-    setIsAuthenticated(true);
-    navigate('/');
-  };
+  console.log(name);
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
 
     // Send login request to the server
-    fetch("http://localhost:5001/login", {
+    fetch("https://fithub-kl23.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username: "john", password: "password123" }),
+      body: JSON.stringify({ username: name, password: password }),
     })
       .then((res) => {
         if (!res.ok) {
@@ -35,10 +29,10 @@ export default function Login() {
         }
         return res.json();
       })
-      .then((user) => {
+      .then((result) => {
         // onLogin(user);
-        // navigate("/exercises");
-        console.log(user);
+        saveAcessToken(result.access_token);
+        navigate('/');
       })
       .catch((error) => {
         alert(error.message);
@@ -47,6 +41,7 @@ export default function Login() {
         setIsLoading(false);
       });
   }
+
 	return (
 		<div className="wrapper signIn">
 			<div className="illustration">
@@ -54,17 +49,17 @@ export default function Login() {
 			</div>
 			<div className="form">
 				<div className="heading">LOGIN</div>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="name">Name</label>
-						<input type="text" id="name" placeholder="Enter your name" />
+						<input required type="text" id="name" placeholder="Enter your name" value={name} onChange={(e) => setname(e.target.value)} />
 					</div>
 					<div>
 						<label htmlFor="password">Password</label>
-						<input type="password" id="password" placeholder="****************" />
+						<input required type="password" id="password" placeholder="****************" value={password} onChange={(e) => setPassword(e.target.value)} />
 					</div>
-					<button type="submit" onClick={handleSubmit}>
-						Submit
+					<button type="submit">
+						{isLoading ? "Please wait..." : "Submit"}
 					</button>
 				</form>
 				<p>
