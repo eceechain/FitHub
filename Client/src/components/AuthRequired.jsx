@@ -4,7 +4,7 @@ import { useAuthContext } from './App';
 
 const AuthRequired = () => {
   const location = useLocation();
-  const {isAuthenticated, setIsAuthenticated} = useAuthContext();
+  const {isAuthenticated} = useAuthContext();
 
   return !isAuthenticated ? (
     <Navigate to="/account/login" state={{from: location}} replace />
