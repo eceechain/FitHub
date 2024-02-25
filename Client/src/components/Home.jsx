@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
-import '../styles/App.css'
+import '../styles/App.css';
 
 function Home() {
+  // State for managing dark mode
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="home-content">
+    <div className={`home-content ${darkMode ? 'dark-mode' : ''}`}>
       <div className="content">
+        {/* Dark mode toggle */}
+        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
+
         {/* Logo */}
         <div className="logo">
           <h1><span>Fit</span>Hub</h1>

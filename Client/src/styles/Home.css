@@ -4,6 +4,11 @@ body {
   
 }
 
+/* Dark mode styles */
+.dark-mode {
+  background-image: -webkit-repeating-linear-gradient(rgb(2, 34, 49),rgb(12, 8, 48));
+  color: #f9f9fc;
+}
 
 .home-content {
   max-width: 1200px;
