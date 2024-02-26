@@ -6,27 +6,21 @@ function WorkoutLogs() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [timer, setTimer] = useState(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (timer) {
-      const interval = setInterval(() => {
-        setElapsedTime(prevElapsedTime => prevElapsedTime + 1);
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [timer]);
-
   const fetchData = async () => {
     setLoading(true);
     try {
       const response = await axios.get('https://fithub-kl23.onrender.com/Workouts');
-      setWorkouts(response.data.workouts);
+      // Initialize timer state for each workout
+      const updatedWorkouts = response.data.workouts.map(workout => ({
+        ...workout,
+        timer: null
+      }));
+      setWorkouts(updatedWorkouts);
       setLoading(false);
     } catch (error) {
       setError('Error fetching workout data. Please try again later.');
@@ -35,24 +29,32 @@ function WorkoutLogs() {
     }
   };
 
-  const startWorkout = (id) => {
-    console.log(`Workout with ID ${id} started`);
-    setTimer(Date.now());
+  // Function to handle starting the timer for a specific workout
+  const startTimer = (id) => {
+    setWorkouts(prevWorkouts => prevWorkouts.map(workout => {
+      if (workout.id === id && !workout.timer) {
+        const startTime = Date.now();
+        const newTimer = setInterval(() => {
+          const elapsedTime = Date.now() - startTime;
+          setWorkouts(prevWorkouts => prevWorkouts.map(w => w.id === id ? { ...w, timer: elapsedTime } : w));
+        }, 1000);
+        return { ...workout, timer: newTimer };
+      }
+      return workout;
+    }));
   };
 
-  const finishWorkout = (id) => {
-    console.log(`Workout with ID ${id} finished`);
-    const workout = workouts.find(workout => workout.id === id);
-    const duration = elapsedTime / 60; // Calculate duration in minutes
-    alert(`Workout "${workout.workout_type}" finished! Duration: ${duration.toFixed(2)} minutes`);
-    setTimer(null);
-    setElapsedTime(0);
-  };
-
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  // Function to handle finishing the timer for a specific workout
+  const finishTimer = (id) => {
+    setWorkouts(prevWorkouts => prevWorkouts.map(workout => {
+      if (workout.id === id && workout.timer) {
+        clearInterval(workout.timer);
+        return { ...workout, timer: null };
+      }
+      return workout;
+    }));
+    // Show a notification or message that the workout has been finished
+    alert('Workout finished!');
   };
 
   return (
@@ -73,12 +75,12 @@ function WorkoutLogs() {
                 <p>Sets: {workout.sets}</p>
                 <p>Reps: {workout.reps}</p>
                 <p>Calories Burned: {workout.calories_burned}</p>
-                <div className="timer">{formatTime(elapsedTime)}</div>
-                {!timer ? (
-                  <button onClick={() => startWorkout(workout.id)}>Start Workout</button>
-                ) : (
-                  <button onClick={() => finishWorkout(workout.id)}>Finish Workout</button>
-                )}
+                {/* Show timer only if it's running */}
+                {workout.timer && <p>Timer: {Math.floor(workout.timer / 1000)} seconds</p>}
+                {/* Button to start timer */}
+                <button onClick={() => startTimer(workout.id)}>Start</button>
+                {/* Button to finish timer */}
+                <button onClick={() => finishTimer(workout.id)}>Finish</button>
               </div>
             </div>
           ))}
