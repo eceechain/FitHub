@@ -24,6 +24,16 @@ function WorkoutLogs() {
     }
   };
 
+  const startWorkout = (id) => {
+    // Code to start the workout
+    console.log(`Workout with ID ${id} started`);
+  };
+
+  const finishWorkout = (id) => {
+    // Code to finish the workout
+    console.log(`Workout with ID ${id} finished`);
+  };
+
   return (
     <div className="workout-logs-container">
       <h2>Workout Logs</h2>
@@ -42,6 +52,8 @@ function WorkoutLogs() {
                 <p>Sets: {workout.sets}</p>
                 <p>Reps: {workout.reps}</p>
                 <p>Calories Burned: {workout.calories_burned}</p>
+                <button onClick={() => startWorkout(workout.id)}>Start Workout</button>
+                <button onClick={() => finishWorkout(workout.id)}>Finish Workout</button>
               </div>
             </div>
           ))}
