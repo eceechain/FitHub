@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/WorkoutLog.css'
+import '../styles/WorkoutLog.css';
 
 function WorkoutLogs() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [timer, setTimer] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -25,13 +26,16 @@ function WorkoutLogs() {
   };
 
   const startWorkout = (id) => {
-    // Code to start the workout
     console.log(`Workout with ID ${id} started`);
+    setTimer(Date.now());
   };
 
   const finishWorkout = (id) => {
-    // Code to finish the workout
     console.log(`Workout with ID ${id} finished`);
+    const workout = workouts.find(workout => workout.id === id);
+    const duration = ((Date.now() - timer) / 1000) / 60; // Calculate duration in minutes
+    alert(`Workout "${workout.workout_type}" finished! Duration: ${duration.toFixed(2)} minutes`);
+    setTimer(null);
   };
 
   return (
