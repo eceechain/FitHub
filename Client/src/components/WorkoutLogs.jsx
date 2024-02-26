@@ -7,10 +7,20 @@ function WorkoutLogs() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [timer, setTimer] = useState(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (timer) {
+      const interval = setInterval(() => {
+        setElapsedTime(prevElapsedTime => prevElapsedTime + 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [timer]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -33,9 +43,16 @@ function WorkoutLogs() {
   const finishWorkout = (id) => {
     console.log(`Workout with ID ${id} finished`);
     const workout = workouts.find(workout => workout.id === id);
-    const duration = ((Date.now() - timer) / 1000) / 60; // Calculate duration in minutes
+    const duration = elapsedTime / 60; // Calculate duration in minutes
     alert(`Workout "${workout.workout_type}" finished! Duration: ${duration.toFixed(2)} minutes`);
     setTimer(null);
+    setElapsedTime(0);
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -56,8 +73,12 @@ function WorkoutLogs() {
                 <p>Sets: {workout.sets}</p>
                 <p>Reps: {workout.reps}</p>
                 <p>Calories Burned: {workout.calories_burned}</p>
-                <button onClick={() => startWorkout(workout.id)}>Start Workout</button>
-                <button onClick={() => finishWorkout(workout.id)}>Finish Workout</button>
+                <div className="timer">{formatTime(elapsedTime)}</div>
+                {!timer ? (
+                  <button onClick={() => startWorkout(workout.id)}>Start Workout</button>
+                ) : (
+                  <button onClick={() => finishWorkout(workout.id)}>Finish Workout</button>
+                )}
               </div>
             </div>
           ))}
