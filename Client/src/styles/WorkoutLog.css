@@ -1,59 +1,105 @@
 .workout-logs-container {
-    color: white;
+  margin: 20px;
+  padding: 20px;
+  background-color: #030f2775;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(4, 239, 247);
+}
+
+.workout-logs-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #f8f4f4;
+}
+
+.workout-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.workout-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.workout-item:hover {
+  transform: translateY(-5px);
+}
+
+.workout-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.workout-details {
+  padding: 20px;
+}
+
+.workout-details h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.workout-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.workout-details button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.workout-details button:hover {
+  filter: brightness(90%);
+}
+
+.start-button {
+  background-color: #4232cc;
+  color: #fff;
+}
+
+.finish-button {
+  background-color: #3562dc;
+  color: #fff;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: none;
+}
+
+.notification.show {
+  display: block;
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
   }
-  
-  .workout-log {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
+  to {
+    transform: translateY(0);
   }
-  
-  .workout-log:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-  }
-  
-  .workout-log .exercise-image {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .workout-log:hover .exercise-image {
-    transform: scale(1.1);
-  }
-  
-  .workout-log .exercise-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .workout-log .log-details {
-    flex: 1;
-  }
-  
-  .workout-log .log-details h3 {
-    margin-top: 0;
-  }
-  
-  .workout-log strong {
-    font-weight: bold;
-  }
-  
-  .workout-log p {
-    margin: 5px 0;
-  }
-  
-  .workout-log p:last-child {
-    margin-bottom: 0;
-  }
-  
+}

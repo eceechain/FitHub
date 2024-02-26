@@ -1,44 +1,56 @@
-/* GoalSetting.css */
-
 .goal-setting-container {
-    background-color: rgb(254, 246, 246);
-    color: white;
-    padding: 20px;
-  }
-  
-  .goal-form input[type="text"],
-  .goal-form input[type="datetime-local"],
-  .goal-form button {
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .goal-form input[type="text"],
-  .goal-form input[type="datetime-local"] {
-    width: 100%;
-  }
-  
-  .goal-form button[type="submit"] {
-    width: 100%;
-  }
-  
-  .goal-button {
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  .goal-button:hover {
-    background-color: #030631; /* Darker shade of blue on hover */
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2d399e86;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(2, 211, 248, 0.664);
+}
+
+.description {
+  color: #fffbfb;
+}
+
+.add-goal, .current-goals {
+  margin-top: 20px;
+}
+
+.add-goal input, .add-goal button {
+  margin-right: 10px;
+}
+
+.goal-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #1222af;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.goal-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.goal-item h4 {
+  margin-top: 0;
+  color: #fcfbfb;
+}
+
+.goal-item button {
+  background-color: #3c72e7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goal-item button:hover {
+  background-color: #020111;
+}
