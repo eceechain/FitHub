@@ -9,6 +9,8 @@
   .workout-logs-container h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
   }
   
   .workout-list {
@@ -18,9 +20,6 @@
   }
   
   .workout-item {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -34,14 +33,31 @@
   
   .workout-details {
     padding: 20px;
+    background-color: #fff;
   }
   
   .workout-details h3 {
     margin-top: 0;
     margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
   }
   
   .workout-details p {
     margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .workout-details p:first-child {
+    font-weight: bold;
+  }
+  
+  .workout-details p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .workout-details p:not(:last-child) {
+    margin-bottom: 10px;
   }
   

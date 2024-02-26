@@ -2,13 +2,13 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: #2d399e86;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(2, 211, 248, 0.664);
   }
   
   .description {
-    color: #555;
+    color: #fffbfb;
   }
   
   .add-goal, .current-goals {
@@ -22,7 +22,7 @@
   .goal-item {
     margin-bottom: 15px;
     padding: 15px;
-    background-color: #fff;
+    background-color: #1222af;
     border: 1px solid #ddd;
     border-radius: 8px;
     display: flex;
@@ -38,7 +38,7 @@
   
   .goal-item h4 {
     margin-top: 0;
-    color: #333;
+    color: #fcfbfb;
   }
   
   .goal-item button {
