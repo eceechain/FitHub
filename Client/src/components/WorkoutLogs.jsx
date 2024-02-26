@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/WorkoutLog.css'
 
 function WorkoutLogs() {
   const [workouts, setWorkouts] = useState([]);
