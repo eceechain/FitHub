@@ -5,6 +5,7 @@ function SocialSharing() {
   const [funFact, setFunFact] = useState('');
   const [trendingText, setTrendingText] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState('');
   const [savedNews, setSavedNews] = useState([]);
   const [newsVisible, setNewsVisible] = useState(true);
 
@@ -49,8 +50,11 @@ function SocialSharing() {
   const handleTrendingClick = () => {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
+    fileInput.accept = 'image/*';
     fileInput.onchange = (e) => {
-      setSelectedFile(e.target.files[0]);
+      const file = e.target.files[0];
+      setSelectedFile(file);
+      setFileUrl(URL.createObjectURL(file));
       const text = window.prompt("Enter additional information:");
       setTrendingText(text);
     };
@@ -61,11 +65,13 @@ function SocialSharing() {
     if (selectedFile || trendingText) {
       const news = {
         file: selectedFile,
+        fileUrl: fileUrl,
         additionalInfo: trendingText
       };
       setSavedNews([...savedNews, news]);
     }
     setSelectedFile(null);
+    setFileUrl('');
     setTrendingText('');
   };
 
@@ -107,7 +113,8 @@ function SocialSharing() {
             <ul>
               {savedNews.map((news, index) => (
                 <li key={index}>
-                  File: {news.file ? news.file.name : "No file selected"}<br />
+                  {news.fileUrl && <img src={news.fileUrl} alt="Selected file" style={{ maxWidth: '200px', maxHeight: '200px' }} />}
+                  <br />
                   Additional Info: {news.additionalInfo}
                 </li>
               ))}
