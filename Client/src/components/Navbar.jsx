@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Navbar.css';
+import { useAuthContext } from './App';
 
 function Navbar() {
+  const {isAuthenticated, removeAcessToken} = useAuthContext();
+  console.log(isAuthenticated);
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -62,6 +65,12 @@ function Navbar() {
           </div>
         </div>
       </div>
+      <div className="auth-links">
+        {isAuthenticated ? <button onClick={() => removeAcessToken()}>logout</button> : <>
+        <NavLink to="/socialsharing">Social Sharing</NavLink>
+        <NavLink to="/account/login">Login</NavLink>
+        <NavLink to="/account/register">Register</NavLink>
+        </>}
       <div className="content">
         <div className="nav-links">
           <NavLink to="/" className="logo">
