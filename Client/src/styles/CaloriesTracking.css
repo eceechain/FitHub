@@ -1,0 +1,25 @@
+.calories-tracking {
+    padding: 20px;
+  }
+  
+  .calories-tracking h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .calories-tracking table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .calories-tracking th,
+  .calories-tracking td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .calories-tracking th {
+    background-color: #f2f2f2;
+  }
+  

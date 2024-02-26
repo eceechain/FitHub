@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/CaloriesTracking.css';
 
 function CaloriesTracking() {
   const [caloriesData, setCaloriesData] = useState([]);
