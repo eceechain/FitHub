@@ -29,15 +29,18 @@ function ProgressTracking() {
   };
 
   const sortByDate = () => {
-    setFilteredData([...filteredData].sort((a, b) => new Date(a.date) - new Date(b.date)));
+    const sortedData = [...filteredData].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setFilteredData(sortedData);
   };
 
   const sortByWeight = () => {
-    setFilteredData([...filteredData].sort((a, b) => a.weight - b.weight));
+    const sortedData = [...filteredData].sort((a, b) => a.weight - b.weight);
+    setFilteredData(sortedData);
   };
 
   const sortByBodyFat = () => {
-    setFilteredData([...filteredData].sort((a, b) => a.body_fat_percentage - b.body_fat_percentage));
+    const sortedData = [...filteredData].sort((a, b) => a.body_fat_percentage - b.body_fat_percentage);
+    setFilteredData(sortedData);
   };
 
   const filterData = () => {
@@ -72,16 +75,18 @@ function ProgressTracking() {
       {error && <p>{error}</p>}
       {!loading && !error && (
         <>
-          <div>
+          <div className="button-group">
             <button onClick={sortByDate}>Sort by Date</button>
             <button onClick={sortByWeight}>Sort by Weight</button>
             <button onClick={sortByBodyFat}>Sort by Body Fat Percentage</button>
+          </div>
+          <div className="date-filter">
             <label>Start Date: <input type="date" value={startDate} onChange={handleStartDateChange} /></label>
             <label>End Date: <input type="date" value={endDate} onChange={handleEndDateChange} /></label>
             <button onClick={filterData}>Filter</button>
           </div>
-          <div style={{ width: '100%', height: 400 }}>
-            <ResponsiveContainer>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height={400}>
               <LineChart
                 data={filteredData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
