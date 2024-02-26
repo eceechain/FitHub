@@ -1,0 +1,46 @@
+.goal-setting-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .description {
+    color: #555;
+  }
+  
+  .add-goal, .current-goals {
+    margin-top: 20px;
+  }
+  
+  .add-goal input, .add-goal button {
+    margin-right: 10px;
+  }
+  
+  .goal-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .goal-item h4 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .goal-item button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .goal-item button:hover {
+    background-color: #c0392b;
+  }
+  

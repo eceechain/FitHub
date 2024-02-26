@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/GoalSetting.css'
 
 function GoalSetting() {
   const [goals, setGoals] = useState([]);
@@ -46,11 +47,11 @@ function GoalSetting() {
   };
 
   return (
-    <div>
+    <div className="goal-setting-container">
       <h2>Goal Setting</h2>
-      <p>Allow users to set specific fitness goals, such as weight loss, muscle gain, or improving endurance, and track their progress towards these goals.</p>
+      <p className="description">Allow users to set specific fitness goals, such as weight loss, muscle gain, or improving endurance, and track their progress towards these goals.</p>
 
-      <div>
+      <div className="add-goal">
         <h3>Add New Goal</h3>
         <input type="text" name="goal_type" placeholder="Goal Type" value={newGoal.goal_type} onChange={handleInputChange} />
         <input type="text" name="deadline" placeholder="Deadline" value={newGoal.deadline} onChange={handleInputChange} />
@@ -58,10 +59,10 @@ function GoalSetting() {
         <button onClick={addGoal}>Add Goal</button>
       </div>
 
-      <div>
+      <div className="current-goals">
         <h3>Current Goals</h3>
         {goals.map(goal => (
-          <div key={goal.id}>
+          <div key={goal.id} className="goal-item">
             <h4>Goal Type: {goal.goal_type}</h4>
             <p>Deadline: {goal.deadline}</p>
             <p>Target: {goal.target}</p>
