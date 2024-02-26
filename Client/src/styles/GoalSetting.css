@@ -4,6 +4,7 @@
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .description {
@@ -20,10 +21,19 @@
   
   .goal-item {
     margin-bottom: 15px;
-    padding: 10px;
+    padding: 15px;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .goal-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .goal-item h4 {
@@ -32,15 +42,16 @@
   }
   
   .goal-item button {
-    background-color: #e74c3c;
+    background-color: #3c72e7;
     color: #fff;
     border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
+    border-radius: 4px;
+    padding: 8px 12px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
   .goal-item button:hover {
-    background-color: #c0392b;
+    background-color: #020111;
   }
   
