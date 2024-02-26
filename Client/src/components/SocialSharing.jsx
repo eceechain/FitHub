@@ -10,8 +10,6 @@ function SocialSharing() {
   const [newsVisible, setNewsVisible] = useState(true);
 
   const handleShare = () => {
-    // Implement your custom sharing logic here
-    // For example, you can use the Web Share API
     if (navigator.share) {
       navigator.share({
         title: 'Shared via Fitness App',
@@ -21,9 +19,7 @@ function SocialSharing() {
       .then(() => console.log('Shared successfully'))
       .catch((error) => console.error('Error sharing:', error));
     } else {
-      // Fallback for browsers that do not support Web Share API
-      // For example, you can open a modal or display a toast message
-      alert('Shared via Fitness App!'); // Just an example, you can customize this logic
+      alert('Shared via Fitness App!');
     }
   };
 
@@ -66,7 +62,9 @@ function SocialSharing() {
       const news = {
         file: selectedFile,
         fileUrl: fileUrl,
-        additionalInfo: trendingText
+        additionalInfo: trendingText,
+        likes: 0,
+        liked: false  
       };
       setSavedNews([...savedNews, news]);
     }
@@ -86,6 +84,17 @@ function SocialSharing() {
   const handleDeleteNews = (index) => {
     const updatedNews = [...savedNews];
     updatedNews.splice(index, 1);
+    setSavedNews(updatedNews);
+  };
+
+  const handleLikeClick = (index) => {
+    const updatedNews = [...savedNews];
+    if (updatedNews[index].liked) {
+      updatedNews[index].likes--;
+    } else {
+      updatedNews[index].likes++;
+    }
+    updatedNews[index].liked = !updatedNews[index].liked;  
     setSavedNews(updatedNews);
   };
 
@@ -118,8 +127,12 @@ function SocialSharing() {
             {savedNews.map((news, index) => (
               <div key={index} style={{ margin: '10px' }}>
                 {news.fileUrl && <img src={news.fileUrl} alt="Selected file" style={{ maxWidth: '100%', height: 'auto' }} />}
-                <p>Additional Info: {news.additionalInfo}</p>
+                <p>Info: {news.additionalInfo}</p>
                 <button onClick={() => handleDeleteNews(index)}>Delete</button>
+                <button onClick={() => handleLikeClick(index)}>
+                  {news.liked ? 'Unlike' : 'Like'}
+                </button>
+                <p>Likes: {news.likes}</p>
               </div>
             ))}
           </div>
