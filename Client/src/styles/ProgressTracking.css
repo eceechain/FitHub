@@ -1,28 +1,24 @@
 .progress-tracking-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .loading {
-    text-align: center;
-    font-size: 18px;
-    color: #888;
-  }
-  
+  .loading,
   .error {
     text-align: center;
     font-size: 18px;
-    color: #ff0000;
+    color: #555;
   }
   
-  .sort-buttons {
+  .button-group {
     margin-bottom: 20px;
   }
   
-  .sort-buttons button {
+  .button-group button {
     margin-right: 10px;
     padding: 8px 12px;
     background-color: #3c72e7;
@@ -33,8 +29,25 @@
     transition: background-color 0.3s ease;
   }
   
-  .sort-buttons button:hover {
+  .button-group button:hover {
     background-color: #020111;
+  }
+  
+  .date-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .date-filter label {
+    margin-right: 10px;
+  }
+  
+  .date-filter input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
   }
   
   .chart-container {
@@ -49,7 +62,7 @@
   
   table th,
   table td {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
   }
