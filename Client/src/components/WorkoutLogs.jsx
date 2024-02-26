@@ -49,12 +49,13 @@ function WorkoutLogs() {
     setWorkouts(prevWorkouts => prevWorkouts.map(workout => {
       if (workout.id === id && workout.timer) {
         clearInterval(workout.timer);
+        const finishedWorkout = workouts.find(w => w.id === id);
+        // Show personalized notification message for the finished workout
+        alert(`Congratulations! You have finished the ${finishedWorkout.workout_type} workout.`);
         return { ...workout, timer: null };
       }
       return workout;
     }));
-    // Show a notification or message that the workout has been finished
-    alert('Workout finished!');
   };
 
   return (
