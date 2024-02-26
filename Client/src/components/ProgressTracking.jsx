@@ -6,6 +6,9 @@ function ProgressTracking() {
   const [progressData, setProgressData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [filteredData, setFilteredData] = useState([]);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -16,6 +19,7 @@ function ProgressTracking() {
     try {
       const response = await axios.get('https://fithub-kl23.onrender.com/ProgressTracking');
       setProgressData(response.data);
+      setFilteredData(response.data);
       setLoading(false);
     } catch (error) {
       setError('Error fetching progress data. Please try again later.');
@@ -25,15 +29,40 @@ function ProgressTracking() {
   };
 
   const sortByDate = () => {
-    setProgressData([...progressData].sort((a, b) => new Date(a.date) - new Date(b.date)));
+    setFilteredData([...filteredData].sort((a, b) => new Date(a.date) - new Date(b.date)));
   };
 
   const sortByWeight = () => {
-    setProgressData([...progressData].sort((a, b) => a.weight - b.weight));
+    setFilteredData([...filteredData].sort((a, b) => a.weight - b.weight));
   };
 
   const sortByBodyFat = () => {
-    setProgressData([...progressData].sort((a, b) => a.body_fat_percentage - b.body_fat_percentage));
+    setFilteredData([...filteredData].sort((a, b) => a.body_fat_percentage - b.body_fat_percentage));
+  };
+
+  const filterData = () => {
+    const filtered = progressData.filter(item => {
+      const date = new Date(item.date);
+      if (startDate && endDate) {
+        return date >= new Date(startDate) && date <= new Date(endDate);
+      }
+      if (startDate) {
+        return date >= new Date(startDate);
+      }
+      if (endDate) {
+        return date <= new Date(endDate);
+      }
+      return true;
+    });
+    setFilteredData(filtered);
+  };
+
+  const handleStartDateChange = e => {
+    setStartDate(e.target.value);
+  };
+
+  const handleEndDateChange = e => {
+    setEndDate(e.target.value);
   };
 
   return (
@@ -47,11 +76,14 @@ function ProgressTracking() {
             <button onClick={sortByDate}>Sort by Date</button>
             <button onClick={sortByWeight}>Sort by Weight</button>
             <button onClick={sortByBodyFat}>Sort by Body Fat Percentage</button>
+            <label>Start Date: <input type="date" value={startDate} onChange={handleStartDateChange} /></label>
+            <label>End Date: <input type="date" value={endDate} onChange={handleEndDateChange} /></label>
+            <button onClick={filterData}>Filter</button>
           </div>
           <div style={{ width: '100%', height: 400 }}>
             <ResponsiveContainer>
               <LineChart
-                data={progressData}
+                data={filteredData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -73,7 +105,7 @@ function ProgressTracking() {
               </tr>
             </thead>
             <tbody>
-              {progressData.map(item => (
+              {filteredData.map(item => (
                 <tr key={item.id}>
                   <td>{item.date}</td>
                   <td>{item.weight}</td>
