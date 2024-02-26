@@ -83,6 +83,12 @@ function SocialSharing() {
     setNewsVisible(true);
   };
 
+  const handleDeleteNews = (index) => {
+    const updatedNews = [...savedNews];
+    updatedNews.splice(index, 1);
+    setSavedNews(updatedNews);
+  };
+
   return (
     <div style={{ backgroundColor: '#f4f4f4', padding: '20px', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
       <h2 style={{ color: '#333', fontSize: '24px', marginBottom: '20px', textAlign: 'center' }}>Share Your Fitness Journey!</h2>
@@ -106,19 +112,16 @@ function SocialSharing() {
           <button style={{ background: '#6c757d', color: '#fff', border: 'none', padding: '10px 20px', fontSize: '16px', borderRadius: '5px', cursor: 'pointer', marginLeft: '10px' }} onClick={handleShowNewsClick}>Show News</button>
         )}
       </div>
-      <div style={{ marginTop: '30px', display: newsVisible ? 'block' : 'none' }}>
+      <div style={{ marginTop: '30px', display: newsVisible ? 'flex' : 'none', flexWrap: 'wrap', justifyContent: 'center' }}>
         {savedNews.length > 0 && (
-          <div>
-            <h3>Saved News</h3>
-            <ul>
-              {savedNews.map((news, index) => (
-                <li key={index}>
-                  {news.fileUrl && <img src={news.fileUrl} alt="Selected file" style={{ maxWidth: '200px', maxHeight: '200px' }} />}
-                  <br />
-                  Additional Info: {news.additionalInfo}
-                </li>
-              ))}
-            </ul>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px', textAlign: 'center' }}>
+            {savedNews.map((news, index) => (
+              <div key={index} style={{ margin: '10px' }}>
+                {news.fileUrl && <img src={news.fileUrl} alt="Selected file" style={{ maxWidth: '100%', height: 'auto' }} />}
+                <p>Additional Info: {news.additionalInfo}</p>
+                <button onClick={() => handleDeleteNews(index)}>Delete</button>
+              </div>
+            ))}
           </div>
         )}
       </div>
