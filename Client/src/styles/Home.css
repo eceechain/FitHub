@@ -1,10 +1,11 @@
 /* Home Styles */
 body {
   background-image: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 1, 8));
-  
+
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
-/* Dark mode styles */
+/* Dark mode styles */          
 .dark-mode {
   background-color: #04144975;
   color: #fff;

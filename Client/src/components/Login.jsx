@@ -1,14 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
 
 function Login() {
   return (
-    <div>
-      <h2>Login</h2>
-      {/* Your login form goes here */}
-      <Link to="/">Login</Link>
-    </div>
-  );
+    <div>Login</div>
+  )
 }
 
-export default Login;
+export default Login
