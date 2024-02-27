@@ -1,49 +1,56 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Contact from './Contact';
-import Login from './Login';
-import Register from './Register';
-import SocialSharing from './SocialSharing';
-import WorkoutLogs from './WorkoutLogs';
-import CaloriesTracking from './CaloriesTracking';
-import PeronalizedRecommendatons from './PeronalizedRecommendatons';
-import ProgressTracking from './ProgressTracking';
-import GoalSetting from './GoalSetting';
-import Blog from './Blog';
-import Navbar from './Navbar';
-import AuthRequired from './AuthRequired';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styles/CaloriesTracking.css';
 
-function Dashboard() {
+function CaloriesTracking() {
+  const [caloriesData, setCaloriesData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('https://fithub-kl23.onrender.com/Calories');
+      setCaloriesData(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError('Error fetching calories data. Please try again later.');
+      setLoading(false);
+      console.error('Error fetching calories data:', error);
+    }
+  };
+
   return (
-    <div className="dashboard">
-      <Router>
-        <Navbar />
-        <div className="dashboard-content">
-          <Routes>
-            <Route path="/account/login" element={<Login />} />
-            <Route path="/account/register" element={<Register />} />
-            <Route path="/" element={<AuthRequired />}>
-                <Route index element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/socialsharing" element={<SocialSharing />} />
-                <Route path="/workoutlogs" element={<WorkoutLogs />} />
-                <Route path="/calories" element={<CaloriesTracking />} />
-                <Route path="/PeronalizedRecommendatons" element={<PeronalizedRecommendatons/>} />
-                <Route path="/progress" element={<ProgressTracking />} />
-                <Route path="/goalsetting" element={<GoalSetting />} />
-                <Route path="/blog" element={<Blog />} />
-            </Route>
-          </Routes>
-        </div>
-        <div className="content-display">
-          {/* This is where the content will be displayed */}
-        </div>
-      </Router>
+    <div className="calories-tracking">
+      <h2>Calories Tracking</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {!loading && !error && (
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Meal Type</th>
+              <th>Calories</th>
+            </tr>
+          </thead>
+          <tbody>
+            {caloriesData.map(item => (
+              <tr key={item.id}>
+                <td>{item.date}</td>
+                <td>{item.meal_type}</td>
+                <td>{item.calories}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
 
-export default Dashboard;
+export default CaloriesTracking;
