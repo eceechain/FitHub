@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from './App';
+import '../styles/Login.css'
 
 
 export default function Login() {
@@ -58,7 +59,7 @@ export default function Login() {
 						<label htmlFor="password">Password</label>
 						<input required type="password" id="password" placeholder="****************" value={password} onChange={(e) => setPassword(e.target.value)} />
 					</div>
-					<button type="submit">
+					<button type="Log in">
 						{isLoading ? "Please wait..." : "Submit"}
 					</button>
 				</form>
