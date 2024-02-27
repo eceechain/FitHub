@@ -1,7 +1,5 @@
 import datetime
 import requests
-import tweepy
-from tweepy import TweepError
 from flask import Flask, jsonify, redirect,  url_for, request
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
@@ -15,11 +13,6 @@ CORS(app)
 jwt = JWTManager(app)
 migrate = Migrate(app, db)
 
-# Twitter API keys
-consumer_key = 'Ybh2edeoVCGgDzz8J6CsMvBBf'
-consumer_secret = '7P5iFnQJUGrfNL5zBJHGSaftiGU2vZSOQ32E6yCzVkKQOOw0mk'
-access_token = '1608973500143869956-jB4olbq9lMudzc6ykuPMjwW3bIsstr'
-access_token_secret = '0pHtPY1HS0xprjzBbKD0uOaHAW4LXgqCTUPa6v9jgYeAk'
 
 # Setting up Flask JWT
 app.config['JWT_SECRET_KEY'] = 'SECRET'
@@ -28,6 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
+<<<<<<< HEAD
 #index route
 @app.route('/', methods=['GET'])
 def index():
@@ -42,6 +36,8 @@ def index():
     )), 200
 
 
+=======
+>>>>>>> leroy
 
 # Protected route requiring JWT authentication
 @app.route('/login', methods=['POST'])
@@ -610,64 +606,58 @@ def get_nutrition_info():
 
     return jsonify(total_nutrition), 200
 
-@app.route('/nutrition', methods=['GET'])
+
+@app.route('/nutrition', methods=['POST'])
 def get_nutrition_info():
-    food_query = request.args.get('food')
-    if not food_query:
-        return jsonify(message='Please provide a food item'), 400
+    meal_type = request.json.get('meal_type')
+    foods = request.json.get('foods')
+
+    if not meal_type:
+        return jsonify(message='Please provide a meal type (breakfast, lunch, supper)'), 400
+
+    if not foods:
+        return jsonify(message='Please provide a list of foods'), 400
 
     # Replace 'YOUR_API_KEY' with your actual API key
     api_key = 'Db4/NYLkJ3xof9RojTrPPg==qvS0gzCNB7CEamM5'
+    total_nutrition = {
+        "calories": 0,
+        "serving_size_g": 0,
+        "fat_total_g": 0,
+        "fat_saturated_g": 0,
+        "protein_g": 0,
+        "sodium_mg": 0,
+        "potassium_mg": 0,
+        "cholesterol_mg": 0,
+        "carbohydrates_total_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0
+    }
 
-    url = f'https://api.api-ninjas.com/v1/nutrition?query={food_query}&X-Api-Key={api_key}'
+    for food_query in foods:
+        url = f'https://api.api-ninjas.com/v1/nutrition?query={food_query}&X-Api-Key={api_key}'
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()
 
-    
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
+            # Update total nutrition
+            total_nutrition["calories"] += data["calories"]
+            total_nutrition["serving_size_g"] += data["serving_weight_grams"]
+            total_nutrition["fat_total_g"] += data["fat_total_g"]
+            total_nutrition["fat_saturated_g"] += data["fat_saturated_g"]
+            total_nutrition["protein_g"] += data["protein_g"]
+            total_nutrition["sodium_mg"] += data["sodium_mg"]
+            total_nutrition["potassium_mg"] += data["potassium_mg"]
+            total_nutrition["cholesterol_mg"] += data["cholesterol_mg"]
+            total_nutrition["carbohydrates_total_g"] += data["carbohydrates_total_g"]
+            total_nutrition["fiber_g"] += data["fiber_g"]
+            total_nutrition["sugar_g"] += data["sugar_g"]
+            
+        except requests.exceptions.RequestException as e:
+            return jsonify(message='Error fetching nutrition information'), 500
 
-        # Format the response data
-        formatted_data = [{
-            "name": data["query"],
-            "calories": data["calories"],
-            "serving_size_g": data["serving_weight_grams"],
-            "fat_total_g": data["fat_total_g"],
-            "fat_saturated_g": data["fat_saturated_g"],
-            "protein_g": data["protein_g"],
-            "sodium_mg": data["sodium_mg"],
-            "potassium_mg": data["potassium_mg"],
-            "cholesterol_mg": data["cholesterol_mg"],
-            "carbohydrates_total_g": data["carbohydrates_total_g"],
-            "fiber_g": data["fiber_g"],
-            "sugar_g": data["sugar_g"]
-        }]
-        
-        return jsonify(formatted_data), 200
-        return jsonify(data), 200
-    except requests.exceptions.RequestException as e:
-        return jsonify(message='Error fetching nutrition information'), 500
-    
-
-@app.route('/share-workout/<int:workout_id>', methods=['POST'])
-def share_workout(workout_id):
-    workout = WorkoutLog.query.get(workout_id)
-    if workout:
-        user = User.query.get(workout.user_id)
-        if user:
-            # Construct workout message template
-            workout_template = f"🏋️‍♂️ {user.username} completed a {workout.workout_type} workout for {workout.duration} minutes and burned {workout.calories_burned} calories! #Fitness"
-
-            try:
-                # Post workout on Twitter with template
-                api.update_status(workout_template)
-                return jsonify(message='Workout shared successfully on Twitter'), 200
-            except TweepError as e:
-                return jsonify(message='Error sharing workout on Twitter. Please try again later.'), 500
-        else:
-            return jsonify(message='User not found'), 404
-    else:
-        return jsonify(message='Workout not found'), 404
+    return jsonify(total_nutrition), 200
 
 
 
