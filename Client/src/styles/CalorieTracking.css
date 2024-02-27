@@ -1,60 +1,83 @@
-.calorie-tracker-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-    color: #333;
+/* calories-tracking.css */
+ 
+
+
+.calories-tracking {
     padding: 20px;
-    margin: 0;
-    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 30px;
   }
   
-  .calorie-tracker-container h1 {
-    font-size: 2.5em;
+  h2 {
+    font-size: 24px;
     margin-bottom: 20px;
-    color: #008080; /* Teal color */
+    color: #333;
   }
   
-  .calorie-tracker-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .calorie-tracker-container form label {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-  }
-  
-  .calorie-tracker-container form input[type="date"],
-  .calorie-tracker-container form input[type="number"] {
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 1.2em;
+  table {
     width: 100%;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+    border-collapse: collapse;
   }
   
-  .calorie-tracker-container form button {
-    padding: 10px 20px;
-    background-color: #008080; /* Teal color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
-  .calorie-tracker-container form button:hover {
-    background-color: #005757; /* Darker teal on hover */
+  th:hover {
+    background-color: #f4f4f4;
   }
   
-  .calorie-tracker-container #result {
-    margin-top: 20px;
-    font-size: 1.5em;
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
   }
+  
+  tbody tr:hover {
+    background-color: #f4f4f4;
+  }
+  
+  .loading-message,
+  .error-message {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .error-message {
+    color: #f00;
+  }
+  
+  /* Sorting icons */
+  th[data-sorted="asc"]::after {
+    content: "▲";
+    margin-left: 5px;
+  }
+  
+  th[data-sorted="desc"]::after {
+    content: "▼";
+    margin-left: 5px;
+  }
+  
+  /* Fade-in animation for table rows */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  tbody tr {
+    animation: fadeIn 0.5s ease;
+  }
+  
