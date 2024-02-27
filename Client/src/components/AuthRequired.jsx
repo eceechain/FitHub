@@ -13,4 +13,8 @@ const AuthRequired = () => {
   );
 };
 
+<<<<<<< HEAD
 export default AuthRequired;
+=======
+export default AuthRequired;
+>>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec

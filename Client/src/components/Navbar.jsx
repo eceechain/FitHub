@@ -5,7 +5,12 @@ import '../styles/Navbar.css';
 import { useAuthContext } from './App';
 
 function Navbar() {
+<<<<<<< HEAD
   const { isAuthenticated, removeAcessToken } = useAuthContext();
+=======
+  const {isAuthenticated, removeAcessToken} = useAuthContext();
+  console.log(isAuthenticated);
+>>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -66,11 +71,18 @@ function Navbar() {
       </div>
       <div className="auth-links">
         {isAuthenticated ? <button onClick={() => removeAcessToken()}>logout</button> : <>
+<<<<<<< HEAD
           <NavLink to="/socialsharing">Social Sharing</NavLink>
           <NavLink to="/account/login">Login</NavLink>
           <NavLink to="/account/register">Register</NavLink>
         </>}
       </div> {/* Moved this closing div inside auth-links */}
+=======
+        <NavLink to="/socialsharing">Social Sharing</NavLink>
+        <NavLink to="/account/login">Login</NavLink>
+        <NavLink to="/account/register">Register</NavLink>
+        </>}
+>>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec
       <div className="content">
         <div className="nav-links">
           <NavLink to="/" className="logo">

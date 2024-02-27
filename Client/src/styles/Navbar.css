@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
 }
+<<<<<<< HEAD
 
 .sidebar-handle {
   background-color: #333;
@@ -127,3 +128,131 @@
 .logo:hover::after {
   transform: scaleX(1); /* Expand the pseudo-elements on hover */
 }
+=======
+
+.sidebar-handle {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-handle:hover {
+  background-color: #555;
+}
+
+.sidebar {
+  background-color: #222;
+  color: #fff;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+  z-index: 1000;
+  overflow-y: auto; /* Enable scrolling if content exceeds sidebar height */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth effect */
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1); /* Add scale effect on hover */
+}
+
+.sidebar-links {
+  padding-top: 50px;
+}
+
+.sidebar-links a {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar-links a:hover {
+  background-color: #444;
+  transform: translateX(5px); /* Add horizontal translation effect on hover */
+}
+
+.auth-links a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 15px 20px;
+  transition: transform 0.2s ease;
+}
+
+.auth-links a:hover {
+  transform: scale(1.1); /* Add scale effect on hover */
+  text-decoration: underline;
+}
+
+.content {
+  flex: 1;
+}
+
+.nav-links {
+  padding: 10px 30px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  position: relative; /* Add position relative for pseudo-elements */
+  transition: color 0.3s ease; /* Add color transition effect */
+}
+
+.logo::before,
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.logo::before {
+  transform-origin: left;
+}
+
+.logo::after {
+  transform-origin: right;
+}
+
+.logo:hover {
+  color: #f3f0ec; /* Change color on hover */
+}
+
+.logo:hover::before,
+.logo:hover::after {
+  transform: scaleX(1); /* Expand the pseudo-elements on hover */
+}
+
+>>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec

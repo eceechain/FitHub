@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .progress-tracking-container {
   max-width: 800px;
   margin: 0 auto;
@@ -84,3 +85,82 @@ table tr:nth-child(even) {
 table tr:hover {
   background-color: #ddd;
 }
+=======
+/* General styles */
+.progress-tracking-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #1826a3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+  
+  /* Table styles */
+  .progress-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .progress-table th, .progress-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .progress-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .progress-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .progress-table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Button styles */
+  .view-details-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-details-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Apply animation to table */
+  .progress-table {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 600px) {
+    .progress-table {
+      overflow-x: auto;
+    }
+  }
+  
+>>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec
