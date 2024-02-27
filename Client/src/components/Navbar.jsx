@@ -49,6 +49,7 @@ function Navbar() {
         <button className="close-btn" onClick={closeSidebar}>
           <FaTimes />
         </button>
+
         <div className="sidebar-links">
           <NavLink to="/" onClick={closeSidebar}>Home</NavLink>
           <NavLink to="/dashboard" onClick={closeSidebar}>Dashboard</NavLink>
@@ -65,12 +66,14 @@ function Navbar() {
           </div>
         </div>
       </div>
+
       <div className="auth-links">
         {isAuthenticated ? <button onClick={() => removeAcessToken()}>logout</button> : <>
         <NavLink to="/socialsharing">Social Sharing</NavLink>
         <NavLink to="/account/login">Login</NavLink>
         <NavLink to="/account/register">Register</NavLink>
         </>}
+
       <div className="content">
         <div className="nav-links">
           <NavLink to="/" className="logo">
@@ -78,6 +81,7 @@ function Navbar() {
           </NavLink>
         </div>
       </div>
+    </div>
     </div>
   );
 }

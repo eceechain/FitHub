@@ -21,7 +21,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-<<<<<<< HEAD
 #index route
 @app.route('/', methods=['GET'])
 def index():
@@ -36,8 +35,6 @@ def index():
     )), 200
 
 
-=======
->>>>>>> leroy
 
 # Protected route requiring JWT authentication
 @app.route('/login', methods=['POST'])
