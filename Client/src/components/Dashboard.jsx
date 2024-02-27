@@ -31,7 +31,7 @@ function Dashboard() {
                 <Route path="/socialsharing" element={<SocialSharing />} />
                 <Route path="/workoutlogs" element={<WorkoutLogs />} />
                 <Route path="/calories" element={<CaloriesTracking />} />
-                <Route path="/PeronalizedRecommendatons" element={<PeronalizedRecommendatons/>} />
+                <Route path="/recommendations" element={<PeronalizedRecommendatons/>} />
                 <Route path="/progress" element={<ProgressTracking />} />
                 <Route path="/goalsetting" element={<GoalSetting />} />
                 <Route path="/blog" element={<Blog />} />

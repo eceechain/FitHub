@@ -1,0 +1,60 @@
+.calorie-tracker-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .calorie-tracker-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #008080; /* Teal color */
+  }
+  
+  .calorie-tracker-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .calorie-tracker-container form label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  .calorie-tracker-container form input[type="date"],
+  .calorie-tracker-container form input[type="number"] {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.2em;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .calorie-tracker-container form button {
+    padding: 10px 20px;
+    background-color: #008080; /* Teal color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calorie-tracker-container form button:hover {
+    background-color: #005757; /* Darker teal on hover */
+  }
+  
+  .calorie-tracker-container #result {
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
