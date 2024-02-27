@@ -6,8 +6,6 @@ function CaloriesTracking() {
   const [caloriesData, setCaloriesData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [sortBy, setSortBy] = useState(null);
-  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     fetchData();
@@ -26,28 +24,6 @@ function CaloriesTracking() {
     }
   };
 
-  const handleSort = (field) => {
-    if (sortBy === field) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortBy(field);
-      setSortOrder('asc');
-    }
-  };
-
-  const sortedData = () => {
-    if (sortBy) {
-      return caloriesData.sort((a, b) => {
-        if (sortOrder === 'asc') {
-          return a[sortBy] - b[sortBy];
-        } else {
-          return b[sortBy] - a[sortBy];
-        }
-      });
-    }
-    return caloriesData;
-  };
-
   return (
     <div className="calories-tracking">
       <h2>Calories Tracking</h2>
@@ -57,13 +33,13 @@ function CaloriesTracking() {
         <table>
           <thead>
             <tr>
-              <th onClick={() => handleSort('date')}>Date</th>
-              <th onClick={() => handleSort('meal_type')}>Meal Type</th>
-              <th onClick={() => handleSort('calories')}>Calories</th>
+              <th>Date</th>
+              <th>Meal Type</th>
+              <th>Calories</th>
             </tr>
           </thead>
           <tbody>
-            {sortedData().map(item => (
+            {caloriesData.map(item => (
               <tr key={item.id}>
                 <td>{item.date}</td>
                 <td>{item.meal_type}</td>
