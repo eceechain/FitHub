@@ -36,6 +36,10 @@ function Dashboard() {
         <Route path="/nutrition" element={<Nutrition />} />
       </Routes>
     </Router>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   );
 }
 

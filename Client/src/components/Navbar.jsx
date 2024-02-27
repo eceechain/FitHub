@@ -1,42 +1,85 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Navbar.css';
+import { useAuthContext } from './App';
 
 function Navbar() {
+  const { isAuthenticated, removeAcessToken } = useAuthContext();
+  console.log(isAuthenticated);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const sidebarRef = useRef(null);
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  const closeSidebar = () => {
+    setShowSidebar(false);
+  };
+
+  useEffect(() => {
+    const closeSidebarOnOutsideClick = (event) => {
+      if (showSidebar && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setShowSidebar(false);
+      }
+    };
+
+    const closeSidebarOnEscape = (event) => {
+      if (showSidebar && event.key === 'Escape') {
+        setShowSidebar(false);
+      }
+    };
+
+    document.addEventListener('mousedown', closeSidebarOnOutsideClick);
+    document.addEventListener('keydown', closeSidebarOnEscape);
+
+    return () => {
+      document.removeEventListener('mousedown', closeSidebarOnOutsideClick);
+      document.removeEventListener('keydown', closeSidebarOnEscape);
+    };
+  }, [showSidebar]);
+
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-
-      <div className="nav-link dropdown">
-        <span>Workouts</span>
-        <div className="dropdown-content">
-          <NavLink to="/workoutlogs">Workout Logs</NavLink>
-          <NavLink to="/progress">Progress Tracking</NavLink>
-          <NavLink to="/calories">Calories Tracking</NavLink>
-          <NavLink to="/recommendations">Personalized Recommendations</NavLink>
-          <NavLink to="/goalsetting">Goal Setting</NavLink>
+    <div className="navbar-container">
+      <button className={`sidebar-handle ${showSidebar ? 'hide' : ''}`} onClick={toggleSidebar}>
+        <FaBars />
+      </button>
+      <div className={`sidebar ${showSidebar ? 'show' : ''}`} ref={sidebarRef}>
+        <button className="close-btn" onClick={closeSidebar}>
+          <FaTimes />
+        </button>
+        <div className="sidebar-links">
+          <NavLink to="/" onClick={closeSidebar}>Home</NavLink>
+          <NavLink to="/dashboard" onClick={closeSidebar}>Dashboard</NavLink>
+          <NavLink to="/workoutlogs" onClick={closeSidebar}>Workout Logs</NavLink>
+          <NavLink to="/progress" onClick={closeSidebar}>Progress Tracking</NavLink>
+          <NavLink to="/calories" onClick={closeSidebar}>Calories Tracking</NavLink>
+          <NavLink to="/recommendations" onClick={closeSidebar}>Personalized Recommendations</NavLink>
+          <NavLink to="/goalsetting" onClick={closeSidebar}>Goal Setting</NavLink>
+          <NavLink to="/socialsharing" onClick={closeSidebar}>Social Sharing</NavLink>
+          <NavLink to="/blog" onClick={closeSidebar}>Blog</NavLink>
+          <div className="auth-links">
+            <NavLink to="/account/login" onClick={closeSidebar}>Login</NavLink>
+            <NavLink to="/account/register" onClick={closeSidebar}>Register</NavLink>
+          </div>
         </div>
       </div>
-
-      <div className="nav-link dropdown">
-        <span>About</span>
-        <div className="dropdown-content">
-          <NavLink to="/about">About Us</NavLink>
-          <NavLink to="/contact">Contact us</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
-        </div>
-      </div>
-
-      <NavLink to="/socialsharing">Social Sharing</NavLink>
-
-      <div className="nav-link dropdown">
-        <span>Account</span>
-        <div className="dropdown-content">
+      <div className="auth-links">
+        {isAuthenticated ? <button onClick={() => removeAcessToken()}>logout</button> : <>
+          <NavLink to="/socialsharing">Social Sharing</NavLink>
           <NavLink to="/account/login">Login</NavLink>
           <NavLink to="/account/register">Register</NavLink>
+        </>}
+      </div>
+      <div className="content">
+        <div className="nav-links">
+          <NavLink to="/" className="logo">
+            FitnessHub
+          </NavLink>
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 
