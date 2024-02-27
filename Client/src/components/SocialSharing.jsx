@@ -102,7 +102,7 @@ function SocialSharing() {
     <div style={{ backgroundColor: '#f4f4f4', padding: '20px', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
       <h2 style={{ color: '#333', fontSize: '24px', marginBottom: '20px', textAlign: 'center' }}>Share Your Fitness Journey!</h2>
       <p style={{ color: '#666', fontSize: '16px', marginBottom: '30px', textAlign: 'center' }}>Spread the inspiration and motivate others by sharing your fitness achievements with the world.</p>
-      <div style={{ color: '#666', fontSize: '14px', textAlign: 'center', marginBottom: '10px' }}>Add your custom information here</div>
+      <div style={{ color: '#666', fontSize: '14px', textAlign: 'center', marginBottom: '10px' }}>Follow us on tweeter by clicking the template below. Feel free to reach out for any help</div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Tweet id="1761992807504285856" share={handleShare} />
       </div>
