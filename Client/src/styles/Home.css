@@ -1,7 +1,6 @@
 /* Home Styles */
 body {
   background-image: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 1, 8));
-<<<<<<< HEAD
 
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
@@ -56,17 +55,6 @@ body {
 
 
 
-=======
-  
-}
-
-/* Dark mode styles */
-.dark-mode {
-  background-image: -webkit-repeating-linear-gradient(rgb(2, 34, 49),rgb(12, 8, 48));
-  color: #f9f9fc;
-}
-
->>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec
 .home-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -681,8 +669,4 @@ body {
       padding: 20px;
   }
   /* Add specific styles for larger screens if needed */
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1b176b92d18bdca31ac2c65743d52f5e83ebfdec
