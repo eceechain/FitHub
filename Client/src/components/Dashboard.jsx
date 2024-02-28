@@ -8,7 +8,7 @@ import Register from './Register';
 import SocialSharing from './SocialSharing';
 import WorkoutLogs from './WorkoutLogs';
 import CaloriesTracking from './CaloriesTracking';
-import PeronalizedRecommendatons from './PeronalizedRecommendatons';
+import PersonalizedRecommendatons from './PersonalizedRecommendatons';
 import ProgressTracking from './ProgressTracking';
 import GoalSetting from './GoalSetting';
 import Blog from './Blog';
@@ -30,7 +30,7 @@ function Dashboard() {
             <Route path="/socialsharing" element={<SocialSharing />} />
             <Route path="/workoutlogs" element={<WorkoutLogs />} />
             <Route path="/calories" element={<CaloriesTracking />} />
-            <Route path="/PeronalizedRecommendatons" element={<PeronalizedRecommendatons/>} />
+            <Route path="/recommendatons" element={<PersonalizedRecommendatons/>} />
             <Route path="/progress" element={<ProgressTracking />} />
             <Route path="/goalsetting" element={<GoalSetting />} />
             <Route path="/blog" element={<Blog />} />
@@ -58,7 +58,7 @@ function Dashboard() {
         <Route path="/socialsharing" element={<SocialSharing />} />
         <Route path="/workoutlogs" element={<WorkoutLogs />} />
         <Route path="/calories" element={<CaloriesTracking />} />
-        <Route path="/recommendations" element={<PeronalizedRecommendatons />} />
+        <Route path="/recommendations" element={<PersonalizedRecommendatons />} />
         <Route path="/progress" element={<ProgressTracking />} />
         <Route path="/goalsetting" element={<GoalSetting />} />
         <Route path="/blog" element={<Blog />} />
