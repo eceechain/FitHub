@@ -59,6 +59,7 @@ function Navbar() {
           <NavLink to="/goalsetting" onClick={closeSidebar}>Goal Setting</NavLink>
           <NavLink to="/socialsharing" onClick={closeSidebar}>Social Sharing</NavLink>
           <NavLink to="/blog" onClick={closeSidebar}>Blog</NavLink>
+          <NavLink to="/nutrition" onClick={closeSidebar}>Nutrition</NavLink>
           <div className="auth-links">
             <NavLink to="/account/login" onClick={closeSidebar}>Login</NavLink>
             <NavLink to="/account/register" onClick={closeSidebar}>Register</NavLink>
