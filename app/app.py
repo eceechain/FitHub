@@ -1,6 +1,5 @@
 import datetime
-import requests
-from flask import Flask, jsonify, redirect,  url_for, request
+from flask import Flask, jsonify, request
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 import requests
@@ -12,7 +11,6 @@ app = Flask(__name__)
 CORS(app)
 jwt = JWTManager(app)
 migrate = Migrate(app, db)
-
 
 # Setting up Flask JWT
 app.config['JWT_SECRET_KEY'] = 'SECRET'
@@ -602,61 +600,6 @@ def get_nutrition_info():
             return jsonify(message='Error fetching nutrition information'), 500
 
     return jsonify(total_nutrition), 200
-
-
-@app.route('/nutrition', methods=['POST'])
-def get_nutrition_info():
-    meal_type = request.json.get('meal_type')
-    foods = request.json.get('foods')
-
-    if not meal_type:
-        return jsonify(message='Please provide a meal type (breakfast, lunch, supper)'), 400
-
-    if not foods:
-        return jsonify(message='Please provide a list of foods'), 400
-
-    # Replace 'YOUR_API_KEY' with your actual API key
-    api_key = 'Db4/NYLkJ3xof9RojTrPPg==qvS0gzCNB7CEamM5'
-    total_nutrition = {
-        "calories": 0,
-        "serving_size_g": 0,
-        "fat_total_g": 0,
-        "fat_saturated_g": 0,
-        "protein_g": 0,
-        "sodium_mg": 0,
-        "potassium_mg": 0,
-        "cholesterol_mg": 0,
-        "carbohydrates_total_g": 0,
-        "fiber_g": 0,
-        "sugar_g": 0
-    }
-
-    for food_query in foods:
-        url = f'https://api.api-ninjas.com/v1/nutrition?query={food_query}&X-Api-Key={api_key}'
-        try:
-            response = requests.get(url)
-            response.raise_for_status()
-            data = response.json()
-
-            # Update total nutrition
-            total_nutrition["calories"] += data["calories"]
-            total_nutrition["serving_size_g"] += data["serving_weight_grams"]
-            total_nutrition["fat_total_g"] += data["fat_total_g"]
-            total_nutrition["fat_saturated_g"] += data["fat_saturated_g"]
-            total_nutrition["protein_g"] += data["protein_g"]
-            total_nutrition["sodium_mg"] += data["sodium_mg"]
-            total_nutrition["potassium_mg"] += data["potassium_mg"]
-            total_nutrition["cholesterol_mg"] += data["cholesterol_mg"]
-            total_nutrition["carbohydrates_total_g"] += data["carbohydrates_total_g"]
-            total_nutrition["fiber_g"] += data["fiber_g"]
-            total_nutrition["sugar_g"] += data["sugar_g"]
-            
-        except requests.exceptions.RequestException as e:
-            return jsonify(message='Error fetching nutrition information'), 500
-
-    return jsonify(total_nutrition), 200
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
