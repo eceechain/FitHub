@@ -13,35 +13,6 @@ import ProgressTracking from './ProgressTracking';
 import GoalSetting from './GoalSetting';
 import Blog from './Blog';
 import Navbar from './Navbar';
-<<<<<<< HEAD
-
-function Dashboard() {
-  return (
-    <div className="dashboard">
-      <Router>
-        <Navbar />
-        <div className="dashboard-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/account/login" element={<Login />} />
-            <Route path="/account/register" element={<Register />} />
-            <Route path="/socialsharing" element={<SocialSharing />} />
-            <Route path="/workoutlogs" element={<WorkoutLogs />} />
-            <Route path="/calories" element={<CaloriesTracking />} />
-            <Route path="/recommendatons" element={<PersonalizedRecommendatons/>} />
-            <Route path="/progress" element={<ProgressTracking />} />
-            <Route path="/goalsetting" element={<GoalSetting />} />
-            <Route path="/blog" element={<Blog />} />
-          </Routes>
-        </div>
-        <div className="content-display">
-          {/* This is where the content will be displayed */}
-        </div>
-      </Router>
-    </div>
-=======
 import Nutrition from './Nutrition';
 
 
@@ -65,7 +36,6 @@ function Dashboard() {
         <Route path="/nutrition" element={<Nutrition />} />
       </Routes>
     </Router>
->>>>>>> leroy
   );
 }
 
