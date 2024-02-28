@@ -13,6 +13,7 @@ import ProgressTracking from './ProgressTracking';
 import GoalSetting from './GoalSetting';
 import Blog from './Blog';
 import Navbar from './Navbar';
+import DashBoard from './DashBoard'
 
 function Dashboard() {
   return (
@@ -28,6 +29,7 @@ function Dashboard() {
             <Route path="/account/register" element={<Register />} />
             <Route path="/socialsharing" element={<SocialSharing />} />
             <Route path="/workoutlogs" element={<WorkoutLogs />} />
+            <Route path="/DashBoard" element={<DashBoard />} />
             <Route path="/calories" element={<CaloriesTracking />} />
             <Route path="/PeronalizedRecommendatons" element={<PeronalizedRecommendatons/>} />
             <Route path="/progress" element={<ProgressTracking />} />
@@ -36,7 +38,7 @@ function Dashboard() {
           </Routes>
         </div>
         <div className="content-display">
-          {/* This is where the content will be displayed */}
+          {}
         </div>
       </Router>
     </div>

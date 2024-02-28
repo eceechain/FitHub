@@ -1,15 +1,66 @@
-.dashboard {
-    display: flex;
-  }
-  
-  .dashboard-content {
-    flex: 1; /* This will make the content area fill the remaining space */
-    padding: 20px; /* Adjust padding as needed */
-  }
-  
-  .content-display {
-    width: 300px; /* Adjust width of the content display area */
-    padding: 20px; /* Adjust padding as needed */
-  }
-  
+.dashboard-overview {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 
+.overview-card {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.overview-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #5cb85c;
+}
+
+.overview-chart {
+  margin-top: 20px;
+}
+
+.overview-chart table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.overview-chart th,
+.overview-chart td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.trend-indicator {
+  display: inline-block;
+  margin-left: 10px;
+  color: #5cb85c;
+}
+
+.trend-indicator i {
+  font-size: 1.2em;
+}
+
+.trend-indicator .fas.fa-arrow-up {
+  transform: rotate(-45deg);
+}
+
+.trend-indicator .fas.fa-arrow-down {
+  transform: rotate(135deg);
+}

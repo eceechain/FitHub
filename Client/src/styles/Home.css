@@ -2,7 +2,7 @@
 body {
   background-image: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 1, 8));
 
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 /* Dark mode styles */          
@@ -177,6 +177,7 @@ body {
     transform: translateX(0);
   }
 }
+
 
 
 /* Additional Features */
