@@ -22,7 +22,7 @@
 .workout-item {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
 }
@@ -59,42 +59,27 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .workout-details button:hover {
   filter: brightness(90%);
 }
 
-/* Styles for the buttons */
-button {
-  font-size: 16px;
-  padding: 10px 20px;
-  margin-right: 10px; /* Add some space between buttons */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Styles for the Start button */
-.start-button {
-  background-color: #4c56af; /* Green */
+.workout-details .start-button {
+  background-color: #4c56af;
   color: white;
 }
 
-/* Styles for the Finish button */
-.finish-button {
-  background-color: #4936f4; /* Red */
+.workout-details .finish-button {
+  background-color: #4936f4;
   color: white;
 }
 
-/* Hover effect */
-button:hover {
-  opacity: 0.8;
+.workout-details button:active {
+  transform: translateY(2px);
 }
-
 
 .notification {
   position: fixed;
