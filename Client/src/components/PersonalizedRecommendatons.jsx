@@ -6,7 +6,6 @@ const PersonalizedRecommendations = () => {
   const [nutritionRecommendations, setNutritionRecommendations] = useState([]);
 
   useEffect(() => {
-    // Logic to generate workout and nutrition recommendations based on userGoals
     if (userGoals === 'lose weight') {
       setWorkoutRecommendations(['Cardio intervals', 'Resistance training circuits', 'Plyometric exercises']);
       setNutritionRecommendations(['Grilled chicken breast', 'Steamed vegetables', 'Quinoa']);
@@ -26,10 +25,6 @@ const PersonalizedRecommendations = () => {
   }, [userGoals]);
 
   const handleGoalSubmit = () => {
-    // Logic to process user goals and generate recommendations
-    // This is where you would typically call APIs or perform calculations
-
-    // Example dummy data for demonstration purposes
     setWorkoutRecommendations(['Push-ups', 'Squats', 'Planks']);
     setNutritionRecommendations(['Chicken breast', 'Broccoli', 'Brown rice']);
   };
