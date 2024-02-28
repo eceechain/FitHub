@@ -1,38 +1,100 @@
 .dashboard-overview {
-  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
 }
 
 .overview-card {
-  margin-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgb(4, 212, 240);
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
+  margin-bottom: 20px;
+  flex: 1 1 300px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.overview-card:hover {
+  transform: translateY(-5px);
 }
 
 .overview-card h3 {
+  font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #333;
+  color: #161414;
 }
 
-.progress-bar {
+.overview-card p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #131010;
+}
+
+.overview-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.overview-card .progress-bar {
+  width: 100%;
   height: 10px;
-  background-color: #ddd;
+  background-color: #f0f0f0;
   border-radius: 5px;
   overflow: hidden;
 }
 
-.progress {
+.overview-card .progress {
+  width: 50%; /* Adjust width based on progress */
   height: 100%;
-  background-color: #5cb85c;
+  background-color: #4caf50; /* Change color based on progress */
+  border-radius: 5px;
+}
+
+.motivational-quote {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  flex: 1 1 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.motivational-quote:hover {
+  transform: translateY(-5px);
+}
+
+.motivational-quote h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+.motivational-quote p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #666666;
 }
 
 .overview-chart {
-  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  flex: 1 1 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.overview-chart:hover {
+  transform: translateY(-5px);
+}
+
+.overview-chart h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333333;
 }
 
 .overview-chart table {
@@ -43,24 +105,33 @@
 .overview-chart th,
 .overview-chart td {
   padding: 10px;
-  border: 1px solid #ddd;
   text-align: left;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.trend-indicator {
-  display: inline-block;
-  margin-left: 10px;
-  color: #5cb85c;
+.overview-chart th {
+  font-weight: bold;
+  background-color: #f7f7f7;
 }
 
-.trend-indicator i {
-  font-size: 1.2em;
+.overview-chart tbody tr:hover {
+  background-color: #f0f0f0;
 }
 
-.trend-indicator .fas.fa-arrow-up {
-  transform: rotate(-45deg);
-}
+@media (min-width: 768px) {
+  .dashboard-overview {
+    padding: 40px;
+  }
 
-.trend-indicator .fas.fa-arrow-down {
-  transform: rotate(135deg);
+  .overview-card, .motivational-quote, .overview-chart {
+    margin-right: 20px;
+  }
+
+  .overview-card:last-child, .motivational-quote:last-child, .overview-chart:last-child {
+    margin-right: 0;
+  }
+
+  .overview-card, .motivational-quote, .overview-chart {
+    flex: 1 1 calc(50% - 10px);
+  }
 }
