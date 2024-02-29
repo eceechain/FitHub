@@ -1,4 +1,4 @@
-.wrapper.signIn {
+.wrapper.signUp {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,6 +49,12 @@
   
   .form button:hover {
     background-color: #0056b3;
+  }
+  
+  .form h2.or {
+    font-size: 24px; /* Increase font size of 'OR' heading */
+    text-align: center;
+    margin-top: 20px; /* Increase margin top for spacing */
   }
   
   .form p {
