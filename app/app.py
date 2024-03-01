@@ -602,4 +602,8 @@ def get_nutrition_info():
     return jsonify(total_nutrition), 200
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run(debug=True, port=5001)
+=======
+    app.run(debug=True, port=5001)
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf

@@ -1,7 +1,7 @@
 .workout-logs-container {
   margin: 20px;
   padding: 20px;
-  background-color: #030f2775;
+  background-color: #222; /* Dark grey background */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgb(4, 239, 247);
 }
@@ -10,7 +10,7 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #f8f4f4;
+  color: #fff; /* White text */
 }
 
 .workout-list {
@@ -67,21 +67,28 @@
   filter: brightness(90%);
 }
 
+/* Styles for the Start button */
 .start-button {
-  background-color: #4232cc;
-  color: #fff;
+  background-color: #27ae60; /* Green */
+  color: white;
 }
 
+/* Styles for the Finish button */
 .finish-button {
-  background-color: #3562dc;
-  color: #fff;
+  background-color: #c0392b; /* Red */
+  color: white;
+}
+
+/* Hover effect */
+button:hover {
+  opacity: 0.8;
 }
 
 .notification {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #28a745;
+  background-color: #2980b9; /* Blue */
   color: #fff;
   padding: 10px 20px;
   border-radius: 8px;

@@ -1,57 +1,62 @@
 .goal-setting-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #2d399e86;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(2, 211, 248, 0.664);
-  }
-  
-  .description {
-    color: #fffbfb;
-  }
-  
-  .add-goal, .current-goals {
-    margin-top: 20px;
-  }
-  
-  .add-goal input, .add-goal button {
-    margin-right: 10px;
-  }
-  
-  .goal-item {
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: #1222af;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-  }
-  
-  .goal-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .goal-item h4 {
-    margin-top: 0;
-    color: #fcfbfb;
-  }
-  
-  .goal-item button {
-    background-color: #3c72e7;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .goal-item button:hover {
-    background-color: #020111;
-  }
-  
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #808080; /* Gray background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(2, 211, 248, 0.664);
+}
+
+.description {
+  color: #fffbfb;
+}
+
+.add-goal,
+.current-goals {
+  margin-top: 20px;
+}
+
+.add-goal input,
+.add-goal button {
+  margin-right: 10px;
+}
+
+.goal-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.goal-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #4c9f9f; /* Teal shade */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.goal-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.goal-item h4 {
+  margin-top: 0;
+  color: #fcfbfb;
+}
+
+.goal-item button {
+  background-color: #666666; /* Darker gray for buttons */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goal-item button:hover {
+  background-color: #333333; /* Darker shade on hover */
+}

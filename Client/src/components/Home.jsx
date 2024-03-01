@@ -25,6 +25,8 @@ function Home() {
           <h1><span>Fit</span>Hub</h1>
         </div>
 
+        
+
  {/* Introduction Section */}
 <div className="intro-section">
   <h2 className="intro-heading">Your All-in-One Fitness Tracking App</h2>

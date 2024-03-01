@@ -127,4 +127,3 @@
 .logo:hover::after {
   transform: scaleX(1); /* Expand the pseudo-elements on hover */
 }
-

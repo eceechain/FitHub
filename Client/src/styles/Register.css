@@ -1,71 +1,72 @@
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .form {
-    width: 400px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .heading {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .or {
-    font-size: 18px;
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  /* Link styles */
-  p {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  p a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  p a:hover {
-    text-decoration: underline;
-  }
+.wrapper.signIn {
+  position: relative; /* Add relative positioning */
+  height: 100vh; /* Set height to full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; /* Set background color to black */
+}
+
+.form {
+  position: absolute; /* Set absolute positioning */
+  top: 50%; /* Move the form to the middle vertically */
+  left: 50%; /* Move the form to the middle horizontally */
+  transform: translate(-50%, -50%); /* Center the form precisely */
+  max-width: 500px; /* Increase the maximum width of the form */
+  width: 100%;
+  background-color: #fff;
+  border-radius: 12px; /* Increase border radius for a softer look */
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Darken the box shadow */
+}
+
+.heading {
+  font-size: 28px; /* Increase font size of the heading */
+  margin-bottom: 30px; /* Increase margin bottom for spacing */
+  color: #333;
+}
+
+.form label {
+  font-size: 18px; /* Increase font size of labels */
+  margin-bottom: 12px; /* Increase margin bottom for spacing */
+  display: block;
+  color: #333;
+}
+
+.form input[type="text"],
+.form input[type="password"] {
+  width: 100%;
+  padding: 12px; /* Increase padding for input fields */
+  margin-bottom: 24px; /* Increase margin bottom for spacing */
+  border-radius: 6px; /* Increase border radius for input fields */
+  border: 1px solid #ccc;
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #0056b3;
+}
+
+.form p {
+  margin-top: 24px; /* Increase margin top for spacing */
+  font-size: 16px; /* Increase font size of paragraph */
+}
+
+.form p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.form p a:hover {
+  text-decoration: underline;
+}

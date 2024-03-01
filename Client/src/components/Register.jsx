@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "./App";
+import "../styles/Register.css";
 
 export default function Register() {
 
@@ -70,7 +71,7 @@ export default function Register() {
               value={password} onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">{isLoading ? "Please wait..." : "Submit"}</button>
+          <button type="sign in">{isLoading ? "Please wait..." : "Sign in"}</button>
           <h2 align="center" className="or">
             OR
           </h2>

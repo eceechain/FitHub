@@ -1,15 +1,105 @@
-.dashboard {
-    display: flex;
-  }
-  
-  .dashboard-content {
-    flex: 1; /* This will make the content area fill the remaining space */
-    padding: 20px; /* Adjust padding as needed */
-  }
-  
-  .content-display {
-    width: 300px; /* Adjust width of the content display area */
-    padding: 20px; /* Adjust padding as needed */
-  }
-  
+/* Dashboard container */
+.dashboard-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
 
+/* Overview card styles */
+.overview-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0px 4px 8px rgb(1, 236, 253);
+  width: calc(33% - 20px);
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+}
+
+.overview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(2, 223, 252, 0.959);
+}
+
+.overview-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #1b29a3;
+}
+
+.overview-card p {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+/* Overview card overlay */
+.overview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overview-card:hover::before {
+  opacity: 1;
+}
+
+/* Overview chart */
+.overview-chart {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* Motivational quote */
+.motivational-quote {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.motivational-quote p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #777;
+}
+
+/* List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+  color: #555;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

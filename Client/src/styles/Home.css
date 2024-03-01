@@ -1,59 +1,14 @@
 /* Home Styles */
 body {
   background-image: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 1, 8));
-
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  
 }
 
-/* Dark mode styles */          
+/* Dark mode styles */
 .dark-mode {
-  background-color: #04144975;
-  color: #fff;
+  background-image: -webkit-repeating-linear-gradient(rgb(2, 34, 49),rgb(12, 8, 48));
+  color: #f9f9fc;
 }
-
-/* Dark mode toggle button styles */
-.dark-mode-toggle {
-  background: linear-gradient(to right, #01235e70, #0b5fb9);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s; /* Added transitions for color, background, box-shadow, and transform */
-  outline: none;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dark-mode-toggle:hover {
-  background: linear-gradient(to right, #0643b8, #007bff);
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05) rotate(3deg); /* Scale and rotate effect on hover */
-}
-
-.dark-mode-toggle:focus {
-  outline: none;
-}
-
-/* Animation for button hover effect */
-@keyframes buttonHover {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.dark-mode-toggle:hover {
-  animation: buttonHover 0.3s ease;
-}
-
-
-
 
 .home-content {
   max-width: 1200px;
@@ -475,20 +430,30 @@ body {
   }
 }
 
+<<<<<<< HEAD
 
 /* Contact Us Section */
 .contact-section {
+=======
+/* Location Section */
+.location-section {
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   text-align: center;
   margin-bottom: 60px; /* Adjust margin as needed */
 }
 
+<<<<<<< HEAD
 .contact-section h3 {
+=======
+.location-section h3 {
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   font-size: 24px;
   margin-bottom: 20px;
   color: #fffdfd; /* Text color for the heading */
   text-shadow: 2px 2px 4px rgb(4, 245, 253); /* Add a subtle text shadow */
 }
 
+<<<<<<< HEAD
 .contact-section ul {
   list-style: none;
   padding: 0;
@@ -558,12 +523,23 @@ body {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+=======
+.map-container {
+  position: relative;
+  max-width: 100%; /* Adjust to fit container */
+  margin: 0 auto 30px; /* Adjust margin as needed */
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   overflow: hidden; /* Hide overflowing content */
   border-radius: 12px; /* Increased border radius for a softer look */
   box-shadow: 0 0 20px rgb(2, 203, 253);
 }
 
 .map-container iframe {
+<<<<<<< HEAD
+=======
+  width: 100%; /* Ensure map fills container */
+  height: 200px; /* Adjust height as needed */
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   border: 4px solid #0d09d1;
   border-radius: 12px; /* Match container's border radius */
   transition: transform 0.3s ease;
@@ -573,6 +549,7 @@ body {
   transform: scale(1.03); /* Slight zoom in on hover */
 }
 
+<<<<<<< HEAD
 
 /* Container */
 .container {
@@ -581,29 +558,51 @@ body {
   padding: 0 20px;
 }
 
+=======
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
 /* Footer */
 .footer {
   background-color: #333;
   color: #fff;
+<<<<<<< HEAD
   padding: 60px 0 20px;
+=======
+  padding: 60px 20px 20px; /* Adjust padding as needed */
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   border-top: 4px solid #3311ca; /* Add top border */
 }
 
 .footer .container {
   display: flex;
+<<<<<<< HEAD
+=======
+  flex-wrap: wrap; /* Ensure items wrap properly */
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   justify-content: space-between;
   align-items: flex-start;
 }
 
+<<<<<<< HEAD
 .footer h4 {
   color: #fff;
+=======
+.footer-section {
+  flex: 1; /* Each section takes equal space */
+  margin-right: 20px; /* Add some space between sections */
+}
+
+.footer h4 {
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   font-size: 1.5rem;
   margin-bottom: 1rem;
   text-transform: uppercase; /* Uppercase text */
 }
 
 .footer p {
+<<<<<<< HEAD
   font-size: 1rem;
+=======
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
   line-height: 1.5;
 }
 
@@ -637,6 +636,7 @@ body {
   margin: 0;
   font-style: italic; /* Italicize text */
   color: #888; /* Dimmed color */
+<<<<<<< HEAD
 }
 
 /* Common styles */
@@ -670,3 +670,6 @@ body {
   }
   /* Add specific styles for larger screens if needed */
 }
+=======
+}
+>>>>>>> 3aca3c495fcd626bbae8a7dfc15594b1d19656cf
