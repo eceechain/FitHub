@@ -31,10 +31,11 @@ class WorkoutLog(db.Model, SerializerMixin):
     workout_type = db.Column(db.String(120))
     image = db.Column(db.String(255))  # Adding an image column for the workout type
     calories_burned = db.Column(db.Integer)
+    reps = db.Column(db.Integer)
     description = db.Column(db.Text)
     
     user = db.relationship('User', back_populates='workouts')
-
+    
 class CalorieLog(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

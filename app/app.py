@@ -1,8 +1,8 @@
 import datetime
-import requests
-from flask import Flask, jsonify, redirect,  url_for, request
+from flask import Flask, jsonify, request
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+import requests
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
 from models import CalorieLog, WorkoutLog, db, User, GoalSetting, ProgressTracking
@@ -12,13 +12,26 @@ CORS(app)
 jwt = JWTManager(app)
 migrate = Migrate(app, db)
 
-
 # Setting up Flask JWT
 app.config['JWT_SECRET_KEY'] = 'SECRET'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
+
+#index route
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify(message=(
+        "Welcome to [FitHub]!\n\n"
+        "Congratulations on taking the first step towards a healthier and more active lifestyle. Whether you're just starting your fitness journey or looking to take your workouts to the next level, our app is here to support you every step of the way.\n\n"
+        "With our comprehensive range of features, including workout tracking, goal setting, nutrition planning, and community support, achieving your fitness goals has never been easier. Whether you're aiming to lose weight, build muscle, improve endurance, or simply feel better overall, we've got you covered.\n\n"
+        "Track your progress with ease, set personalized goals, and stay motivated with our diverse library of workouts and exercises. From cardio and strength training to yoga and HIIT, find the perfect workout for your needs and preferences.\n\n"
+        "Connect with like-minded individuals in our supportive community, share your achievements, and get inspired by others on similar journeys. Together, we can celebrate victories, overcome challenges, and stay committed to living a healthier, happier life.\n\n"
+        "Start your journey to better health and fitness today with [Your Fitness Application]. Let's make every step count towards a stronger, fitter, and more confident you!\n\n"
+        "Get started now and unleash your full potential!"
+    )), 200
+
 
 
 # Protected route requiring JWT authentication
@@ -45,6 +58,13 @@ def login():
 def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
+
+#Logout route
+@app.route('/logout', methods=['GET'])
+@jwt_required()
+def logout():
+    return jsonify(message='Successfully logged out'), 200
+
 
 # Register route
 @app.route('/Register', methods=['POST'])
@@ -121,7 +141,59 @@ def delete_user(user_id):
         return jsonify(message='User deleted successfully'), 200
     else:
         return jsonify(message='User not found'), 404
+#Get all progresstracking for a user
+@app.route('/Users/<int:user_id>/ProgressTracking', methods=['GET'])
+def get_user_progress_tracking(user_id):
+    user = User.query.get(user_id)
+    if user:
+        progress_tracking = user.progress_tracking
+        progress_tracking_list = []
+        for progress_tracking in progress_tracking:
+            progress_tracking_data = {
+                'id': progress_tracking.id,
+                'user_id': progress_tracking.user_id,
+                'date': progress_tracking.date,
+                'weight': progress_tracking.weight,
+                'body_fat_percentage': progress_tracking.body_fat_percentage,
+            }
+            progress_tracking_list.append(progress_tracking_data)
 
+            # Include the user's username in the response
+            user_data = {
+                'username': user.username,
+                'progress_tracking': progress_tracking_list
+            }
+            return jsonify(user=user_data), 200
+        else:
+            return jsonify(message='User not found'), 404
+        
+#Get all Goalsetting for a user
+@app.route('/Users/<int:user_id>/GoalSetting', methods=['GET'])
+def get_user_goal_setting(user_id):
+    user = User.query.get(user_id)
+    if user:
+        goal_setting = user.goal_setting
+        goal_setting_list = []
+        for goal_setting in goal_setting:
+            goal_setting_data = {
+                'id': goal_setting.id,
+                'user_id': goal_setting.user_id,
+                'goal_type': goal_setting.goal_type,
+                'target': goal_setting.target,
+                'deadline': goal_setting.deadline,
+            }
+            goal_setting_list.append(goal_setting_data)
+
+            # Include the user's username in the response
+            user_data = {
+                'username': user.username,
+                'goal_setting': goal_setting_list
+            }
+
+            return jsonify(user=user_data), 200
+        else:
+            return jsonify(message='User not found'), 404
+        
 # Get all workouts for a user
 @app.route('/Users/<int:user_id>/Workouts', methods=['GET'])
 def get_user_workouts(user_id):
@@ -136,6 +208,8 @@ def get_user_workouts(user_id):
                 'date': workout.date,
                 'duration': workout.duration,
                 'workout_type': workout.workout_type,
+                'reps': workout.reps,
+                'sets': workout.sets,
                 'calories_burned': workout.calories_burned
             }
             workouts_list.append(workout_data)
@@ -149,6 +223,7 @@ def get_user_workouts(user_id):
         return jsonify(user=user_data), 200
     else:
         return jsonify(message='User not found'), 404
+        
 
 # Get all calories for a user
 @app.route('/Users/<int:user_id>/Calories', methods=['GET'])
@@ -176,33 +251,7 @@ def get_user_calories(user_id):
         return jsonify(user=user_data), 200
     else:
         return jsonify(message='User not found'), 404
-    
-# Add a workout for a user
-@app.route('/Users/<int:user_id>/Workouts', methods=['POST'])
-def add_user_workout(user_id):
-    data = request.get_json()
-    user = User.query.get(user_id)
-    if user:
-        workout = WorkoutLog(user_id=user_id, date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'))
-        db.session.add(workout)
-        db.session.commit()
-        return jsonify(message='Workout added successfully'), 201
-    else:
-        return jsonify(message='User not found'), 404
-    
-# Add a calorie for a user
-@app.route('/Users/<int:user_id>/Calories', methods=['POST'])
-def add_user_calorie(user_id):
-    data = request.get_json()
-    user = User.query.get(user_id)
-    if user:
-        calorie = CalorieLog(user_id=user_id, date=data.get('date'), calories=data.get('calories'), meal_type=data.get('meal_type'))
-        db.session.add(calorie)
-        db.session.commit()
-        return jsonify(message='Calorie added successfully'), 201
-    else:
-        return jsonify(message='User not found'), 404
-    
+
 @app.route('/Workouts', methods=['GET'])
 def get_workouts():
     # Query all workout logs from the database
@@ -218,13 +267,15 @@ def get_workouts():
             'duration': workout.duration,
             'workout_type': workout.workout_type,
             'calories_burned': workout.calories_burned,
+            'reps': workout.reps,
+            'sets': workout.sets,
             'description': workout.description,
             'image': workout.image
         }
         workout_list.append(workout_dict)
     
     # Return the list of workout logs as JSON
-    return jsonify(workout_list)
+    return jsonify(workouts=workout_list)  # Wrap workout_list inside jsonify and specify key name as 'workouts'
 
 # Get a single workout
 @app.route('/Workouts/<int:workout_id>', methods=['GET'])
@@ -239,6 +290,8 @@ def get_workout(workout_id):
             'workout_type': workout.workout_type,
             'calories_burned': workout.calories_burned,
             'description': workout.description,
+            'reps': workout.reps,
+            'sets': workout.sets,
             'image': workout.image
         }
         return jsonify(workout=workout_data), 200
@@ -256,6 +309,8 @@ def update_workout(workout_id):
         workout.workout_type = data.get('workout_type')
         workout.calories_burned = data.get('calories_burned')
         workout.description = data.get('description')
+        workout.reps = data.get('reps')
+        workout.sets = data.get('sets')
         workout.image = data.get('image')
         db.session.commit()
         return jsonify(message='Workout updated successfully'), 200
@@ -266,7 +321,7 @@ def update_workout(workout_id):
 @app.route('/Workouts', methods=['POST'])
 def post_workout():
     data = request.get_json()
-    workout = WorkoutLog(user_id=data.get('user_id'), date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'), description=data.get('description'), image=data.get('image'))
+    workout = WorkoutLog(user_id=data.get('user_id'), date=data.get('date'), duration=data.get('duration'), workout_type=data.get('workout_type'), calories_burned=data.get('calories_burned'), description=data.get('description'),reps=data.get('reps'),image=data.get('image'))
     db.session.add(workout)
     db.session.commit()
     return jsonify(message='Workout added successfully'), 201
@@ -281,8 +336,219 @@ def delete_workout(workout_id):
         return jsonify(message='Workout deleted successfully'), 200
     else:
         return jsonify(message='Workout not found'), 404
+    
+# Get Claories
+@app.route('/Calories', methods=['GET'])
+def get_calories():
+    # Query all calorie logs from the database
+    calories = CalorieLog.query.all()
 
+    # Convert each calorie log to a dictionary
+    calorie_list = []
+    for calorie in calories:
+        calorie_dict = {
+            'id': calorie.id,
+            'user_id': calorie.user_id,
+            'date': calorie.date.strftime('%Y-%m-%d %H:%M:%S'),
+            'calories': calorie.calories,
+           'meal_type': calorie.meal_type
+        }
+        calorie_list.append(calorie_dict)
 
+    # Return the list of calorie logs as JSON
+    return jsonify(calorie_list)
+
+# Get a single calorie
+@app.route('/Calories/<int:calorie_id>', methods=['GET'])
+def get_calorie(calorie_id):
+    calorie = CalorieLog.query.get(calorie_id)
+    if calorie:
+        calorie_data = {
+            'id': calorie.id,
+            'user_id': calorie.user_id,
+            'date': calorie.date.strftime('%Y-%m-%d %H:%M:%S'),
+            'calories': calorie.calories,
+           'meal_type': calorie.meal_type
+        }
+        return jsonify(calorie=calorie_data), 200
+    else:
+        return jsonify(message='Calorie not found'), 404
+    
+# Update a calorie
+@app.route('/Calories/<int:calorie_id>', methods=['PUT'])
+def update_calorie(calorie_id):
+    data = request.get_json()
+    calorie = CalorieLog.query.get(calorie_id)
+    if calorie:
+        calorie.date = data.get('date')
+        calorie.calories = data.get('calories')
+        calorie.meal_type = data.get('meal_type')
+        db.session.commit()
+        return jsonify(message='Calorie updated successfully'), 200
+    else:
+        return jsonify(message='Calorie not found'), 404
+    
+#Post a calorie
+@app.route('/Calories', methods=['POST'])
+def post_calorie():
+    data = request.get_json()
+    calorie = CalorieLog(user_id=data.get('user_id'), date=data.get('date'), calories=data.get('calories'), meal_type=data.get('meal_type'))
+    db.session.add(calorie)
+    db.session.commit()
+    return jsonify(message='Calorie added successfully'), 201
+
+# Delete a calorie
+@app.route('/Calories/<int:calorie_id>', methods=['DELETE'])
+def delete_calorie(calorie_id):
+    calorie = CalorieLog.query.get(calorie_id)
+    if calorie:
+        db.session.delete(calorie)
+        db.session.commit()
+        return jsonify(message='Calorie deleted successfully'), 200
+    else:
+        return jsonify(message='Calorie not found'), 404
+    
+#get progresTracking
+@app.route('/ProgressTracking', methods=['GET'])
+def get_progressTracking():
+    # Query all calorie logs from the database
+    progressTracking = ProgressTracking.query.all()
+
+    #convert each progressTracking to a dictionary
+    progressTracking_list = []
+    for progressTracking in progressTracking:
+        progressTracking_dict = {
+            'id': progressTracking.id,
+            'user_id': progressTracking.user_id,
+            'date': progressTracking.date.strftime('%Y-%m-%d %H:%M:%S'),
+            'weight': progressTracking.weight,
+            'body_fat_percentage': progressTracking.body_fat_percentage,
+        }
+
+        progressTracking_list.append(progressTracking_dict)
+
+        # Return the list of progressTracking as JSON
+    return jsonify(progressTracking_list)
+
+@app.route('/ProgressTracking/<int:progressTracking_id>', methods=['GET'])
+def get_single_progressTracking(progressTracking_id):
+    progressTracking = ProgressTracking.query.get(progressTracking_id)
+    if progressTracking:
+        progressTracking_data = {
+            'id': progressTracking.id,
+            'user_id': progressTracking.user_id,
+            'date': progressTracking.date.strftime('%Y-%m-%d %H:%M:%S'),
+            'weight': progressTracking.weight,
+            'body_fat_percentage': progressTracking.body_fat_percentage,
+        }
+        return jsonify(progressTracking=progressTracking_data), 200
+    else:
+        return jsonify(message='ProgressTracking not found'), 404
+
+# Update a progressTracking
+@app.route('/ProgressTracking/<int:progressTracking_id>', methods=['PUT'])
+def update_progressTracking(progressTracking_id):
+    data = request.get_json()
+    progressTracking = ProgressTracking.query.get(progressTracking_id)
+    if progressTracking:
+        progressTracking.date = data.get('date')
+        progressTracking.weight = data.get('weight')
+        progressTracking.body_fat_percentage = data.get('body_fat_percentage')
+        db.session.commit()
+        return jsonify(message='ProgressTracking updated successfully'), 200
+    else:
+        return jsonify(message='ProgressTracking not found'), 404
+
+#Post a progressTracking
+@app.route('/ProgressTracking', methods=['POST'])
+def post_progressTracking():
+    data = request.get_json()
+    progressTracking = ProgressTracking(user_id=data.get('user_id'), date=data.get('date'), weight=data.get('weight'), body_fat_percentage=data.get('body_fat_percentage'))
+    db.session.add(progressTracking)
+    db.session.commit()
+    return jsonify(message='ProgressTracking added successfully'), 201
+
+# Delete a progressTracking
+@app.route('/ProgressTracking/<int:progressTracking_id>', methods=['DELETE'])
+def delete_progressTracking(progressTracking_id):
+    progressTracking = ProgressTracking.query.get(progressTracking_id)
+    if progressTracking:
+        db.session.delete(progressTracking)
+        db.session.commit()
+        return jsonify(message='ProgressTracking deleted successfully'), 200
+    else:
+        return jsonify(message='ProgressTracking not found'), 404
+
+#get Goals
+@app.route('/GoalSetting', methods=['GET'])
+def get_goals():
+    # Query all calorie logs from the database
+    goals = GoalSetting.query.all()
+     
+    #convert each goal to a dictionary
+    goals_list = []
+    for goal in goals:
+        goal_dict ={
+            'id': goal.id,
+            'user_id': goal.user_id,
+            'goal_type': goal.goal_type,
+            'target': goal.target,
+            'deadline': goal.deadline.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        goals_list.append(goal_dict)
+
+        # Return the list of goals as JSON
+    return jsonify(goals_list)
+
+@app.route('/GoalSetting/<int:goal_id>', methods=['GET'])
+def get_single_goal(goal_id):
+    goal = GoalSetting.query.get(goal_id)
+    if goal:
+        goal_data = {
+            'id': goal.id,
+            'user_id': goal.user_id,
+            'goal_type': goal.goal_type,
+            'target': goal.target,
+            'deadline': goal.deadline.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        return jsonify(goal=goal_data), 200
+    else:
+        return jsonify(message='Goal not found'), 404
+    
+# Update a goal
+@app.route('/GoalSetting/<int:goal_id>', methods=['PUT'])
+def update_goal(goal_id):
+    data = request.get_json()
+    goal = GoalSetting.query.get(goal_id)
+    if goal:
+        goal.goal_type = data.get('goal_type')
+        goal.target = data.get('target')
+        goal.deadline = data.get('deadline')
+        db.session.commit()
+        return jsonify(message='Goal updated successfully'), 200
+    else:
+        return jsonify(message='Goal not found'), 404
+    
+#Post a goal
+@app.route('/GoalSetting', methods=['POST'])
+def post_goal():
+    data = request.get_json()
+    goal = GoalSetting(user_id=data.get('user_id'), goal_type=data.get('goal_type'), target=data.get('target'), deadline=data.get('deadline'))
+    db.session.add(goal)
+    db.session.commit()
+    return jsonify(message='Goal added successfully'), 201
+
+# Delete a goal
+@app.route('/GoalSetting/<int:goal_id>', methods=['DELETE'])
+def delete_goal(goal_id):
+    goal = GoalSetting.query.get(goal_id)
+    if goal:
+        db.session.delete(goal)
+        db.session.commit()
+        return jsonify(message='Goal deleted successfully'), 200
+    else:
+        return jsonify(message='Goal not found'), 404
+    
 @app.route('/nutrition', methods=['POST'])
 def get_nutrition_info():
     meal_type = request.json.get('meal_type')
@@ -335,7 +601,5 @@ def get_nutrition_info():
 
     return jsonify(total_nutrition), 200
 
-
-
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5001)
