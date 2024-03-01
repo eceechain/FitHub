@@ -14,7 +14,7 @@ import GoalSetting from './GoalSetting';
 import Blog from './Blog';
 import Navbar from './Navbar';
 import Nutrition from './Nutrition';
-
+import '../styles/Dashboard.css'
 
 function Dashboard() {
   return (
