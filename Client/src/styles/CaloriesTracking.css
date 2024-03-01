@@ -1,0 +1,106 @@
+/* calories-tracking.css */
+
+.calories-tracking {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f2f2f2; /* Grey background */
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #444; /* Adjusted color for better visibility */
+}
+
+th {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+th:hover {
+  background-color: #e6e6e6; /* Light grey on hover */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #e6e6e6; /* Light grey on hover */
+}
+
+.loading-message,
+.error-message {
+  font-size: 18px;
+  margin-top: 20px;
+  color: #555; /* Adjusted color for better visibility */
+}
+
+.error-message {
+  color: #f00;
+}
+
+/* Sorting icons */
+th[data-sorted="asc"]::after {
+  content: "▲";
+  margin-left: 5px;
+}
+
+th[data-sorted="desc"]::after {
+  content: "▼";
+  margin-left: 5px;
+}
+
+/* Fade-in animation for table rows */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+tbody tr {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Additional styling */
+.calories-tracking h2 {
+  border-bottom: 1px solid #ccc; /* Adding a border below the heading */
+  padding-bottom: 10px; /* Adding padding below the heading */
+}
+
+.calories-tracking table th {
+  background-color: #f2f2f2; /* Grey background for table header */
+  font-weight: bold; /* Making table headers bold */
+}
+
+.calories-tracking table td {
+  font-size: 16px; /* Adjusting font size for table data */
+}
+
+.calories-tracking .loading-message {
+  font-style: italic; /* Making loading message italic */
+}
+
+.calories-tracking .error-message {
+  font-weight: bold; /* Making error message bold */
+}

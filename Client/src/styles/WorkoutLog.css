@@ -1,0 +1,112 @@
+.workout-logs-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #222; /* Dark grey background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(4, 239, 247);
+}
+
+.workout-logs-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #fff; /* White text */
+}
+
+.workout-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.workout-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.workout-item:hover {
+  transform: translateY(-5px);
+}
+
+.workout-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.workout-details {
+  padding: 20px;
+}
+
+.workout-details h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.workout-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.workout-details button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.workout-details button:hover {
+  filter: brightness(90%);
+}
+
+/* Styles for the Start button */
+.start-button {
+  background-color: #27ae60; /* Green */
+  color: white;
+}
+
+/* Styles for the Finish button */
+.finish-button {
+  background-color: #c0392b; /* Red */
+  color: white;
+}
+
+/* Hover effect */
+button:hover {
+  opacity: 0.8;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #2980b9; /* Blue */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: none;
+}
+
+.notification.show {
+  display: block;
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

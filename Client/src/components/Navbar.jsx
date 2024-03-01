@@ -2,11 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Navbar.css';
-import { useAuthContext } from './App';
 
 function Navbar() {
-  const { isAuthenticated, removeAcessToken } = useAuthContext();
-  console.log(isAuthenticated);
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -55,22 +52,16 @@ function Navbar() {
           <NavLink to="/workoutlogs" onClick={closeSidebar}>Workout Logs</NavLink>
           <NavLink to="/progress" onClick={closeSidebar}>Progress Tracking</NavLink>
           <NavLink to="/calories" onClick={closeSidebar}>Calories Tracking</NavLink>
-          <NavLink to="/recommendations" onClick={closeSidebar}>Personalized Recommendations</NavLink>
+          <NavLink to="/PersonalizedRecommendations" onClick={closeSidebar}>Personalized Recommendations</NavLink>
           <NavLink to="/goalsetting" onClick={closeSidebar}>Goal Setting</NavLink>
           <NavLink to="/socialsharing" onClick={closeSidebar}>Social Sharing</NavLink>
           <NavLink to="/blog" onClick={closeSidebar}>Blog</NavLink>
+          <NavLink to="/nutrition" onClick={closeSidebar}>Nutrition</NavLink>
           <div className="auth-links">
             <NavLink to="/account/login" onClick={closeSidebar}>Login</NavLink>
             <NavLink to="/account/register" onClick={closeSidebar}>Register</NavLink>
           </div>
         </div>
-      </div>
-      <div className="auth-links">
-        {isAuthenticated ? <button onClick={() => removeAcessToken()}>logout</button> : <>
-          <NavLink to="/socialsharing">Social Sharing</NavLink>
-          <NavLink to="/account/login">Login</NavLink>
-          <NavLink to="/account/register">Register</NavLink>
-        </>}
       </div>
       <div className="content">
         <div className="nav-links">
