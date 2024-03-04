@@ -45,25 +45,25 @@ function GoalSetting() {
     }
   };
 
-  const addGoal = async () => {
+  const addGoal = () => {
     try {
       if (!newGoal.goal_type || !newGoal.deadline || !newGoal.target) {
         setError('Please fill out all fields');
         return;
       }
-      await axios.post('https://fithub-kl23.onrender.com/GoalSetting', newGoal);
+      const updatedGoals = [...goals, newGoal];
+      setGoals(updatedGoals);
       setNewGoal({ goal_type: '', deadline: '', target: '' });
       setError('');
-      fetchData();
     } catch (error) {
       console.error('Error adding goal:', error);
     }
   };
 
-  const deleteGoal = async (id) => {
+  const deleteGoal = (id) => {
     try {
-      await axios.delete(`https://fithub-kl23.onrender.com/GoalSetting/${id}`);
-      fetchData();
+      const updatedGoals = goals.filter(goal => goal.id !== id);
+      setGoals(updatedGoals);
     } catch (error) {
       console.error('Error deleting goal:', error);
     }
@@ -110,31 +110,33 @@ function GoalSetting() {
 
       <div className="current-goals">
         <h3>Current Goals</h3>
-        {goals.map(goal => (
-          <div key={goal.id} className="goal-item">
-            {editingGoalId === goal.id ? (
-              <>
-                <input type="text" name="goal_type" value={editedGoal.goal_type} onChange={handleInputChange} />
-                <input type="text" name="deadline" value={editedGoal.deadline} onChange={handleInputChange} />
-                <input type="number" name="target" value={editedGoal.target} onChange={handleInputChange} />
-                <div>
-                  <button className="save-button" onClick={saveEditedGoal}>Save</button>
-                  <button className="cancel-button" onClick={cancelEdit}>Cancel</button>
-                </div>
-              </>
-            ) : (
-              <>
-                <h4>Goal Type: {goal.goal_type}</h4>
-                <p>Deadline: {goal.deadline}</p>
-                <p>Target: {goal.target}</p>
-                <div>
-                  <button className="edit-button" onClick={() => handleEdit(goal.id)}>Edit</button>
-                  <button className="delete-button" onClick={() => deleteGoal(goal.id)}>Delete</button>
-                </div>
-              </>
-            )}
-          </div>
-        ))}
+        <div className="goal-list">
+          {goals.map(goal => (
+            <div key={goal.id} className="goal-item">
+              {editingGoalId === goal.id ? (
+                <>
+                  <input type="text" name="goal_type" value={editedGoal.goal_type} onChange={handleInputChange} />
+                  <input type="text" name="deadline" value={editedGoal.deadline} onChange={handleInputChange} />
+                  <input type="number" name="target" value={editedGoal.target} onChange={handleInputChange} />
+                  <div>
+                    <button className="save-button" onClick={saveEditedGoal}>Save</button>
+                    <button className="cancel-button" onClick={cancelEdit}>Cancel</button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h4>Goal Type: {goal.goal_type}</h4>
+                  <p>Deadline: {goal.deadline}</p>
+                  <p>Target: {goal.target}</p>
+                  <div>
+                    <button className="edit-button" onClick={() => handleEdit(goal.id)}>Edit</button>
+                    <button className="delete-button" onClick={() => deleteGoal(goal.id)}>Delete</button>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

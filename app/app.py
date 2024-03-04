@@ -340,7 +340,7 @@ def delete_workout(workout_id):
 # Get Claories
 @app.route('/Calories', methods=['GET'])
 def get_calories():
-    # Query all calorie logs from the database
+    # Query all icalorie logs from the database
     calories = CalorieLog.query.all()
 
     # Convert each calorie log to a dictionary

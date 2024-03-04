@@ -14,28 +14,36 @@ import GoalSetting from './GoalSetting';
 import Blog from './Blog';
 import Navbar from './Navbar';
 import Nutrition from './Nutrition';
-
+import DashBoard from '../DashBoard';
 
 function Dashboard() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/account/login" element={<Login />} />
-        <Route path="/account/register" element={<Register />} />
-        <Route path="/socialsharing" element={<SocialSharing />} />
-        <Route path="/workoutlogs" element={<WorkoutLogs />} />
-        <Route path="/calories" element={<CaloriesTracking />} />
-        <Route path="/recommendations" element={<PersonalizedRecommendatons />} />
-        <Route path="/progress" element={<ProgressTracking />} />
-        <Route path="/goalsetting" element={<GoalSetting />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/nutrition" element={<Nutrition />} />
-      </Routes>
-    </Router>
+    <div className="dashboard">
+      <Router>
+        <Navbar />
+        <div className="dashboard-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/account/login" element={<Login />} />
+            <Route path="/account/register" element={<Register />} />
+            <Route path="/socialsharing" element={<SocialSharing />} />
+            <Route path="/workoutlogs" element={<WorkoutLogs />} />
+            <Route path="/DashBoard" element={<DashBoard />} />
+            <Route path="/calories" element={<CaloriesTracking />} />
+            <Route path="/PersonalizedRecommendations" element={<PeronalizedRecommendatons/>} />
+            <Route path="/progress" element={<ProgressTracking />} />
+            <Route path="/goalsetting" element={<GoalSetting />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/nutrition" element={<Nutrition />} />
+          </Routes>
+        </div>
+        <div className="content-display">
+          {}
+        </div>
+      </Router>
+    </div>
   );
 }
 

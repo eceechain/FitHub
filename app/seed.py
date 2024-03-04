@@ -74,8 +74,7 @@ with app.app_context():
                 workout_type=workout['type'],
                 calories_burned=workout['calories_burned'],
                 description=workout['description'],
-                reps=workout['reps'],
-                sets=workout['sets'],
+                reps = workout['reps'],
                 image=workout['image']
             )
             db.session.add(workout_log)  # Add the workout log to the session
